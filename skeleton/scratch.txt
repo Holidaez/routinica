@@ -1,0 +1,14 @@
+pipenv lock --requirements > requirements.txt
+
+
+# Deploy to Render # Problems typically lie in the database...
+
+
+
+
+# Loop over files in python
+for file in os.listdir('/Users/satori'):
+  print(file)
+
+
+# Loop over files in JS
