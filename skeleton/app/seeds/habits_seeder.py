@@ -12,8 +12,8 @@ def seed_habits():
         reset_counter = "Daily",
         positive_counter = 1,
         negative_counter = 0,
-        desired_habit = True,
-        undesired_habit = False,
+        positive_habit = True,
+        negative_habit = False,
         strong_habit = True,
         display_order = 1
     )

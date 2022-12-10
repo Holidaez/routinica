@@ -1,4 +1,4 @@
-from .db import db
+from .db import db, environment, SCHEMA
 
 class Avatar(db.Model):
   __tablename__ = "avatar"
@@ -11,7 +11,9 @@ class Avatar(db.Model):
   userId = db.Column(db.Integer, nullable=False)
   body = db.Column(db.String(256), nullable=False)
   skin = db.Column(db.String(256), nullable=False)
-  hair = db.Column(db.String(256), nullable=False)
+  bangs = db.Column(db.String(256), nullable=False)
+  style = db.Column(db.String(256), nullable=False)
+  facial = db.Column(db.String(256), nullable=True)
   glasses = db.Column(db.String(256), nullable=True)
   wheelchair = db.Column(db.String(256), nullable=True)
   accent = db.Column(db.String(256), nullable=True)
