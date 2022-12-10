@@ -1,4 +1,4 @@
-from .db import db
+from .db import db, environment, SCHEMA
 
 class Dailies(db.Model):
   __tablename__ = "dailies"
