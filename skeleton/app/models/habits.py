@@ -10,13 +10,13 @@ class Habits(db.Model):
   id = db.Column(db.Integer, nullable=False)
   userId = db.Column(db.Integer, nullable=False)
   title = db.Column(db.String(64), nullable=False)
-  notes = db.Column(db.String(2048), nullable=False)
-  difficulty = db.Column(db.String(64), nullable=False)
-  tags = db.Column(db.String(64), nullable=False)
+  notes = db.Column(db.String(2048)) #changed to can be nullable
+  difficulty = db.Column(db.Integer, nullable=False) #changed from string to integer
+  tags = db.Column(db.String(250)) #changed to can be nullable
   reset_counter = db.Column(db.String(64), nullable=False)
-  adjust_counter = db.Column(db.Integer, nullable=False)
-  desired_habit = db.Column(db.Boolean, nullable=False)
-  undesired_habit = db.Column(db.Boolean, nullable=False)
-  weak_habit = db.Column(db.Boolean, nullable=False)
+  positive_counter = db.Column(db.Integer, nullable=False)
+  negative_counter = db.Column(db.Integer, nullable=False)
+  positive_habit = db.Column(db.Boolean, nullable=False)
+  negative_habit = db.Column(db.Boolean, nullable=False)
   strong_habit = db.Column(db.Boolean, nullable=False)
-  priority = db.Column(db.Integer, nullable=False)
+  display_order = db.Column(db.Integer, nullable=False, unique=True)
