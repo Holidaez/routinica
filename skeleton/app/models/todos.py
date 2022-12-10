@@ -1,13 +1,13 @@
 from .db import db, environment, SCHEMA
 
 class ToDos(db.Model):
-  __tablename__ = "todos"
+  __tablename__ = 'todos'
 
   # ALL models should have this!!!
   if environment == "production":
     __table_args__ = {'schema': SCHEMA}
 
-  id = db.Column(db.Integer, nullable=False)
+  id = db.Column(db.Integer, nullable=False, primary_key=True)
   userId = db.Column(db.Integer, nullable=False)
   checklist = db.Column(db.String(250))
   title = db.Column(db.String(64), nullable=False)

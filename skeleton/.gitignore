@@ -7,6 +7,10 @@ __pycache__/
 requirements.txt
 Pipfile
 Pipfile.lock
+requirements.txt
+dev.db
+instance/
+
 
 #hair_url : /static/hair/style/1/color/green
 # {hair.hair_url}
