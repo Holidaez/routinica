@@ -7,3 +7,7 @@ __pycache__/
 Pipfile
 Pipfile.lock
 requirements.txt
+
+
+#hair_url : /static/hair/style/1/color/green
+# {hair.hair_url}
