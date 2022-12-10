@@ -6,6 +6,7 @@ __pycache__/
 .vscode/
 requirements.txt
 Pipfile
-Pipfile
+Pipfile.lock
+
 #hair_url : /static/hair/style/1/color/green
 # {hair.hair_url}
