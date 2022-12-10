@@ -14,6 +14,13 @@ class User(db.Model, UserMixin):
     username = db.Column(db.String(40), nullable=False, unique=True)
     email = db.Column(db.String(255), nullable=False, unique=True)
     hashed_password = db.Column(db.String(255), nullable=False)
+    gold = db.Column(db.Integer, nullable=False)
+    experience = db.Column(db.Integer, nullable=False)
+    level = db.Column(db.Integer, nullable=False)
+    health = db.Column(db.Integer, nullable=False)
+    created_at = db.Column(db.String(32), nullable=False)
+    login_date = db.Column(db.String(64), nullable=False)
+
 
     @property
     def password(self):
@@ -30,5 +37,11 @@ class User(db.Model, UserMixin):
         return {
             'id': self.id,
             'username': self.username,
-            'email': self.email
+            'email': self.email,
+            'gold':self.gold,
+            "experience":self.experience,
+            "health":self.health,
+            "created_at":self.created_at,
+            "level":self.level,
+            "login_date":self.login_date
         }
