@@ -1,7 +1,7 @@
 from .db import db, environment, SCHEMA
 
 class Habits(db.Model):
-  __tablename__ = "habits"
+  __tablename__ = 'habits'
 
   # ALL models should have this!!!
   if environment == "production":

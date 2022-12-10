@@ -23,8 +23,8 @@ def seed_avatars():
 # it will reset the primary keys for you as well.
 def undo_avatars():
     if environment == "production":
-        db.session.execute(f"TRUNCATE table {SCHEMA}.avatars RESTART IDENTITY CASCADE;")
+        db.session.execute(f"TRUNCATE table {SCHEMA}.avatar RESTART IDENTITY CASCADE;")
     else:
-        db.session.execute("DELETE FROM avatars")
+        db.session.execute("DELETE FROM avatar")
 
     db.session.commit()

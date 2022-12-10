@@ -1,7 +1,7 @@
 from .db import db, environment, SCHEMA
 
 class Dailies(db.Model):
-  __tablename__ = "dailies"
+  __tablename__ = 'dailies'
 
   # ALL models should have this!!!
   if environment == "production":

@@ -1,7 +1,7 @@
 from .db import db, environment, SCHEMA
 
 class ToDos(db.Model):
-  __tablename__ = "todos"
+  __tablename__ = 'todos'
 
   # ALL models should have this!!!
   if environment == "production":
