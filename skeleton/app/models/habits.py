@@ -7,7 +7,7 @@ class Habits(db.Model):
   if environment == "production":
     __table_args__ = {'schema': SCHEMA}
 
-  id = db.Column(db.Integer, nullable=False)
+  id = db.Column(db.Integer, nullable=False, primary_key=True)
   userId = db.Column(db.Integer, nullable=False)
   title = db.Column(db.String(64), nullable=False)
   notes = db.Column(db.String(2048)) #changed to can be nullable

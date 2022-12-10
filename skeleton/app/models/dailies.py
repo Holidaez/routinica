@@ -7,7 +7,7 @@ class Dailies(db.Model):
   if environment == "production":
     __table_args__ = {'schema': SCHEMA}
 
-  id = db.Column(db.Integer, nullable=False)
+  id = db.Column(db.Integer, nullable=False, primary_key=True)
   userId = db.Column(db.Integer, nullable=False)
   checklist = db.Column(db.String(250)) #can be empty
   start_date = db.Column(db.String(64), nullable=False)
