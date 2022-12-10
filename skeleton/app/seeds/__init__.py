@@ -3,6 +3,7 @@ from .users import seed_users, undo_users
 from .dailies_seeder import seed_dailies, undo_dailies
 from .habits_seeder import seed_habits, undo_habits
 from .todos_seeder import seed_todos, undo_todos
+from .avatar import undo_avatars, seed_avatars
 from app.models.db import db, environment, SCHEMA
 
 # Creates a seed group to hold our commands
@@ -22,10 +23,12 @@ def seed():
         undo_dailies()
         undo_habits()
         undo_todos()
+        undo_avatars()
     seed_users()
     seed_dailies()
     seed_habits()
     seed_todos()
+    seed_avatars()
     # Add other seed functions here
 
 
@@ -36,6 +39,5 @@ def undo():
     undo_dailies()
     undo_habits()
     undo_todos()
+    undo_avatars()
     # Add other undo functions here
-
-
