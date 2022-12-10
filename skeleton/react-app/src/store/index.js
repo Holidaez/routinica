@@ -1,9 +1,15 @@
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
-import session from './session'
+import session from './session'; //all the reducers are alliased using the default function export.
+import avatar from './avatar';
+import dailies from './dailies';
+import habits from './habits';
+import todos from './todos';
+import user from './user';
+
 
 const rootReducer = combineReducers({
-  session,
+  session, avatar, dailies, habits, todos, user
 });
 
 
