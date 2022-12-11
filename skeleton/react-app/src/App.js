@@ -26,13 +26,10 @@ function App() {
 
   return (
     <BrowserRouter>
-      <NavBar />
+      {/* <NavBar /> */}
       <Switch>
         <Route path='/login' exact={true}>
           <LoginForm />
-        </Route>
-        <Route path='/sign-up' exact={true}>
-          <SignUpForm />
         </Route>
         <ProtectedRoute path='/users' exact={true} >
           <UsersList/>
@@ -40,9 +37,12 @@ function App() {
         <ProtectedRoute path='/users/:userId' exact={true} >
           <User />
         </ProtectedRoute>
-        <Route path='/' exact={true} >
-          <h1>My Home Page</h1>
+        <Route path='/' exact={true}>
+          <SignUpForm />
         </Route>
+        {/* <Route path='/' exact={true} >
+          <h1>My Home Page</h1>
+        </Route> */}
       </Switch>
     </BrowserRouter>
   );
