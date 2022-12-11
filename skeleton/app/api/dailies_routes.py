@@ -11,4 +11,4 @@ def get_all_dailies():
     Querry all dailies and return them in a list of dictionaries ordered by display order
     """
     dalies = Dailies.query.filter(Dailies.userId == User.id).order_by(Dailies.display_order)
-    return {dalies: []}
+    return {'dailies': [daily.to_dict() for daily in dalies]}

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux'
-import { getToDos } from '../../store/todos'
+import { getToDos } from '../../../store/todos'
 import './todo.css'
 
 //TODO: Complete logic to split the checklist.

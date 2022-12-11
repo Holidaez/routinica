@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux'
-import { getHabits } from '../../store/habits'
+import { getHabits } from '../../../store/habits'
 
 //TODO:
 //Conditionally render the optional elements. (completed - notes, checklist).

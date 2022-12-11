@@ -1,0 +1,8 @@
+.body-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.routines-container{
+    border: 3px blue solid;
+}
