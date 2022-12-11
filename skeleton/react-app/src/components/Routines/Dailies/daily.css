@@ -1,17 +1,23 @@
-.todo-card {
+.daily-card {
+    /* border: 1px red solid; */
     background-color: white;
     display: flex;
     flex-direction: row;
-    justify-content: flex-start;
     height: 75px;
     border-radius: 5px;
     width: 99%;
     box-shadow: lightgray 2px 2px 3px;
 }
-.todo-card:hover {
-    outline: 1px #915bf3 solid;
+.daily-card:hover {
+    outline: 1px #915bf3 solid
 }
-.todo-checkbox-container {
+.daily-info-container {
+    display: flex;
+    flex-direction: column;
+    padding-top: 5px;
+    padding-left: 5px;
+}
+.dailies-checkbox-div {
     width: 35px;
     height: 100%;
     padding: 0px;
@@ -23,47 +29,30 @@
     align-items: center;
     background-color: #ffbe5c;
 }
-.todo-checkbox {
+.daily-checkbox {
     background-color: #ffdfb0;
-    width: 70%;
-    height: 30%;
-    border: none;
-    cursor: pointer;
-    border-radius: 3px;
-}
-.hidden {
-    display:none;
-}
-.todo-checkbox:hover + .hidden {
-    /* outline: 1px #915bf3 solid; */
     display: block;
-    color: gray;
-    background-color: #ffdfb0;
     width: 70%;
     height: 30%;
     border: none;
     cursor: pointer;
     border-radius: 3px;
 }
-.todo-info-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    padding: 5px;
+.daily-checkbox:checked {
+    background-color: #ffbe5c;
 }
-.todo-card-title {
+.daily-card-title {
     font-size: 18px;
-    font-weight: lighter;
 }
-.todo-title {
+.dailies-title {
     font-size: 24px;
     align-self: flex-start;
 }
-.todo-card-notes {
+.daily-card-notes {
     font-size: 10px;
     color: gray;
 }
-.todo-card-checklist {
+.daily-card-checklist {
     font-size: 14px;
     color: gray;
 }

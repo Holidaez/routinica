@@ -38,34 +38,3 @@
     background-color: white;
     outline: 1px #915bf3 solid;
 }
-.daily-card {
-    /* border: 1px red solid; */
-    background-color: white;
-    display: flex;
-    flex-direction: column;
-    padding: 10px;
-    padding-right: 10px;
-    border-radius: 3px;
-    width: 95%;
-    box-shadow: lightgray 2px 2px 3px;
-}
-.daily-card:hover {
-    outline: 1px #915bf3 solid
-}
-
-
-.daily-card-title {
-    font-size: 18px;
-}
-.dailies-title {
-    font-size: 24px;
-    align-self: flex-start;
-}
-.daily-card-notes {
-    font-size: 14px;
-    color: gray;
-}
-.daily-card-checklist {
-    font-size: 14px;
-    color: gray;
-}

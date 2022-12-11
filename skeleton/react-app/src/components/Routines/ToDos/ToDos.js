@@ -28,7 +28,7 @@ function ToDo() {
                     <div key={`to-${todo.id}`} className='todo-card'>
                         <div className='todo-checkbox-container'>
                             <button className='todo-checkbox' />
-                                <button className='hidden' placeholder='✔' />
+                            <button className='hidden' placeholder='✔' />
                         </div>
 
                         <div className='todo-info-container'>
