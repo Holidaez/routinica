@@ -52,7 +52,7 @@ function App() {
         <Route path='/main' exact={true} >
           <h1>My Home Page</h1>
           <Routines />
-        <Route/>
+        </Route>
         <Route path='/' exact={true}>
           <SignUpForm />
         </Route>
