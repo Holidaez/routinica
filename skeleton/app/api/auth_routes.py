@@ -60,12 +60,20 @@ def sign_up():
     Creates a new user and logs them in
     """
     form = SignUpForm()
+    print("THIS PRINTS THE FORM", form)
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
+        print("THIS IS A PRINT STATEMENT" , form.data)
         user = User(
             username=form.data['username'],
             email=form.data['email'],
-            password=form.data['password']
+            password=form.data['password'],
+            gold=form.data['gold'],
+            experience=form.data['experience'],
+            level=form.data['level'],
+            health=form.data['health'],
+            created_at=form.data['created_at'],
+            login_date=form.data['login_date']
         )
         db.session.add(user)
         db.session.commit()
