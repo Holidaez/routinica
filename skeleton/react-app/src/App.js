@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import LoginForm from './components/auth/LoginForm';
+import LogOutPage from './components/auth/LogOutPage'
 import SignUpForm from './components/auth/SignUpForm';
 import NavBar from './components/NavBar';
 import ProtectedRoute from './components/auth/ProtectedRoute';
@@ -11,7 +12,7 @@ import ToDo from './components/Routines/ToDos/ToDos'
 import Habit from './components/Routines/Habits/Habit'
 import Routines from './components/Routines';
 import { authenticate } from './store/session';
-
+import logout from './store/session.js'
 function App() {
   const [loaded, setLoaded] = useState(false);
   const dispatch = useDispatch();
@@ -52,6 +53,9 @@ function App() {
         <Route path='/main' exact={true} >
           <h1>My Home Page</h1>
           <Routines />
+        </Route>
+        <Route path='/logout' exact={true}>
+          <LogOutPage />
         </Route>
         <Route path='/' exact={true}>
           <SignUpForm />
