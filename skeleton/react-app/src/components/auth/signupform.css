@@ -1,3 +1,7 @@
+body {
+    margin: 0px;
+}
+
 .top-div {
     background-color: #8c52ff;
     font-family: "Varela Round";
@@ -48,6 +52,12 @@
     height: 25px;
 }
 
+#arrow-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 #bit-pattern-one {
-    background-color: rgb(97, 51, 180)
+    color: rgb(97, 51, 180)
 }

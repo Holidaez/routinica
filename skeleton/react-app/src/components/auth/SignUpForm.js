@@ -15,7 +15,7 @@ const SignUpForm = () => {
   const [health, sethealth] = useState(50);
   const [created_at, setcreated_at] = useState(new Date());
   const [login_date, setlogin_date] = useState(new Date());
-  const user = useSelector(state => state.session.user);;
+  const user = useSelector(state => state.session.user);
   const dispatch = useDispatch();
 
   const onSignUp = async (e) => {
@@ -66,6 +66,7 @@ const SignUpForm = () => {
         </div>
         <div className="column-right">
           <div>Sign up for free</div>
+          <div>Username must be 1 to 20 characters, containing only letters a to z, numbers 0 to 9, hyphens, or underscores, and cannot include any inappropriate terms.</div>
           <form onSubmit={onSignUp} className='sign-up-form'>
             <div>
               {errors.map((error, ind) => (
@@ -113,14 +114,13 @@ const SignUpForm = () => {
                 placeholder='Confirm Password'
               ></input>
             </div>
-            <div>By clicking the button below you are indicating that you have read and agree to our terms of service</div>
             <p>By clicking the button below, you are indicating that you have read and agree to the Terms of Service and Privacy Policy.</p>
             <button type='submit' className='signup-button'>Sign Up</button>
           </form>
         </div>
-        <div><img id="down-arrow" src="/svg/double_down_arrows.svg"></img></div>
-        <div><img id="bit-pattern-one" src="/svg/bit_pattern_01.svg"></img></div>
       </div>
+      <div id="arrow-container"><div><img id="down-arrow" src="/svg/double_down_arrows.svg"></img></div></div>
+      <div><img id="bit-pattern-one" src="/svg/bit_pattern_01.svg"></img></div>
     </div>
   );
 };
