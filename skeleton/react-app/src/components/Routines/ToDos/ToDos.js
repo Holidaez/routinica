@@ -27,16 +27,18 @@ function ToDo() {
                 return (
                     <div key={`to-${todo.id}`} className='todo-card'>
                         <div className='todo-checkbox-container'>
-                            <input type='checkbox' className='todo-checkbox' />
+                            <button className='todo-checkbox' />
+                                <button className='hidden' placeholder='✔' />
                         </div>
+
                         <div className='todo-info-container'>
-                        <div className='todo-card-title'>{todo.title}</div>
-                        {todo.notes && (
-                            <div className='todo-card-notes'>{todo.notes}</div>
-                        )}
-                        {todo.checklist && (
-                            <div className='todo-card-checklist'>{todo.checklist}</div>
-                        )}
+                            <div className='todo-card-title'>{todo.title}</div>
+                            {todo.notes && (
+                                <div className='todo-card-notes'>{todo.notes}</div>
+                            )}
+                            {todo.checklist && (
+                                <div className='todo-card-checklist'>{todo.checklist}</div>
+                            )}
                         </div>
                     </div>
                 )
