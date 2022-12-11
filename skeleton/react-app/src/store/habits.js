@@ -18,15 +18,15 @@ export const getHabits = () => async (dispatch) => {
 
 //Reducer
 //make sure to define initialState or remove the default variable
-let initialState = {
-    habits: null
-}
+let initialState = {}
 export default function habitsReducer(state = initialState, action) {
     switch(action.type){
         case LOAD: {
-            let newState = {}
-            newState = {...state, habits: [...action.habitList.habits]}
-            return newState
+        const allHabits = {}
+            action.habitList.habits.forEach(habit => {
+                allHabits[habit.id] = habit
+            })
+            return {...state, ...allHabits}
         }
         default:
             return state;

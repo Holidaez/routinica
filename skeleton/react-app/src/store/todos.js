@@ -18,15 +18,19 @@ export const getToDos = () => async (dispatch) => {
 
 //Reducer
 //make sure to define initialState or remove the default variable
-let initialState = {
-    todos: null
-}
+
+//Note the decision to normalize the data (no more todo.todo)
+//if you want to see the shape of the state check the dev tools on chrome
+
+let initialState = {}
 export default function todosReducer(state = initialState, action) {
     switch(action.type){
         case LOAD: {
-            let newState = {}
-            newState = { ...state, todos: [...action.todos.todos] } 
-            return newState
+            const allToDos = {}
+            action.todos.todos.forEach(todo => {
+                allToDos[todo.id] = todo
+            })
+            return {...state, ...allToDos}
         }
         default:
             return state;

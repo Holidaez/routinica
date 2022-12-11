@@ -10,5 +10,5 @@ def get_all_habits():
     """
     query all habits and return them in a list of dictionaries ordered by display order
     """
-    habits = Habits.query.filter(Habits.userId == User.id).order_by(Habits.display_order) 
+    habits = Habits.query.filter(Habits.userId == User.id).order_by(Habits.display_order)
     return { 'habits': [habit.to_dict() for habit in habits]}
