@@ -20,3 +20,20 @@ class Dailies(db.Model):
   streak = db.Column(db.Integer, nullable=False)
   due = db.Column(db.Boolean, nullable=False)
   display_order = db.Column(db.Integer, nullable=False, unique=True) #to store order
+
+  def to_dict(self):
+    return {
+      'id': self.id,
+      'userId': self.userId,
+      'checklist':self.checklist,
+      "start_date":self.start_date,
+      "repeats":self.repeats,
+      "repeats_on":self.repeats_on,
+      "title":self.title,
+      "notes":self.notes,
+      "difficulty": self.difficulty,
+      "tags": self.tags,
+      "streak": self.streak,
+      "due": self.due,
+      "display_order": self.display_order
+      }

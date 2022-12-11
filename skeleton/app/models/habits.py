@@ -20,3 +20,20 @@ class Habits(db.Model):
   negative_habit = db.Column(db.Boolean, nullable=False)
   strong_habit = db.Column(db.Boolean, nullable=False)
   display_order = db.Column(db.Integer, nullable=False, unique=True)
+
+  def to_dict(self):
+    return {
+      'id': self.id,
+      'userId': self.userId,
+      'title':self.title,
+      "notes":self.notes,
+      "difficulty":self.difficulty,
+      "tags":self.tags,
+      "reset_counter":self.reset_counter,
+      "positive_counter":self.positive_counter,
+      "negative_counter": self.negative_counter,
+      "positive_habit": self.positive_counter,
+      "negative_habit": self.negative_habit,
+      "strong_habit": self.strong_habit,
+      "display_order": self.display_order
+      }
