@@ -37,6 +37,9 @@ function App() {
         <Route path='/sign-up' exact={true}>
           <SignUpForm />
         </Route>
+        <Route path='/main' exact={true}>
+          <Routines />
+        </Route>
         {/* <Route path='/todos' exact={true}>
           <ToDo />
         </Route>
@@ -51,7 +54,6 @@ function App() {
         </ProtectedRoute>
         <Route path='/' exact={true} >
           <h1>My Home Page</h1>
-          <Routines />
         </Route>
       </Switch>
     </BrowserRouter>
