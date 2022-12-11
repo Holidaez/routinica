@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
-import { Redirect } from 'react-router-dom';
+import { Redirect, useHistory } from 'react-router-dom';
 import { signUp } from '../../store/session';
 import './signupform.css'
 const SignUpForm = () => {
+  const history = useHistory()
   const [errors, setErrors] = useState([]);
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
@@ -30,7 +31,10 @@ const SignUpForm = () => {
       }
     }
   };
-
+  const redirectToLogin = () => {
+    let path ='/login'
+    history.push(path)
+  };
   const updateUsername = (e) => {
     setUsername(e.target.value);
   };
@@ -55,7 +59,7 @@ const SignUpForm = () => {
     <div className='top-div'>
       <div>
         <img src="python_proj_logo.svg" alt="image Not Found"></img>
-        <button>Login</button>
+        <button onClick={redirectToLogin}>Login</button>
         <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Varela+Round" />
       </div>
       <div className="upper-form-text">
