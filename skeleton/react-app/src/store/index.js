@@ -9,9 +9,9 @@ import user from './user';
 
 
 const rootReducer = combineReducers({
-  session, avatar, dailies, habits, todos, user
+  session, todos, user, habits
 });
-
+// avatar, dailies, habits,
 
 let enhancer;
 

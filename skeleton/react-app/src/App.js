@@ -7,6 +7,8 @@ import NavBar from './components/NavBar';
 import ProtectedRoute from './components/auth/ProtectedRoute';
 import UsersList from './components/UsersList';
 import User from './components/User';
+import ToDo from './components/ToDos/ToDos'
+import Habit from './components/Habits/Habit'
 import { authenticate } from './store/session';
 
 function App() {
@@ -14,7 +16,7 @@ function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    (async() => {
+    (async () => {
       await dispatch(authenticate());
       setLoaded(true);
     })();
@@ -34,8 +36,14 @@ function App() {
         <Route path='/sign-up' exact={true}>
           <SignUpForm />
         </Route>
+        <Route path='/todos' exact={true}>
+          <ToDo />
+        </Route>
+        <Route path='/habits' exact={true}>
+          <Habit />
+        </Route>
         <ProtectedRoute path='/users' exact={true} >
-          <UsersList/>
+          <UsersList />
         </ProtectedRoute>
         <ProtectedRoute path='/users/:userId' exact={true} >
           <User />
