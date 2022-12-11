@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux'
-import { getDalies } from '../../../store/dailies'
-
+import { getDailies } from '../../../store/dailies'
+import '../routines.css'
 //TODO:
 //Conditionally render the optional elements. (completed - notes, checklist).
 //Give appropriate class names to each of the elements on the todo cards.
@@ -16,25 +16,26 @@ function Daily() {
     })
     // console.log(currentHabitList)
     useEffect(() => {
-        dispatch(getDalies())
+        dispatch(getDailies())
     }, [dispatch])
 
 
     return (
         <div className='routines-container'>
-            <div className='add-routine'>Add a Daily</div>
+            {/* <div className='dailies-title'>Dailies</div> */}
+            <input className='add-routine' placeholder='Add a daily' />
             {currentDailiesList.map( daily => {
                 return (
                     <div key={`day-${daily.id}`} className='daily-card'>
                         <div className='checkbox'>
                             <button>Done?</button>
                         </div>
-                        <div>{daily.title}</div>
+                        <div className='daily-card-title'>{daily.title}</div>
                         {daily.notes && (
-                            <div>{daily.notes}</div>
+                            <div className='daily-card-notes'>{daily.notes}</div>
                         )}
                         {daily.checklist && (
-                            <div>{daily.checklist}</div>
+                            <div className='daily-card-checklist'>{daily.checklist}</div>
                         )}
                     </div>
                 )

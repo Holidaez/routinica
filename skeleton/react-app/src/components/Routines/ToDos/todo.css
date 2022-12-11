@@ -1,0 +1,40 @@
+.todo-card {
+    /* border: 1px red solid; */
+    background-color: white;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 10px;
+    border-radius: 3px;
+    width: 95%;
+    box-shadow: lightgray 2px 2px 3px;
+}
+.todo-card:hover {
+    outline: 1px #915bf3 solid;
+}
+.todo-checkbox-container {
+    width: 35px;
+    height: 100%;
+    padding: 0px;
+    margin: 0px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.todo-card-title {
+    font-size: 18px;
+    font-weight: lighter;
+}
+.todo-title {
+    font-size: 24px;
+    align-self: flex-start;
+}
+.todo-card-notes {
+    font-size: 12px;
+    color: gray;
+}
+.todo-card-checklist {
+    font-size: 14px;
+    color: gray;
+}

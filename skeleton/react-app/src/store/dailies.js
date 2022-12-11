@@ -8,7 +8,7 @@ const load = dailiesList => ({
 })
 
 //Thunks
-export const getDalies = () => async(dispatch) => {
+export const getDailies = () => async(dispatch) => {
     const response = await fetch(`/api/dailies`)
     if (response.ok){
         const dailiesList = await response.json()

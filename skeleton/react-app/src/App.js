@@ -9,6 +9,7 @@ import UsersList from './components/UsersList';
 import User from './components/User';
 import ToDo from './components/Routines/ToDos/ToDos'
 import Habit from './components/Routines/Habits/Habit'
+import Daily from './components/Routines/Dailies/Daily'
 import Routines from './components/Routines';
 import { authenticate } from './store/session';
 
@@ -40,12 +41,15 @@ function App() {
         <Route path='/main' exact={true}>
           <Routines />
         </Route>
-        {/* <Route path='/todos' exact={true}>
+        <Route path='/todos' exact={true}>
           <ToDo />
         </Route>
         <Route path='/habits' exact={true}>
           <Habit />
-        </Route> */}
+        </Route> 
+        <Route path='/dailies' exact={true}>
+          <Daily />
+        </Route> 
         <ProtectedRoute path='/users' exact={true} >
           <UsersList />
         </ProtectedRoute>
