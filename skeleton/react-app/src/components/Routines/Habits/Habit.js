@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux'
 import { getHabits } from '../../../store/habits'
-
+import './habits.css'
+import '../routines.css'
 //TODO:
 //Conditionally render the optional elements. (completed - notes, checklist).
 //Give appropriate class names to each of the elements on the todo cards.
 //Complete logic and functionality for the cards and buttons.
-//Add a css file and basic styling
+//Add a css file and basic styling (conditional class rendering for colors of buttons depending on )
 
 
 function Habit() {
@@ -22,25 +23,25 @@ function Habit() {
 
     return (
         <div className='routines-container'>
-            <div className='add-routine'>Add a Habit</div>
-            {currentHabitList.map( habit => {
+            <input className='add-routine' placeholder='Add a Habit' />
+            {currentHabitList.map(habit => {
                 return (
                     <div key={`hab-${habit.id}`} className='habit-card'>
                         <div className='habit-plus-minus'>
-                            <button>+</button>
+                            <button className='habit-plus-button'>+</button>
                         </div>
-                        <div>{habit.title}</div>
+                        <div className='habit-info-container'><div className='habit-title'>{habit.title}</div>
                         {habit.notes && (
-                            <div>{habit.notes}</div>
-                        )}
+                            <div className='habit-notes'>{habit.notes}</div>
+                        )}</div>
                         {habit.positive_counter && (
-                            <div>+{habit.positive_counter}</div>
+                            <div className='positive-counter'>+{habit.positive_counter}</div>
                         )}
                         {habit.negative_counter && (
-                            <div>-{habit.negative_counter}</div>
+                            <div className='negative-counter'>-{habit.negative_counter}</div>
                         )}
                         <div className='habit-plus-minus'>
-                            <button>-</button>
+                            <button className='habit-minus-button'>-</button>
                         </div>
                     </div>
                 )

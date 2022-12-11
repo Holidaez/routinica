@@ -17,14 +17,53 @@ def seed_habits():
         strong_habit = True,
         display_order = 1
     )
-    # demo = User(
-    #     username='Demo', email='demo@aa.io', password='password')
-    # marnie = User(
-    #     username='marnie', email='marnie@aa.io', password='password')
-    # bobbie = User(
-    #     username='bobbie', email='bobbie@aa.io', password='password')
+    habit2 = Habits(
+        userId = 1,
+        title = "Play piano",
+        notes = "",
+        difficulty = 1,
+        tags = "self-improvement",
+        reset_counter = "Daily",
+        positive_counter = 1,
+        negative_counter = 0,
+        positive_habit = True,
+        negative_habit = False,
+        strong_habit = False,
+        display_order = 2
+    )
+    habit3 = Habits(
+        userId = 1,
+        title = "Meal Prep",
+        notes = "make a healthy lunch on Sunday nights",
+        difficulty = 1,
+        tags = "self-improvement",
+        reset_counter = "Weekly",
+        positive_counter = 1,
+        negative_counter = 0,
+        positive_habit = True,
+        negative_habit = False,
+        strong_habit = True,
+        display_order = 3
+    )
+    habit4 = Habits(
+        userId = 1,
+        title = "Limit Video Game Time",
+        notes = "40 minutes of game time a night",
+        difficulty = 2,
+        tags = "self-improvement",
+        reset_counter = "Daily",
+        positive_counter = 1,
+        negative_counter = 0,
+        positive_habit = True,
+        negative_habit = False,
+        strong_habit = True,
+        display_order = 4
+    )
 
     db.session.add(habit1)
+    db.session.add(habit2)
+    db.session.add(habit3)
+    db.session.add(habit4)
     db.session.commit()
 
 

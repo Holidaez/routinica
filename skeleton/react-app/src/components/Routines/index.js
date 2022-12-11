@@ -1,5 +1,5 @@
 import React from "react";
-import Daily from "./Dalies/Daily";
+import Daily from "./Dailies/Daily";
 import ToDo from "./ToDos/ToDos";
 import Habit from "./Habits/Habit";
 import './routines.css'
