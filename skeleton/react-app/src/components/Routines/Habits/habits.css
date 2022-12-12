@@ -9,6 +9,7 @@
     border-radius: 3px;
     width: 99%;
     box-shadow: lightgray 2px 2px 3px;
+    margin: 2px;
 }
 
 .habit-card:hover {
@@ -36,6 +37,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    border-radius: 5px 0px 0px 5px;
 }
 
 .habit-plus-button {

@@ -7,6 +7,7 @@
     border-radius: 5px;
     width: 99%;
     box-shadow: lightgray 2px 2px 3px;
+    margin: 2px;
 }
 .todo-card:hover {
     outline: 1px #915bf3 solid;
@@ -17,7 +18,7 @@
     padding: 0px;
     margin: 0px;
     display: flex;
-    border-radius: 5px;
+    border-radius: 5px 0px 0px 5px;
     flex-direction: column;
     justify-content: center;
     align-items: center;
