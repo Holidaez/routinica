@@ -21,6 +21,11 @@ class User(db.Model, UserMixin):
     created_at = db.Column(db.String(32), nullable=False)
     login_date = db.Column(db.String(64), nullable=False)
 
+    avatar = db.relationship('Avatar', back_populates='user')
+    habits = db.relationship('Habits', back_populates='user')
+    dailies = db.relationship('Dailies', back_populates='user')
+    todos = db.relationship('ToDos', back_populates='user')
+
 
     @property
     def password(self):
@@ -43,5 +48,9 @@ class User(db.Model, UserMixin):
             "health":self.health,
             "created_at":self.created_at,
             "level":self.level,
-            "login_date":self.login_date
+            "login_date":self.login_date,
+            # "avatar":self.avatar,
+            # "todos":self.todos,
+            # "dailies":self.dailies,
+            # "habits":self.habits
         }

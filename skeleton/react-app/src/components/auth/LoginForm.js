@@ -66,8 +66,9 @@ const LoginForm = () => {
             value={password}
             onChange={updatePassword}
           />
-          <button type='submit'>Login</button>
         </div>
+        <button id="login-button" type='submit'>Login</button>
+        {/* <div id="need-account"><p>Don't have a Routinica account?</p><button id="signup-from-login">Sign Up</button></div> */}
       </form>
       <div className='mountain-background'></div>
       <div id="town-of-routinica">
