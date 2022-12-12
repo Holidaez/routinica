@@ -1,0 +1,15 @@
+*.env
+__pycache__/
+*.py[cod]
+.venv
+.DS_Store
+.vscode/
+Pipfile
+Pipfile.lock
+requirements.txt
+
+
+#hair_url : /static/hair/style/1/color/green
+# {hair.hair_url}
+Pip*
+requirements.txt

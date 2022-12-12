@@ -8,7 +8,7 @@ class Avatar(db.Model):
     __table_args__ = {'schema': SCHEMA}
 
   id = db.Column(db.Integer, nullable=False, primary_key=True)
-  userId = db.Column(db.Integer, nullable=False)
+  userId = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
   body = db.Column(db.String(256), nullable=False)
   skin = db.Column(db.String(256), nullable=False)
   bangs = db.Column(db.String(256), nullable=False)
@@ -21,3 +21,5 @@ class Avatar(db.Model):
   animal_tails = db.Column(db.String(256), nullable=True)
   headband = db.Column(db.String(256), nullable=True)
   background = db.Column(db.String(256), nullable=False)
+
+  user = db.relationship('User', back_populates='avatar');

@@ -1,0 +1,58 @@
+.daily-card {
+    /* border: 1px red solid; */
+    background-color: white;
+    display: flex;
+    flex-direction: row;
+    height: 75px;
+    border-radius: 5px;
+    width: 99%;
+    box-shadow: lightgray 2px 2px 3px;
+}
+.daily-card:hover {
+    outline: 1px #915bf3 solid
+}
+.daily-info-container {
+    display: flex;
+    flex-direction: column;
+    padding-top: 5px;
+    padding-left: 5px;
+}
+.dailies-checkbox-div {
+    width: 35px;
+    height: 100%;
+    padding: 0px;
+    margin: 0px;
+    display: flex;
+    border-radius: 5px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #ffbe5c;
+}
+.daily-checkbox {
+    background-color: #ffdfb0;
+    display: block;
+    width: 70%;
+    height: 30%;
+    border: none;
+    cursor: pointer;
+    border-radius: 3px;
+}
+.daily-checkbox:checked {
+    background-color: #ffbe5c;
+}
+.daily-card-title {
+    font-size: 18px;
+}
+.dailies-title {
+    font-size: 24px;
+    align-self: flex-start;
+}
+.daily-card-notes {
+    font-size: 10px;
+    color: gray;
+}
+.daily-card-checklist {
+    font-size: 14px;
+    color: gray;
+}

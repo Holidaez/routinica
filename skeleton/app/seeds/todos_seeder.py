@@ -4,7 +4,7 @@ from app.models import db, ToDos, environment, SCHEMA
 # Adds a demo user, you can add other users here if you want
 def seed_todos():
     todo1 = ToDos(
-        userId = 1, 
+        userId = 1,
         checklist = "deep clean seats:0,wash footwells:0",
         title = "Vacuum Car",
         notes = "",
@@ -14,7 +14,47 @@ def seed_todos():
         completed = False,
         display_order = 1
     )
+    todo2 = ToDos(
+
+        userId = 1, 
+        checklist = "go to glasses store:0,buy them:0",
+        title = "Pick up new glasses",
+        notes = "",
+        difficulty = 1,
+        tags = "",
+        due_date = "2022-12-19",
+        completed = False,
+        display_order = 2
+    )
+    todo3 = ToDos(
+
+        userId = 1, 
+        checklist = "get in online queue:0,wait until turn to buy:0",
+        title = "Order concert tickets",
+        notes = "",
+        difficulty = 3,
+        tags = "Fun",
+        due_date = "2022-12-30",
+        completed = False,
+        display_order = 3
+    )
+    todo4 = ToDos(
+
+        userId = 1, 
+        checklist = "get in car:0,drive to store:0,buy cheese:0",
+        title = "Go to cheese store",
+        notes = "Research cheeses",
+        difficulty = 1,
+        tags = "",
+        due_date = "2022-12-30",
+        completed = False,
+        display_order = 4
+    )
+ 
     db.session.add(todo1)
+    db.session.add(todo2)
+    db.session.add(todo3)
+    db.session.add(todo4)
     db.session.commit()
 
 
