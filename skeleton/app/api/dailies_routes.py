@@ -13,6 +13,8 @@ def get_all_dailies():
     dalies = Dailies.query.filter(Dailies.userId == User.id).order_by(Dailies.display_order)
     return {'dailies': [daily.to_dict() for daily in dalies]}
 
+
+
 @dailies_routes.route('/test')
 @login_required
 def get_user_test():
