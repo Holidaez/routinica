@@ -24,11 +24,11 @@ class ToDos(db.Model):
     return {
       'id': self.id,
       'userId': self.userId,
-      'checklist': self.checklist,
+
       'title':self.title,
       "notes":self.notes,
       "difficulty":self.difficulty,
-      "tags":self.tags,
+
       "due_date":self.due_date,
       "completed":self.completed,
       "display_order": self.display_order

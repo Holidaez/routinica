@@ -30,7 +30,6 @@ class Habits(db.Model):
       'title':self.title,
       "notes":self.notes,
       "difficulty":self.difficulty,
-      "tags":self.tags,
       "reset_counter":self.reset_counter,
       "positive_counter":self.positive_counter,
       "negative_counter": self.negative_counter,

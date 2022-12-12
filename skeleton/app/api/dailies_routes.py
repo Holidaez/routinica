@@ -1,7 +1,7 @@
 from flask import Blueprint, jsonify, session, request
 from ..models import Dailies, db, User
 from flask_login import login_required, current_user
-from ..forms import AddEditDaily
+# from ..forms import AddEditDaily
 
 dailies_routes = Blueprint('dailies', __name__)
 
