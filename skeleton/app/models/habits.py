@@ -12,7 +12,6 @@ class Habits(db.Model):
   title = db.Column(db.String(64), nullable=False)
   notes = db.Column(db.String(2048)) #changed to can be nullable
   difficulty = db.Column(db.Integer, nullable=False) #changed from string to integer
-  tags = db.Column(db.String(250)) #changed to can be nullable
   reset_counter = db.Column(db.String(64), nullable=False)
   positive_counter = db.Column(db.Integer, nullable=False)
   negative_counter = db.Column(db.Integer, nullable=False)

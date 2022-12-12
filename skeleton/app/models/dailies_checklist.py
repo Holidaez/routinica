@@ -10,7 +10,7 @@ class DailiesChecklist(db.Model):
   id = db.Column(db.Integer, primary_key=True)
   title = db.Column(db.String(64), nullable=False)
   checked = db.Column(db.Boolean, nullable=False)
-  dailiesId = db.Column(db.Integer, db.ForeignKey('dailies.id'))
+  dailiesId = db.Column("dailiesId", db.Integer, db.ForeignKey('dailies.id', name="fk_dailiesId"))
 
   dailies = db.relationship('Dailies', back_populates='dailies_checklist')
 
