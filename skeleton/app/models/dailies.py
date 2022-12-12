@@ -1,5 +1,5 @@
-from .db import db, environment, SCHEMA
-
+from .db import db, environment, SCHEMA, add_prefix_for_prod
+from .tags import daily_tags
 class Dailies(db.Model):
   __tablename__ = 'dailies'
 
@@ -8,7 +8,7 @@ class Dailies(db.Model):
     __table_args__ = {'schema': SCHEMA}
 
   id = db.Column(db.Integer, nullable=False, primary_key=True)
-  userId = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
+  userId = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('users.id')), nullable=False)
   start_date = db.Column(db.String(64), nullable=False)
   repeats = db.Column(db.String(64), nullable=False)
   repeats_on = db.Column(db.Integer, nullable=False)
@@ -22,6 +22,7 @@ class Dailies(db.Model):
 
   user = db.relationship('User', back_populates='dailies');
   dailies_checklist = db.relationship('DailiesChecklist', back_populates='dailies');
+  tags = db.relationship('Tags', secondary=daily_tags, back_populates='dailies')
 
   def to_dict(self):
     return {
