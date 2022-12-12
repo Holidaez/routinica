@@ -1,7 +1,7 @@
 from flask import Blueprint, jsonify, session, request
 from ..models import Dailies, db, User
 from flask_login import login_required, current_user
-from ..forms import AddEditDaily
+# from ..forms import AddEditDaily
 
 dailies_routes = Blueprint('dailies', __name__)
 
@@ -22,11 +22,12 @@ def get_user_test():
     """
     Testing Route for relationships
     """
+    #TODO Refactor comprehensions
     return_user = current_user.to_dict()
     dailies = {}
     habits = {}
     todos = {}
-
+    print("THIS IS THE CURRENT USER AVATAR",current_user.avatar)
     for daily in current_user.dailies:
         dailies[daily.id] = daily.to_dict()
 

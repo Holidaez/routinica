@@ -1,0 +1,161 @@
+/* TODO Add site wide styles */
+svg {
+    fill: currentColor;
+  }
+  .category {
+    height: 33px;
+    width: 33px;
+  }
+  .cat-names {
+    color: #a4a1ac;
+    margin: 0px;
+    font-family: "Varela Round";
+  }
+  .cat-button {
+    background-color: transparent;
+    border: none;
+    height: 33px;
+    width: 33px;
+    /* background-image: local('/avatar/body/body.svg'); */
+  }
+  #cat-body-button {
+    height: 33px;
+    width: 33px;
+  }
+  .cat-div {
+    width: fit-content;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: transparent;
+    border: none;
+    color: #878090;
+  }
+
+  #body-button {
+    display: block;
+    background-image: '/avatar/body/body.png';
+  }
+
+  .cat-div:hover *{
+    color: #6133b4;
+    cursor: pointer;
+  }
+
+  .svg-hover:hover {
+    fill: rgb(97, 51, 180);
+  }
+
+  #category-container {
+    display: flex;
+    justify-content: space-evenly;
+    padding-bottom: 24px;
+  }
+
+  #body-hover-purple:hover {
+    content: '/avatar/body/body_purple.svg';
+  }
+
+  #subcategory {
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+  }
+
+  .main-options {
+    box-sizing: border-box;
+    color: #878090;
+    margin: 0px;
+    font-family: "Varela Round";
+    font-size: 12px;
+    margin: 4px;
+    background-color: transparent;
+    border: none;
+    height: 16px;
+  }
+
+  .main-options:hover {
+    cursor: pointer;
+    color: #6133b4;
+    border-bottom: 1px solid #6133b4;
+    /* text-decoration: underline; */
+  }
+
+  .main-options:checked {
+    color: #6133b4;
+    border-bottom: 1px solid #6133b4;
+  }
+
+  #lower-portion {
+    background-color: #f9f9f9;
+  }
+  /* .cat-names:hover {
+    color:rgb(97, 51, 180);
+  } */
+
+  .submenu-selected {
+    color: #6133b4;
+    border-bottom: 1px solid #6133b4;
+  }
+
+  #glasses-icon {
+    display: block;
+    padding-bottom: 7px;
+  }
+
+
+  .cat-div:hover * {
+    color: #6133b4;
+    cursor: pointer;
+  }
+
+  .main-options-selected {
+    box-sizing: border-box;
+    color: #6133b4;
+    margin: 0px;
+    font-family: "Varela Round";
+    font-size: 12px;
+    margin: 4px;
+    background-color: transparent;
+    border: none;
+    height: 16px;
+    border-bottom: 1px solid #6133b4;
+  }
+
+  .main-options-selected:hover {
+    cursor: pointer;
+  }
+
+  #options-div {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    padding: 0 30%;
+  }
+
+  .thumbnails {
+    height: fit-content;
+    width: fit-content;
+  }
+
+  .thumbnails:hover {
+    cursor: pointer;
+  }
+
+  .thumbnail-button {
+    background-color: transparent;
+    border: none;
+  }
+
+  .thumbnails:active {
+    border-bottom: 2px solid #6133b4;
+  }
+
+
+  #avatar-container {
+    margin: 0 auto;
+    height: 30%;
+    position: relative;
+  }

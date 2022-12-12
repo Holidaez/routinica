@@ -24,19 +24,20 @@ class Avatar(db.Model):
 
   user = db.relationship('User', back_populates='avatar');
 
-  # def to_dict(self):
-  #   return {
-  #     'id':self.id,
-  #     'userId':self.body,
-  #     'skin':self.skin,
-  #     'bangs':self.bangs,
-  #     'style':self.style,
-  #     'facial':self.facial,
-  #     'glasses':self.glasses,
-  #     'wheelchair':self.wheelchair,
-  #     'accent':self.accent,
-  #     'animal_ears':self.animal_ears,
-  #     'animal_tails':self.animal_tails,
-  #     'headband':self.headband,
-  #     'background':self.background
-  #   }
+  def to_dict(self):
+    return {
+      'id':self.id,
+      'userId':user.Id,
+      'body':self.body,
+      'skin':self.skin,
+      'bangs':self.bangs,
+      'style':self.style,
+      'facial':self.facial,
+      'glasses':self.glasses,
+      'wheelchair':self.wheelchair,
+      'accent':self.accent,
+      'animal_ears':self.animal_ears,
+      'animal_tails':self.animal_tails,
+      'headband':self.headband,
+      'background':self.background
+    }

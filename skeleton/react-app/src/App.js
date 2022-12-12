@@ -12,6 +12,7 @@ import ToDo from './components/Routines/ToDos/ToDos'
 import Habit from './components/Routines/Habits/Habit'
 import Daily from './components/Routines/Dailies/Daily'
 import Routines from './components/Routines';
+import EditAvatar from './components/avatar/EditAvatar';
 import { authenticate } from './store/session';
 import logout from './store/session.js'
 function App() {
@@ -47,10 +48,10 @@ function App() {
         </Route>
         <Route path='/habits' exact={true}>
           <Habit />
-        </Route> 
+        </Route>
         <Route path='/dailies' exact={true}>
           <Daily />
-        </Route> 
+        </Route>
         <ProtectedRoute path='/users' exact={true} >
           <UsersList />
         </ProtectedRoute>
@@ -59,6 +60,9 @@ function App() {
         </ProtectedRoute>
         <Route path='/main' exact={true} >
           <h1>My Home Page</h1>
+        </Route>
+        <Route path='/edit/avatar' exact={true}>
+          <EditAvatar/>
         </Route>
         <Route path='/logout' exact={true}>
           <LogOutPage />
