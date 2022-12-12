@@ -23,3 +23,20 @@ class Avatar(db.Model):
   background = db.Column(db.String(256), nullable=False)
 
   user = db.relationship('User', back_populates='avatar');
+
+  # def to_dict(self):
+  #   return {
+  #     'id':self.id,
+  #     'userId':self.body,
+  #     'skin':self.skin,
+  #     'bangs':self.bangs,
+  #     'style':self.style,
+  #     'facial':self.facial,
+  #     'glasses':self.glasses,
+  #     'wheelchair':self.wheelchair,
+  #     'accent':self.accent,
+  #     'animal_ears':self.animal_ears,
+  #     'animal_tails':self.animal_tails,
+  #     'headband':self.headband,
+  #     'background':self.background
+  #   }

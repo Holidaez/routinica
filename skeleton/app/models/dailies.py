@@ -9,7 +9,6 @@ class Dailies(db.Model):
 
   id = db.Column(db.Integer, nullable=False, primary_key=True)
   userId = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
-  checklist = db.Column(db.String(250)) #can be empty
   start_date = db.Column(db.String(64), nullable=False)
   repeats = db.Column(db.String(64), nullable=False)
   repeats_on = db.Column(db.Integer, nullable=False)
@@ -22,6 +21,7 @@ class Dailies(db.Model):
   display_order = db.Column(db.Integer, nullable=False, unique=True) #to store order
 
   user = db.relationship('User', back_populates='dailies');
+  dailies_checklist = db.relationship('DailiesChecklist', back_populates='dailies');
 
   def to_dict(self):
     return {
