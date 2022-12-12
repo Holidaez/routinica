@@ -8,7 +8,7 @@ class Dailies(db.Model):
     __table_args__ = {'schema': SCHEMA}
 
   id = db.Column(db.Integer, nullable=False, primary_key=True)
-  userId = db.Column(db.Integer, nullable=False)
+  userId = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
   checklist = db.Column(db.String(250)) #can be empty
   start_date = db.Column(db.String(64), nullable=False)
   repeats = db.Column(db.String(64), nullable=False)
@@ -20,6 +20,8 @@ class Dailies(db.Model):
   streak = db.Column(db.Integer, nullable=False)
   due = db.Column(db.Boolean, nullable=False)
   display_order = db.Column(db.Integer, nullable=False, unique=True) #to store order
+
+  user = db.relationship('User', back_populates='dailies');
 
   def to_dict(self):
     return {
