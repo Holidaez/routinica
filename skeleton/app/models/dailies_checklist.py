@@ -1,4 +1,4 @@
-from .db import db, SCHEMA, environment
+from .db import db, SCHEMA, environment, add_prefix_for_prod
 
 class DailiesChecklist(db.Model):
   __tablename__ = 'dailies_checklist'
@@ -10,7 +10,7 @@ class DailiesChecklist(db.Model):
   id = db.Column(db.Integer, primary_key=True)
   title = db.Column(db.String(64), nullable=False)
   checked = db.Column(db.Boolean, nullable=False)
-  dailiesId = db.Column(db.Integer, db.ForeignKey('Dailies'))
+  dailiesId = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('dailies.id')))
 
   dailies = db.relationship('Dailies', back_populates='dailies_checklist')
 

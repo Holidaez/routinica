@@ -7,14 +7,12 @@ def seed_dailies():
 
     dailyOne = Dailies(
         userId = 1,
-        checklist = "turn on oven:0,slice bread:0,feed kids:0", #space should only be between checklist words
         start_date = "2022-12-19",
         repeats = "Weekly",
         repeats_on = "Sun, Mon, Tue, Wed, Thur, Fri, Sat",
         title = "Make Breakfast",
         notes = "Don't mess up",
         difficulty = 2,
-        tags ="winning",
         streak = 0,
         due = True,
         display_order = 0
@@ -22,14 +20,12 @@ def seed_dailies():
 
     dailyTwo = Dailies(
         userId = 1,
-        checklist = "put on coat:0,clip on harness:enjoy walk:0", #space should only be between checklist words
         start_date = "2022-12-19",
         repeats = "Weekly",
         repeats_on = "Sun, Mon, Tue, Wed, Thur, Fri, Sat",
         title = "Walk Dog",
         notes = "Don't forget treats",
         difficulty = 2,
-        tags ="dog",
         streak = 0,
         due = True,
         display_order = 1
@@ -37,14 +33,12 @@ def seed_dailies():
 
     dailyThree = Dailies(
         userId = 1,
-        checklist = "put on coat:0,clip on harness:1,enjoy walk:0", #space should only be between checklist words
         start_date = "2022-12-19",
         repeats = "Weekly",
         repeats_on = "Sun, Mon, Tue, Wed, Thur, Fri, Sat",
         title = "Walk Dog",
         notes = "Don't forget treats",
         difficulty = 2,
-        tags ="dog",
         streak = 0,
         due = True,
         display_order = 2
@@ -52,14 +46,12 @@ def seed_dailies():
 
     dailyThree = Dailies(
         userId = 1,
-        checklist = "open Calm app:0,take a deep breath:0", #space should only be between checklist words
         start_date = "2022-12-19",
         repeats = "Weekly",
         repeats_on = "Sun, Mon, Tue, Wed, Thur, Fri, Sat",
         title = "Meditate",
         notes = "",
         difficulty = 2,
-        tags ="self-help",
         streak = 0,
         due = True,
         display_order = 3
@@ -67,14 +59,12 @@ def seed_dailies():
 
     dailyFour = Dailies(
         userId = 1,
-        checklist = "open notebook:0,reflect:0,write:0", #space should only be between checklist words
         start_date = "2022-12-19",
         repeats = "Weekly",
         repeats_on = "Sun, Mon, Tue, Wed, Thur, Fri, Sat",
         title = "Journal",
         notes = "",
         difficulty = 2,
-        tags ="self-help",
         streak = 0,
         due = True,
         display_order = 4

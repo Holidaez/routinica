@@ -25,6 +25,7 @@ class User(db.Model, UserMixin):
     habits = db.relationship('Habits', back_populates='user')
     dailies = db.relationship('Dailies', back_populates='user')
     todos = db.relationship('ToDos', back_populates='user')
+    tags = db.relationship('Tags', back_populates='user')
 
 
     @property
@@ -49,8 +50,4 @@ class User(db.Model, UserMixin):
             "created_at":self.created_at,
             "level":self.level,
             "login_date":self.login_date,
-            # "avatar":self.avatar,
-            # "todos":self.todos,
-            # "dailies":self.dailies,
-            # "habits":self.habits
         }
