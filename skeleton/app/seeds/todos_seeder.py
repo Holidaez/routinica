@@ -15,7 +15,8 @@ def seed_todos():
         display_order = 1
     )
     todo2 = ToDos(
-        userId = 1,
+
+        userId = 1, 
         checklist = "go to glasses store:0,buy them:0",
         title = "Pick up new glasses",
         notes = "",
@@ -26,7 +27,8 @@ def seed_todos():
         display_order = 2
     )
     todo3 = ToDos(
-        userId = 1,
+
+        userId = 1, 
         checklist = "get in online queue:0,wait until turn to buy:0",
         title = "Order concert tickets",
         notes = "",
@@ -37,7 +39,8 @@ def seed_todos():
         display_order = 3
     )
     todo4 = ToDos(
-        userId = 1,
+
+        userId = 1, 
         checklist = "get in car:0,drive to store:0,buy cheese:0",
         title = "Go to cheese store",
         notes = "Research cheeses",
@@ -47,7 +50,7 @@ def seed_todos():
         completed = False,
         display_order = 4
     )
-
+ 
     db.session.add(todo1)
     db.session.add(todo2)
     db.session.add(todo3)
