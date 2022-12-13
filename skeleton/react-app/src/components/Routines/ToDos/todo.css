@@ -5,6 +5,7 @@
     justify-content: flex-start;
     height: 75px;
     border-radius: 5px;
+    margin: 2px;
     width: 99%;
     box-shadow: lightgray 2px 2px 3px;
 }
