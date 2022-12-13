@@ -13,8 +13,8 @@ def get_all_dailies():
     """
     Querry all dailies and return them in a list of dictionaries ordered by display order
     """
-    dalies = Dailies.query.filter(Dailies.userId == User.id).order_by(Dailies.display_order)
-    return {'dailies': [daily.to_dict() for daily in dalies]}
+    dailies = Dailies.query.filter(Dailies.userId == User.id).order_by(Dailies.display_order)
+    return {'dailies': [daily.to_dict() for daily in dailies]}
 
 
 
@@ -65,3 +65,16 @@ def add_edit_a_daily():
         db.session.commit()
         return new_daily.to_dict()
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+
+# @dailies_routes.route('/update', methods=['PUT'])
+# @login_required
+# def edit_daily():
+#     pass
+
+@dailies_routes.route('/<id>', methods=['DELETE'])
+@login_required
+def delete_daily(id):
+    todelete = Dailies.query.get(id)
+    db.session.delete(todelete)
+    db.session.commit()
+    return 'Daily successfully deleted.'

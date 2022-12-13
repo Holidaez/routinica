@@ -71,11 +71,10 @@ def upgrade():
     sa.Column('notes', sa.String(length=250), nullable=True),
     sa.Column('difficulty', sa.Integer(), nullable=False),
     sa.Column('streak', sa.Integer(), nullable=False),
-    sa.Column('due', sa.Boolean(), nullable=False),
-    sa.Column('display_order', sa.Integer(), nullable=False),
-    sa.ForeignKeyConstraint(['userId'], ['users.id'], ),
+    sa.Column('due', sa.Boolean()),
+    sa.Column('display_order'),
+    sa.ForeignKeyConstraint(['userId'], ['users.id'] ),
     sa.PrimaryKeyConstraint('id'),
-    sa.UniqueConstraint('display_order')
     )
 
     if environment == "production":
@@ -90,13 +89,12 @@ def upgrade():
     sa.Column('reset_counter', sa.String(length=64), nullable=False),
     sa.Column('positive_counter', sa.Integer(), nullable=False),
     sa.Column('negative_counter', sa.Integer(), nullable=False),
-    sa.Column('positive_habit', sa.Boolean(), nullable=False),
-    sa.Column('negative_habit', sa.Boolean(), nullable=False),
-    sa.Column('strong_habit', sa.Boolean(), nullable=False),
-    sa.Column('display_order', sa.Integer(), nullable=False),
+    sa.Column('positive_habit', sa.Boolean()),
+    sa.Column('negative_habit', sa.Boolean()),
+    sa.Column('strong_habit', sa.Boolean()),
+    sa.Column('display_order', sa.Integer()),
     sa.ForeignKeyConstraint(['userId'], ['users.id'], ),
     sa.PrimaryKeyConstraint('id'),
-    sa.UniqueConstraint('display_order')
     )
 
     if environment == "production":
@@ -120,11 +118,10 @@ def upgrade():
     sa.Column('notes', sa.String(length=2048), nullable=True),
     sa.Column('difficulty', sa.Integer(), nullable=False),
     sa.Column('due_date', sa.String(length=64), nullable=False),
-    sa.Column('completed', sa.Boolean(), nullable=False),
+    sa.Column('completed', sa.Boolean()),
     sa.Column('display_order', sa.Integer(), nullable=False),
     sa.ForeignKeyConstraint(['userId'], ['users.id'], ),
-    sa.PrimaryKeyConstraint('id'),
-    sa.UniqueConstraint('display_order')
+    sa.PrimaryKeyConstraint('id')
     )
 
     if environment == "production":
@@ -133,7 +130,7 @@ def upgrade():
     op.create_table('dailies_checklist',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('title', sa.String(length=64), nullable=False),
-    sa.Column('checked', sa.Boolean(), nullable=False),
+    sa.Column('checked', sa.Boolean()),
     sa.Column('dailiesId', sa.Integer(), nullable=True),
     sa.ForeignKeyConstraint(['dailiesId'], ['dailies.id'], ),
     sa.PrimaryKeyConstraint('id')
@@ -167,7 +164,7 @@ def upgrade():
     op.create_table('todos_checklist',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('title', sa.String(length=64), nullable=False),
-    sa.Column('checked', sa.Boolean(), nullable=False),
+    sa.Column('checked', sa.Boolean()),
     sa.Column('todosId', sa.Integer(), nullable=True),
     sa.ForeignKeyConstraint(['todosId'], ['todos.id'], ),
     sa.PrimaryKeyConstraint('id')

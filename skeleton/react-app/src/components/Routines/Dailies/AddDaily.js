@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Redirect } from 'react-router-dom'
-import { addDaily } from "../../../store/dailies";
+import { addDaily, deleteDaily } from "../../../store/dailies";
 import './adddaily.css'
 
 //TODO - add checklist
@@ -20,7 +20,7 @@ const AddDaily = () => {
     const [notes, setNotes] = useState('')
     const [difficulty, setDifficulty] = useState(2)
     const [streak, setStreak] = useState(1)
-    const [due, setDue] = useState(false)
+    const [due, setDue] = useState(true)
     const [displayOrder, setDisplayOrder] = useState(dailiesLength)
     const handleSubmit = async (e) => {
         e.preventDefault()
@@ -42,6 +42,11 @@ const AddDaily = () => {
     }
     const cancel = () => {
 
+    }
+    const handleDelete = async () => {
+        const response = await dispatch(deleteDaily(7))
+        console.log(response)
+        return response
     }
     return (
         <section>
@@ -137,7 +142,8 @@ const AddDaily = () => {
                         onSubmit={handleSubmit}>Create new Daily</button>
                     <button type='button'
                         onClick={cancel}>Cancel</button>
-                    <button type='button'>Delete this Daily</button>
+                    <button type='button'
+                    onClick={handleDelete}>Delete this Daily</button>
                 </form>
             </div>
         </section>

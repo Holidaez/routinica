@@ -14,7 +14,7 @@ class ToDos(db.Model):
   difficulty = db.Column(db.Integer, nullable=False)
   tags = db.Column(db.String(250))
   due_date = db.Column(db.String(64), nullable=False)
-  completed = db.Column(db.Boolean, nullable=False)
+  completed = db.Column(db.Boolean)
   display_order = db.Column(db.Integer, nullable=False, unique=True)
 
   user = db.relationship('User', back_populates='todos');
