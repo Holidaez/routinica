@@ -1,5 +1,6 @@
 from flask import Blueprint, jsonify, session, request
 from ..models import Dailies, db, User
+from ..forms import AddEditDaily
 from flask_login import login_required, current_user
 # from ..forms import AddEditDaily
 
@@ -47,14 +48,12 @@ def add_edit_a_daily():
     if form.validate_on_submit():
         new_daily = Dailies(
             userId = form.data['userId'],
-            checklist = form.data['checklist'],
             start_date = form.data['start_date'],
             repeats = form.data['repeats'],
             repeats_on = form.data['repeats_on'],
             title = form.data['title'],
             notes = form.data['notes'],
             difficulty = form.data['difficulty'],
-            tags = form.data['tags'],
             streak = form.data['streak'],
             due = form.data['due'],
             display_order = form.data['display_order']

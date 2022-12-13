@@ -15,7 +15,6 @@ class Dailies(db.Model):
   title = db.Column(db.String(64), nullable=False)
   notes = db.Column(db.String(250)) #can be empty
   difficulty = db.Column(db.Integer, nullable=False)
-  tags = db.Column(db.String(250)) #can be empty
   streak = db.Column(db.Integer, nullable=False)
   due = db.Column(db.Boolean, nullable=False)
   display_order = db.Column(db.Integer, nullable=False, unique=True) #to store order
