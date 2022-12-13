@@ -15,6 +15,8 @@ import Routines from './components/Routines';
 import EditAvatar from './components/avatar/EditAvatar';
 import AddToDo from './components/Routines/ToDos/AddToDo';
 import AddHabit from './components/Routines/Habits/AddHabit';
+import EditDailyForm from './components/Routines/Dailies/EditDaily';
+import FourOFour from './components/404/404.js';
 import { authenticate } from './store/session';
 import logout from './store/session.js'
 function App() {
@@ -53,6 +55,9 @@ function App() {
         <Route path='/habits' exact={true}>
           <Habit />
         </Route>
+        <Route path='/dailies/:dailyId'>
+          < EditDailyForm/>
+        </Route>
         <Route path='/dailies' exact={true}>
           <Daily />
 
@@ -78,8 +83,10 @@ function App() {
         {/* <Route path='/' exact={true} >
           <h1>My Home Page</h1>
         </Route> */}
+        <Route path='*'>
+          <FourOFour />
+        </Route>
       </Switch>
-      {/* <404>*/}
     </BrowserRouter>
   );
 }
