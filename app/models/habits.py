@@ -15,9 +15,9 @@ class Habits(db.Model):
   reset_counter = db.Column(db.String(64), nullable=False)
   positive_counter = db.Column(db.Integer, nullable=False)
   negative_counter = db.Column(db.Integer, nullable=False)
-  positive_habit = db.Column(db.Boolean, nullable=False)
-  negative_habit = db.Column(db.Boolean, nullable=False)
-  strong_habit = db.Column(db.Boolean, nullable=False)
+  positive_habit = db.Column(db.Boolean)
+  negative_habit = db.Column(db.Boolean)
+  strong_habit = db.Column(db.Boolean)
   display_order = db.Column(db.Integer, nullable=False, unique=True)
 
   user = db.relationship('User', back_populates='habits')

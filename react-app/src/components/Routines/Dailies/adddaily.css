@@ -1,0 +1,17 @@
+.add-daily-form-container {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    width: 300px;
+
+}
+.color-container {
+    background-color: #ffbe5d;
+    width: 100%;
+}
+input {
+    width: 300px;
+    margin: 2px;
+    border-radius: 2px;
+
+}

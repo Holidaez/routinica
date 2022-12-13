@@ -13,7 +13,7 @@ class ToDos(db.Model):
   notes = db.Column(db.String(2048))
   difficulty = db.Column(db.Integer, nullable=False)
   due_date = db.Column(db.String(64), nullable=False)
-  completed = db.Column(db.Boolean, nullable=False)
+  completed = db.Column(db.Boolean)
   display_order = db.Column(db.Integer, nullable=False, unique=True)
 
   user = db.relationship('User', back_populates='todos')

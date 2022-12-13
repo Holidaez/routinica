@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux'
-import { getDailies } from '../../../store/dailies'
+import { getDailies, setCurrentDaily } from '../../../store/dailies'
 import '../routines.css'
 import './daily.css'
 //TODO:
@@ -27,7 +27,7 @@ function Daily() {
             <input className='add-routine' placeholder='Add a Daily' />
             {currentDailiesList.map( daily => {
                 return (
-                    <div key={`day-${daily.id}`} className='daily-card'>
+                    <div onClick = {() => setCurrentDaily(daily.id)} key={`day-${daily.id}`} className='daily-card'>
                         <div className='dailies-checkbox-div'>
                             <button className='daily-checkbox' />
                         </div>
