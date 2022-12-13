@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux'
+import { NavLink } from "react-router-dom"
 import { getDailies } from '../../../store/dailies'
 import '../routines.css'
 import './daily.css'
@@ -30,15 +31,17 @@ function Daily() {
             <input className='add-routine' placeholder='Add a Daily' />
             {currentDailiesList.map( daily => {
                 return (
-                    <div onClick = {clickHandler} key={`day-${daily.id}`} id={daily.id} className='daily-card'>
+                    <div key={`day-${daily.id}`} className='daily-card'>
                         <div className='dailies-checkbox-div'>
                             <button className='daily-checkbox' />
                         </div>
                         <div className='daily-info-container'>
-                        <div className='daily-card-title'>{daily.title}</div>
-                        {daily.notes && (
+                        <NavLink className='daily-click'to={`/dailies/${daily.id}`}>
+                            <div className='daily-card-title'>{daily.title}</div>
+                            {daily.notes && (
                             <div className='daily-card-notes'>{daily.notes}</div>
-                        )}
+                            )}
+                        </NavLink>
                         {daily.checklist && (
                             <div className='daily-card-checklist'>{daily.checklist}</div>
                         )}

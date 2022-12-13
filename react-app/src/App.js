@@ -13,6 +13,7 @@ import Habit from './components/Routines/Habits/Habit'
 import Daily from './components/Routines/Dailies/Daily'
 import Routines from './components/Routines';
 import EditAvatar from './components/avatar/EditAvatar';
+import EditDailyForm from './components/Routines/Dailies/EditDaily';
 import { authenticate } from './store/session';
 import logout from './store/session.js'
 function App() {
@@ -48,6 +49,9 @@ function App() {
         </Route>
         <Route path='/habits' exact={true}>
           <Habit />
+        </Route>
+        <Route path='/dailies/:dailyId'>
+          < EditDailyForm/>
         </Route>
         <Route path='/dailies' exact={true}>
           <Daily />

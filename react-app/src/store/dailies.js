@@ -69,6 +69,42 @@ export const addDaily = (form) => async(dispatch) => {
         }
     }
 }
+
+export const editDaily = (form) => async(dispatch) => {
+    console.log("in the add daily thunk", form)
+    const response = await fetch('/api/dailies/edit', {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            userId: form.userId,
+            start_date: form.startDate,
+            repeats: form.repeats,
+            repeats_on: form.repeatsOn,
+            title: form.title,
+            notes: form.notes,
+            difficulty: form.difficulty,
+            streak: form.streak,
+            due: form.due,
+            display_order: form.displayOrder
+        })
+    })
+    if (response.ok) {
+        const newDaily = await response.json();
+        dispatch(addNewDaily(newDaily))
+        return newDaily
+    } else {
+        const data = await response.json();
+        if (data.errors){
+            return data.errors;
+        } else {
+            return ["Something went wrong, can't add that daily"]
+        }
+    }
+}
+
+
 export const deleteDaily = (dailyId) => async (dispatch) => {
     const response = await fetch(`api/dailies/${dailyId}`, {
         method: 'DELETE'
