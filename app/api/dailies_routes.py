@@ -71,6 +71,11 @@ def add_edit_a_daily():
 # def edit_daily():
 #     pass
 
+@dailies_routes.route('/edit', methods=['PUT'])
+@login_required
+def edit_daily():
+    daily_to_edit = Dailies.query.get
+
 @dailies_routes.route('/<id>', methods=['DELETE'])
 @login_required
 def delete_daily(id):
