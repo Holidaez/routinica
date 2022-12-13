@@ -66,7 +66,7 @@ def upgrade():
     sa.Column('userId', sa.Integer(), nullable=False),
     sa.Column('start_date', sa.String(length=64), nullable=False),
     sa.Column('repeats', sa.String(length=64), nullable=False),
-    sa.Column('repeats_on', sa.Integer(), nullable=False),
+    sa.Column('repeats_on', sa.String(256), nullable=False),
     sa.Column('title', sa.String(length=64), nullable=False),
     sa.Column('notes', sa.String(length=250), nullable=True),
     sa.Column('difficulty', sa.Integer(), nullable=False),
