@@ -20,7 +20,7 @@ class Habits(db.Model):
   strong_habit = db.Column(db.Boolean, nullable=False)
   display_order = db.Column(db.Integer, nullable=False, unique=True)
 
-  user = db.relationship('User', back_populates='habits');
+  user = db.relationship('User', back_populates='habits')
   tags = db.relationship('Tags', secondary=habits_tags, back_populates='habits')
   def to_dict(self):
     return {
