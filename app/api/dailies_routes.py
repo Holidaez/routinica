@@ -1,5 +1,7 @@
 from flask import Blueprint, jsonify, session, request
 from ..models import Dailies, db, User
+from ..forms import AddEditDaily
+from .auth_routes import validation_errors_to_error_messages
 from flask_login import login_required, current_user
 # from ..forms import AddEditDaily
 
@@ -41,20 +43,20 @@ def get_user_test():
     return current_state
 
 @dailies_routes.route('/add', methods=['POST'])
-@login_required
+# @login_required
 def add_edit_a_daily():
     form = AddEditDaily()
+    form['csrf_token'].data = request.cookies['csrf_token']
+    print("ADD DAILY FORM !!!!!!!!!!!!!!!!", form.data)
     if form.validate_on_submit():
         new_daily = Dailies(
             userId = form.data['userId'],
-            checklist = form.data['checklist'],
             start_date = form.data['start_date'],
             repeats = form.data['repeats'],
             repeats_on = form.data['repeats_on'],
             title = form.data['title'],
             notes = form.data['notes'],
             difficulty = form.data['difficulty'],
-            tags = form.data['tags'],
             streak = form.data['streak'],
             due = form.data['due'],
             display_order = form.data['display_order']
@@ -62,3 +64,22 @@ def add_edit_a_daily():
         db.session.add(new_daily)
         db.session.commit()
         return new_daily.to_dict()
+    return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+
+# @dailies_routes.route('/update', methods=['PUT'])
+# @login_required
+# def edit_daily():
+#     pass
+
+@dailies_routes.route('/edit', methods=['PUT'])
+@login_required
+def edit_daily():
+    daily_to_edit = Dailies.query.get
+
+@dailies_routes.route('/<id>', methods=['DELETE'])
+@login_required
+def delete_daily(id):
+    todelete = Dailies.query.get(id)
+    db.session.delete(todelete)
+    db.session.commit()
+    return 'Daily successfully deleted.'
