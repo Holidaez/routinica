@@ -4,7 +4,8 @@ import { addHabit } from "../../../store/habits";
 const AddHabit = () => {
     const dispatch = useDispatch()
     const userId = useSelector(state => state.session.user.id)
-    const habitsLength = useSelector(state => Object.values(state.habits))
+    const habitsLength = useSelector(state => Object.values(state.habits).length)
+    console.log('habitsLength', habitsLength)
     const [title, setTitle] = useState('')
     const [notes, setNotes] = useState('')
     const [difficulty, setDifficulty] = useState('')
@@ -28,7 +29,7 @@ const AddHabit = () => {
             positive_habit,
             negative_habit,
             strong_habit,
-            display_order: 15
+            display_order: habitsLength + 1
         }
         let createdHabit = await dispatch(addHabit(payload))
         if (createdHabit) console.log(createdHabit)
