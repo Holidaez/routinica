@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux'
-import { getDailies, setCurrentDaily } from '../../../store/dailies'
+import { getDailies } from '../../../store/dailies'
 import '../routines.css'
 import './daily.css'
 //TODO:
@@ -15,10 +15,13 @@ function Daily() {
     const currentDailiesList = useSelector(state => {
         return Object.values(state.dailies)
     })
+    const [currentDaily, setCurrentDaily] = useState(null)
     // console.log(currentHabitList)
     useEffect(() => {
         dispatch(getDailies())
     }, [dispatch])
+
+
 
 
     return (
@@ -27,7 +30,7 @@ function Daily() {
             <input className='add-routine' placeholder='Add a Daily' />
             {currentDailiesList.map( daily => {
                 return (
-                    <div onClick = {() => setCurrentDaily(daily.id)} key={`day-${daily.id}`} className='daily-card'>
+                    <div onClick = {clickHandler} key={`day-${daily.id}`} id={daily.id} className='daily-card'>
                         <div className='dailies-checkbox-div'>
                             <button className='daily-checkbox' />
                         </div>

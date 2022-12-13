@@ -42,7 +42,6 @@ function App() {
         </Route>
         <Route path='/main' exact={true}>
           <Routines />
-          <AddDaily />
         </Route>
         <Route path='/todos' exact={true}>
           <ToDo />
@@ -53,9 +52,6 @@ function App() {
         <Route path='/dailies' exact={true}>
           <Daily />
 
-        </Route>
-        <Route path='/dailies/add' exact={true}>
-          <AddDaily />
         </Route>
         <ProtectedRoute path='/users' exact={true} >
           <UsersList />
