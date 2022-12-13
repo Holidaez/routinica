@@ -6,19 +6,20 @@ import './adddaily.css'
 const AddDaily = () => {
     const dispatch = useDispatch()
     const [startDate, setStartDate] = useState('')
-    const [repeats, setRepeats] = useState('')
+    const [repeats, setRepeats] = useState(false)
     const [repeatsOn, setRepeatsOn] = useState('') //is this correct???
     const [title, setTitle] = useState('')
     const [notes, setNotes] = useState('')
-    const [difficulty, setDifficulty] = useState('')
-    const [streak, setStreak] = useState('')
-    const [due, setDue] = useState('')
-    // do users set display order or do we? 
-    // const [display_order, setDisplay_order] = useState('')   
+    const [difficulty, setDifficulty] = useState(0)
+    const [streak, setStreak] = useState(0)
+    const [due, setDue] = useState(false)
+    const [displayOrder, setDisplayOrder] = useState(0)   
     const handleSubmit = async (e) => {
         e.preventDefault()
+        //get user from state
+        //enter default values in useState
         const payload = {
-            // userId = currentuser.id?
+            userId, 
             startDate,
             repeats,
             repeatsOn,
@@ -26,7 +27,9 @@ const AddDaily = () => {
             notes,
             difficulty,
             streak,
-            due
+            due,
+            displayOrder
+            //TODO: remember to render CSRF token on backend!
         }
         let createdDaily = await dispatch(addDaily(payload))
         if (createdDaily) {
@@ -40,6 +43,7 @@ const AddDaily = () => {
         <section>
             <div className='add-daily-form-container'>
                 <form onSubmit={handleSubmit}>
+                    <div className='color-container'>
                     <input
                         type='text'
                         placeholder='Title'
@@ -50,6 +54,7 @@ const AddDaily = () => {
                         placeholder='Notes'
                         value={notes}
                         onChange={e => setNotes(e.target.value)} />
+                        </div>
                     <input
                         type='text'
                         placeholder='Start Date'
@@ -84,6 +89,7 @@ const AddDaily = () => {
                         onSubmit={handleSubmit}>Create new Daily</button>
                     <button type='button'
                         onClick={cancel}>Cancel</button>
+                    <button type='button'>Delete this Daily</button>
                 </form>
             </div>
         </section>
