@@ -30,7 +30,7 @@ function Daily() {
             <input className='add-routine' placeholder='Add a Daily' />
             {currentDailiesList.map( daily => {
                 return (
-                    <div onClick = {clickHandler} key={`day-${daily.id}`} id={daily.id} className='daily-card'>
+                    <div key={`day-${daily.id}`} id={daily.id} className='daily-card'>
                         <div className='dailies-checkbox-div'>
                             <button className='daily-checkbox' />
                         </div>

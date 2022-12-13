@@ -13,6 +13,7 @@ import Habit from './components/Routines/Habits/Habit'
 import Daily from './components/Routines/Dailies/Daily'
 import Routines from './components/Routines';
 import EditAvatar from './components/avatar/EditAvatar';
+import AddToDo from './components/Routines/ToDos/AddToDo';
 import { authenticate } from './store/session';
 import logout from './store/session.js'
 function App() {
@@ -42,6 +43,7 @@ function App() {
         </Route>
         <Route path='/main' exact={true}>
           <Routines />
+          <AddToDo />
         </Route>
         <Route path='/todos' exact={true}>
           <ToDo />
