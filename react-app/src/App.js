@@ -13,6 +13,7 @@ import Habit from './components/Routines/Habits/Habit'
 import Daily from './components/Routines/Dailies/Daily'
 import Routines from './components/Routines';
 import EditAvatar from './components/avatar/EditAvatar';
+import FourOFour from './components/404/404.js';
 import { authenticate } from './store/session';
 import logout from './store/session.js'
 function App() {
@@ -73,8 +74,10 @@ function App() {
         {/* <Route path='/' exact={true} >
           <h1>My Home Page</h1>
         </Route> */}
+        <Route path='*'>
+          <FourOFour />
+        </Route>
       </Switch>
-      {/* <404>*/}
     </BrowserRouter>
   );
 }
