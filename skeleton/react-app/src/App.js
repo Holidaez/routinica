@@ -43,6 +43,7 @@ function App() {
         </Route>
         <Route path='/main' exact={true}>
           <Routines />
+          <AddDaily />
         </Route>
         <Route path='/todos' exact={true}>
           <ToDo />

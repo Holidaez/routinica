@@ -1,0 +1,1 @@
+We should make a file called routines that will hold all three columns and serve them to the home page.

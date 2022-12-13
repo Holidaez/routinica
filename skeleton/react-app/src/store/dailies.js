@@ -8,7 +8,7 @@ const load = dailiesList => ({
     dailiesList
 })
 
-const add = daily => ({
+const addNewDaily = daily => ({
     type: ADD_DAILY,
     daily
 })
@@ -22,28 +22,29 @@ export const getDailies = () => async(dispatch) => {
     } else throw new Error("Bad Request")
 }
 
-export const addDaily = ({userId, start_date, repeats, repeats_on, title, notes, difficulty, streak, due, display_order}) => async(dispatch) => {
+export const addDaily = (form) => async(dispatch) => {
+    console.log("in the add daily thunk", form)
     const response = await fetch('/api/dailies/add', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-            userId,
-            start_date,
-            repeats,
-            repeats_on,
-            title,
-            notes,
-            difficulty,
-            streak,
-            due,
-            display_order
+            userId: form.userId,
+            start_date: form.startDate,
+            repeats: form.repeats,
+            repeats_on: form.repeatsOn,
+            title: form.title,
+            notes: form.notes,
+            difficulty: form.difficulty,
+            streak: form.streak,
+            due: form.due,
+            display_order: form.displayOrder
         })
     })
     if (response.ok) {
         const newDaily = await response.json();
-        dispatch(add(newDaily))
+        dispatch(addNewDaily(newDaily))
         return newDaily
     } else {
         const data = await response.json();
@@ -72,7 +73,7 @@ export default function dailiesReducer(state = initialState, action) {
         case ADD_DAILY: {
             const allDailies = {...state}
             allDailies[action.daily.id] = action.daily
-
+            return allDailies
         }
         default:return state
     }

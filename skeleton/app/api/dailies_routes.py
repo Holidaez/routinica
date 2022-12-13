@@ -1,6 +1,7 @@
 from flask import Blueprint, jsonify, session, request
 from ..models import Dailies, db, User
 from ..forms import AddEditDaily
+from .auth_routes import validation_errors_to_error_messages
 from flask_login import login_required, current_user
 # from ..forms import AddEditDaily
 
@@ -42,9 +43,11 @@ def get_user_test():
     return current_state
 
 @dailies_routes.route('/add', methods=['POST'])
-@login_required
+# @login_required
 def add_edit_a_daily():
     form = AddEditDaily()
+    form['csrf_token'].data = request.cookies['csrf_token']
+    print("ADD DAILY FORM !!!!!!!!!!!!!!!!", form.data)
     if form.validate_on_submit():
         new_daily = Dailies(
             userId = form.data['userId'],
@@ -61,3 +64,4 @@ def add_edit_a_daily():
         db.session.add(new_daily)
         db.session.commit()
         return new_daily.to_dict()
+    return {'errors': validation_errors_to_error_messages(form.errors)}, 401
