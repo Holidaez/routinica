@@ -47,7 +47,11 @@ export const addDaily = ({userId, start_date, repeats, repeats_on, title, notes,
         return newDaily
     } else {
         const data = await response.json();
-
+        if (data.errors){
+            return data.errors;
+        } else {
+            return ["Something went wrong, can't add that daily"]
+        }
     }
 
 
@@ -64,6 +68,11 @@ export default function dailiesReducer(state = initialState, action) {
                 allDailies[daily.id] = daily
             })
             return {...state, ...allDailies}
+        }
+        case ADD_DAILY: {
+            const allDailies = {...state}
+            allDailies[action.daily.id] = daily
+
         }
         default:return state
     }
