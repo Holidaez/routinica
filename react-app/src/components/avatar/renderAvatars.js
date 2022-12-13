@@ -19,6 +19,22 @@ const avatar = {
     background: ''
   }
 
+export const hairOptions = [
+  'Color',
+  'Bangs',
+  'Style',
+  'Facial'
+]
+
+export const extraOptions = [
+'Glasses',
+'Wheelchair',
+'Accent',
+'Animal_Ears',
+'Animal_Tails',
+'Headband'
+]
+
   export const categoryIcons = [
     '/avatar/body/body.svg',
     '/avatar/skin/skin.svg',
