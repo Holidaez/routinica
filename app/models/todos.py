@@ -16,8 +16,8 @@ class ToDos(db.Model):
   completed = db.Column(db.Boolean, nullable=False)
   display_order = db.Column(db.Integer, nullable=False, unique=True)
 
-  user = db.relationship('User', back_populates='todos');
-  todos_checklist = db.relationship('ToDosChecklist', back_populates='todos');
+  user = db.relationship('User', back_populates='todos')
+  todos_checklist = db.relationship('ToDosChecklist', back_populates='todos')
   tags = db.relationship('Tags', secondary=todos_tags, back_populates='todos')
   def to_dict(self):
     return {

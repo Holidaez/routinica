@@ -22,7 +22,7 @@ class Avatar(db.Model):
   headband = db.Column(db.String(256), nullable=True)
   background = db.Column(db.String(256), nullable=False)
 
-  user = db.relationship('User', back_populates='avatar');
+  user = db.relationship('User', back_populates='avatar')
 
   def to_dict(self):
     return {
