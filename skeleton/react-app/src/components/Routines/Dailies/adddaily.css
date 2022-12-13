@@ -1,0 +1,13 @@
+.add-daily-form-container {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    width: 300px;
+
+}
+
+input {
+    width: 100%;
+    margin: 2px;
+    
+}

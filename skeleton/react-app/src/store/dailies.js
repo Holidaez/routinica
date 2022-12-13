@@ -71,7 +71,7 @@ export default function dailiesReducer(state = initialState, action) {
         }
         case ADD_DAILY: {
             const allDailies = {...state}
-            allDailies[action.daily.id] = daily
+            allDailies[action.daily.id] = action.daily
 
         }
         default:return state

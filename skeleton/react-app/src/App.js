@@ -11,6 +11,7 @@ import User from './components/User';
 import ToDo from './components/Routines/ToDos/ToDos'
 import Habit from './components/Routines/Habits/Habit'
 import Daily from './components/Routines/Dailies/Daily'
+import AddDaily from './components/Routines/Dailies/AddDaily';
 import Routines from './components/Routines';
 import EditAvatar from './components/avatar/EditAvatar';
 import { authenticate } from './store/session';
@@ -51,6 +52,10 @@ function App() {
         </Route>
         <Route path='/dailies' exact={true}>
           <Daily />
+
+        </Route>
+        <Route path='/dailies/add' exact={true}>
+          <AddDaily />
         </Route>
         <ProtectedRoute path='/users' exact={true} >
           <UsersList />
