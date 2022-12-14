@@ -37,6 +37,7 @@ app.register_blueprint(habits_routes, url_prefix='/api/habits')
 app.register_blueprint(dailies_routes, url_prefix='/api/dailies')
 app.register_blueprint(avatar_routes, url_prefix='/api/avatar')
 db.init_app(app)
+login.init_app(app)
 Migrate(app, db)
 
 # Application Security

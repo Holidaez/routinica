@@ -135,3 +135,13 @@ const submitAvatar = () => {
 
 
 # pipenv install Flask python-dotenv Flask-WTF SQLAlchemy Flask-SQLAlchemy alembic Flask-Migrate WTForms Flask-Login
+
+# The solution to onClick={() => showEditDailyModal(true/false)}
+const swapModal = () => {
+        if(showEditDailyModal === false){
+            setShowEditDailyModal(true)
+        }
+        if(showEditDailyModal === true){
+            setShowEditDailyModal(false)
+        }
+    }
