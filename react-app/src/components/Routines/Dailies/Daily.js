@@ -48,6 +48,14 @@ function Daily() {
 
     }
 
+    const swapModal = () => {
+        if(showEditDailyModal === false){
+            setShowEditDailyModal(true)
+        }
+        if(showEditDailyModal === true){
+            setShowEditDailyModal(false)
+        }
+    }
 
     return (
         <div className='routines-container'>
@@ -62,9 +70,10 @@ function Daily() {
                             <button className='daily-checkbox' />
                         </div>
                         <div className='daily-info-container'>
-                            <div onClick={() => setShowEditDailyModal(true)} id={`d-${daily.id}`}>Edit Daily
-                                {showEditDailyModal && <Modal onClose={() => setShowEditDailyModal(false)}>
-                                    <EditDailyForm onComplete={() => setShowEditDailyModal(false)} currentDailyId={daily.id} />
+                            <div onClick={swapModal} id={daily.id}>Edit Daily
+                                    {console.log(daily.id)}
+                                {showEditDailyModal && <Modal onClose={swapModal}>
+                                    <EditDailyForm onComplete={swapModal} currentDailyId={daily.id} />
                                 </Modal>}
                                 <div className='daily-card-title'>{daily.title}</div>
                                 {daily.notes && (
