@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux'
 import { NavLink } from "react-router-dom"
 import { getDailies, addDaily } from '../../../store/dailies'
+import { Modal } from '../../../context/Modal';
+import EditDailyForm from './EditDaily';
 import '../routines.css'
 import './daily.css'
 //TODO:
@@ -20,7 +22,7 @@ function Daily() {
     useEffect(() => {
         dispatch(getDailies())
     }, [dispatch])
-
+    const [showEditDailyModal, setShowEditDailyModal] = useState(false)
     const [title, setTitle] = useState("")
     const userId = useSelector(state => state.session.user.id)
     const dailiesLength = useSelector(state => Object.values(state.dailies).length)
@@ -60,12 +62,15 @@ function Daily() {
                             <button className='daily-checkbox' />
                         </div>
                         <div className='daily-info-container'>
-                        <NavLink className='daily-click'to={`/dailies/${daily.id}`}>
+                        <div onClick={() => setShowEditDailyModal(true)} id={`d-${daily.id}`}>Edit Daily
+                            {showEditDailyModal && <Modal onClose={() => setShowEditDailyModal(false)}>
+                                <EditDailyForm onComplete={() => setShowEditDailyModal(false)} currentDailyId={daily.id} />
+                            </Modal> }
                             <div className='daily-card-title'>{daily.title}</div>
                             {daily.notes && (
                             <div className='daily-card-notes'>{daily.notes}</div>
                             )}
-                        </NavLink>
+                        </div>
                         {daily.checklist && (
                             <div className='daily-card-checklist'>{daily.checklist}</div>
                         )}
