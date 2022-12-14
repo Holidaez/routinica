@@ -25,9 +25,8 @@ const SignUpForm = () => {
       const data = await dispatch(signUp(username, email, password, gold, experience, level, health, created_at, login_date));
       if (data) {
         setErrors(data)
-        if (user) {
-          return <Redirect to='/users' />
-        }
+      }else {
+        return history.push('/main')
       }
     }
   };
