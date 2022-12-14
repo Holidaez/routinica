@@ -18,11 +18,11 @@ function Daily() {
     const currentDailiesList = useSelector(state => {
         return Object.values(state.dailies)
     })
+    const [showEditDailyModal, setShowEditDailyModal] = useState(false)
     // console.log(currentHabitList)
     useEffect(() => {
         dispatch(getDailies())
-    }, [dispatch])
-    const [showEditDailyModal, setShowEditDailyModal] = useState(false)
+    }, [dispatch, showEditDailyModal])
     const [title, setTitle] = useState("")
     const userId = useSelector(state => state.session.user.id)
     const dailiesLength = useSelector(state => Object.values(state.dailies).length)

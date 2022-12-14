@@ -43,15 +43,19 @@ export default function EditDailyForm({ onComplete, currentDailyId }) {
 
         let createdDaily = await dispatch(editDaily(payload))
         if (createdDaily) {
+            history.push('/main')
             onComplete()
         }
     }
-    const cancel = () => {
 
+    const handleCancel = () => {
+        onComplete()
     }
+
     const handleDelete = () => {
         dispatch(deleteDaily(currentDaily.id))
         history.push('/main')
+        onComplete()
 
     }
     return (
@@ -146,7 +150,7 @@ export default function EditDailyForm({ onComplete, currentDailyId }) {
             <button type='submit'
                 onSubmit={handleSubmit}>Update Daily</button>
             <button type='button'
-                onClick={cancel}>Cancel</button>
+                onClick={handleCancel}>Cancel</button>
             <button type='button'
                 onClick={handleDelete}>Delete this Daily</button>
         </form>
