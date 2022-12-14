@@ -138,7 +138,6 @@ export default function dailiesReducer(state = initialState, action) {
             const allDailies = {...state}
             delete allDailies[action.dailyId]
             return allDailies
-
         }
         case SET_CURRENT_DAILY:{
             const allDailies = {...state, currentDaily: action.id}
