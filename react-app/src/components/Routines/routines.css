@@ -27,7 +27,7 @@
     background-color:#e1e0e3;
     display: block;
     width: 100%;
-    height: 40px;
+    height: 40px;   
     border: 0;
     color: #908f90;
     font-family: 'Varela Round';
@@ -43,11 +43,52 @@
     background-color: white;
     outline: 1px #915bf3 solid;
 }
+section {
+    display: flex;
+    direction: column;
+    justify-content: center;
+}
 
 form {
     display: flex;
     flex-direction: column;
-    width: 80%;
+    width: 50%;
     box-sizing: border-box;
-    
+    border-radius: 12%;
+    padding: 15px;
+    margin: 5px;
+}
+label {
+    /* padding: 6px; */
+    font-size: 12px;
+    font-weight: bold;
+    color: #4d4a57;
+
+}
+
+.yellow {
+    display: flex;
+    flex-direction: column;
+    background-color: #ffbe5c;
+    color: #784b01;
+    height: 40%;
+}
+.yellow input {
+    background-color: #ffdfb0;
+    color: #784b01;
+    outline: none;
+    border: none;
+    border-radius: 2px;
+}
+.form-name {
+    font-size: 24px;
+    color: #784b01;
+    font-weight: bold;
+    padding: 20px;
+}
+
+.delete-button {
+    background-color: white;
+    color: #c92a2a;
+    border: none;
 }

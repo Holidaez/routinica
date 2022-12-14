@@ -63,25 +63,31 @@ export default function EditDailyForm() {
     }
 
     return (
-
+        <section>
         <form className='edit-form' onSubmit={handleSubmit}>
-
+        <div className='yellow'>
+        <div className='form-name'>Edit Daily</div>
+            <label>Title</label>
             <input
                 type='text'
                 placeholder='Add a title'
                 value={title}
                 onChange={e => setTitle(e.target.value)} />
+            <label>Notes</label>
             <input
                 type='text'
                 placeholder='Add notes'
                 value={notes}
                 onChange={e => setNotes(e.target.value)} />
-
+            </div>
+            <label>Start Date</label>
             <input
                 type='date'
                 min={currentDate}
                 value={startDate}
+                className='due_date'
                 onChange={e => setStartDate(e.target.value)} />
+            <label>Repeats</label>
             <select
                 id='repeats'
                 value={repeats}
@@ -90,7 +96,7 @@ export default function EditDailyForm() {
                 <option value={'weekly'}>Weekly</option>
                 <option value={'monthly'}>Monthly</option>
                 <option value={'yearly'}>Yearly</option>
-
+            <label>Repeat Every</label>
             </select>
             {repeats === 'daily' && (
                 <div>
@@ -134,7 +140,7 @@ export default function EditDailyForm() {
                 </div>
             )}
 
-
+            <label>Difficulty</label>
             <select
                 id='difficulty'
                 value={difficulty}
@@ -145,6 +151,7 @@ export default function EditDailyForm() {
                 <option value={4}>Hard</option>
 
             </select>
+            <label> Adjust Streak</label>
             <input
                 type='text'
                 placeholder='Streak'
@@ -156,9 +163,10 @@ export default function EditDailyForm() {
             <button type='submit'
                 onSubmit={handleSubmit}>Update Daily</button>
             <button type='button'
+                className='delete-button'
                 onClick={handleDelete}>Delete this Daily</button>
         </form>
-
+        </section>
 
     )
 }

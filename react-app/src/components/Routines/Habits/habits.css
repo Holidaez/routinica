@@ -20,7 +20,6 @@
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    border: 1px red solid;
 }
 .habit-notes {
     font-size: 11px;

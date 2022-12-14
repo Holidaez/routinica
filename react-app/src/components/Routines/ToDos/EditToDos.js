@@ -50,7 +50,7 @@ function EditToDoForm() {
         history.push('/main')
     }
     return (
-        <section className='big'>
+        <section>
             <form onSubmit={handleSubmit} className='edit-form'>
                 <input
                     type='text'

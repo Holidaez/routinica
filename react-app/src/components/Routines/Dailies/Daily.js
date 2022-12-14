@@ -75,6 +75,7 @@ function Daily() {
 
 
         return (
+
         <div className='routines-container'>
             {/* <div className='dailies-title'>Dailies</div> */}
             <form onSubmit={handleSubmit}>
@@ -103,6 +104,7 @@ function Daily() {
                 )
             })}
         </div>
+
     )
 }
 
