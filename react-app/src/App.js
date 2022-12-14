@@ -13,6 +13,8 @@ import Habit from './components/Routines/Habits/Habit'
 import Daily from './components/Routines/Dailies/Daily'
 import Routines from './components/Routines';
 import EditAvatar from './components/avatar/EditAvatar';
+import EditDailyForm from './components/Routines/Dailies/EditDaily';
+import EditHabit from './components/Routines/Habits/EditHabit';
 import FourOFour from './components/404/404.js';
 import { authenticate } from './store/session';
 import logout from './store/session.js'
@@ -50,8 +52,15 @@ function App() {
         <Route path='/habits' exact={true}>
           <Habit />
         </Route>
+        <Route path='/habits/:habitId'>
+          <EditHabit />
+        </Route>
+        <Route path='/dailies/:dailyId'>
+          < EditDailyForm/>
+        </Route>
         <Route path='/dailies' exact={true}>
           <Daily />
+
         </Route>
         <ProtectedRoute path='/users' exact={true} >
           <UsersList />

@@ -18,7 +18,9 @@ svg {
   font-family: "Varela Round";
 }
 .cat-names-background {
+  display: block;
   margin: 0px;
+  font-weight: bold;
   font-family: "Varela Round";
 }
 
@@ -51,27 +53,35 @@ svg {
 }
 
 .cat-div-background {
-  height: 40px;
-  width: 40px;
+  height: 33px;
+  width: 33px;
+  display: flex;
+  flex-direction: column;
   align-items: center;
   text-align: center;
   background-color: transparent;
   border: transparent solid;
 }
+.cat-div-background:hover * {
+  color: white;
+  cursor: pointer;
+}
 .cat-div:hover * {
-  color: #6133b4;
+  color: white;
   cursor: pointer;
 }
 
 .svg-hover:hover * {
   cursor: pointer;
-  color: #6133b4;
+  color: white;
   /* fill: rgb(97, 51, 180); */
 }
 
 #category-container {
   display: flex;
+  flex-direction: row;
   justify-content: space-evenly;
+  align-items: baseline;
   padding-bottom: 24px;
 }
 
@@ -87,7 +97,7 @@ svg {
   color: #878090;
   margin: 0px;
   font-family: "Varela Round";
-  font-size: 12px;
+  font-size: 14px;
   margin: 4px;
   background-color: transparent;
   border: none;
@@ -129,7 +139,7 @@ svg {
   color: #6133b4;
   margin: 0px;
   font-family: "Varela Round";
-  font-size: 12px;
+  font-size: 14px;
   margin: 4px;
   background-color: transparent;
   border: none;
@@ -155,13 +165,23 @@ svg {
 .thumbnails {
   height: fit-content;
   width: fit-content;
+
 }
 
 .thumbnails:hover {
   cursor: pointer;
+  border-bottom: #6133b4 3px solid;
+  border-bottom-left-radius: 40px;
+}
+
+.thumbnails:checked {
+  border-bottom: #6133b4 1px solid;
+  border-bottom-left-radius: 40px;
 }
 
 .thumbnail-button {
+  display: block;
+  margin: auto;
   background-color: transparent;
   border: none;
 }

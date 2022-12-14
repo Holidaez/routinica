@@ -6,17 +6,20 @@ body {
     background-color: #8c52ff;
     font-family: "Varela Round";
     color: white;
-
+    height: 100vh;
 }
 .upper-form-text{
     display: flex;
     flex-direction: row;
+    margin: 0;
+    align-items: center;
+    justify-content: space-evenly;
 }
 
 .sign-up-form {
     font-family: "Varela Round";
     display: flex;
-    width: 500px;
+    width: 100%;
     flex-direction: column;
     justify-content: space-around;
     flex-wrap: wrap;
@@ -27,6 +30,7 @@ body {
 
 .big-quote {
     font-size:48px;
+    text-align: center;
 }
 
 .sign-up-form input {
@@ -34,13 +38,17 @@ body {
     padding: 8px;
     color: #8c52ff;
     margin: 10px;
+    width: 90%;
 }
 .signup-button {
     width: auto;
+    border: none;
     background-color: #46a7d8;
     color: white;
     padding-top:10px;
     padding-bottom: 10px;
+    border-radius: 2px;
+    width: 95%;
 }
 #wizards {
     width: 300px;
@@ -56,9 +64,59 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-top: 5%;
 }
 
 #bit-pattern-one {
+    position: absolute;
+    bottom: 0;
     color: rgb(97, 51, 180);
 }
+.column-left {
 
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 30px;
+}
+.column-right {
+    margin-top: 5%;
+    display: flex;
+    flex-direction: column;
+    width: 35%;
+    padding-top: 10px;
+}
+#top-nav-bar {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 90%;
+}
+#logo {
+    display: flex;
+    flex-direction: row;
+    border: 46px 46px;
+    height: 40px;
+    margin-left: 8%;
+}
+#sign-up-for-free{
+    text-align: center;
+}
+#login-button {
+ border: none;
+ background-color: #5d3a9c;
+ border-radius: 6px;
+ margin: 0;
+}
+#info-paragraph {
+    padding-top: 20px;
+    text-align: center;
+}
+#bottom-paragraph-info {
+    padding-bottom: 20px;
+    text-align: center;
+}
+#paragraph-big-quote {
+    text-align: center;
+}
