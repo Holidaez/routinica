@@ -8,8 +8,11 @@ const setAvatar = data => ({
 })
 
 //Thunks
-export const getAvatar = () => async (dispatch) => {
-    const response = await fetch('/api/avatar')
+export const getAvatar = (user) => async (dispatch) => {
+    const response = await fetch('/api/avatar/', {
+        method: 'POST',
+        body:JSON.stringify(user)
+    })
     if (response.ok) {
         const data = await response.json()
         dispatch(setAvatar(data))

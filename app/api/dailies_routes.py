@@ -43,7 +43,7 @@ def get_user_test():
     return current_state
 
 @dailies_routes.route('/add', methods=['POST'])
-# @login_required
+@login_required
 def add_edit_a_daily():
     form = AddEditDaily()
     form['csrf_token'].data = request.cookies['csrf_token']

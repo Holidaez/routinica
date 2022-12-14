@@ -20,7 +20,6 @@ class User(db.Model, UserMixin):
     health = db.Column(db.Integer, nullable=False)
     created_at = db.Column(db.String(32), nullable=False)
     login_date = db.Column(db.String(64), nullable=False)
-
     avatar = db.relationship('Avatar', back_populates='user')
     habits = db.relationship('Habits', back_populates='user')
     dailies = db.relationship('Dailies', back_populates='user')

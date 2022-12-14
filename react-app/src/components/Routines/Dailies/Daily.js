@@ -50,8 +50,8 @@ function Daily() {
 
     }
 
-        const clickHandler = (e) => {
 
+        const clickHandler = (e) => {
             e.stopPropagation()
             if (!isNaN(e.target.id)) {
                 setCurrentDaily(e.target.id)
