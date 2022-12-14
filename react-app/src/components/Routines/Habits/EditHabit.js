@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux"
 import { addHabit, editAHabit, deleteHabit } from "../../../store/habits";
 import { useParams, useHistory } from 'react-router-dom'
 
-const EditHabit = () => {
+const EditHabit = ({onComplete}) => {
 
     // const habitsLength = useSelector(state => Object.values(state.habits).length)
     const history = useHistory()
@@ -41,16 +41,20 @@ const EditHabit = () => {
         let createdHabit = await dispatch(editAHabit(payload))
         if (createdHabit){
             history.push('/main')
+            onComplete(false)
         }
         
     }
-    const handleDelete = () => {
+    const handleDelete = (e) => {
+        e.stopPropagation()
         dispatch(deleteHabit(currentHabit.id))
         history.push('/main')
+        onComplete(false)
     }
-    const cancel = () => {
-
-
+    const cancel = (e) => {
+        e.stopPropagation()
+        history.push('main')
+        onComplete(false)
     }
     return (
         <section>

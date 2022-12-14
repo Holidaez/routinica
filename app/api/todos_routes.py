@@ -69,4 +69,6 @@ def delete_todo(id):
     todelete = ToDos.query.get(id)
     db.session.delete(todelete)
     db.session.commit()
+
     return 'Successfully deleted'
+

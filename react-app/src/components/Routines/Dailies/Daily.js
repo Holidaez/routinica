@@ -51,16 +51,17 @@ function Daily() {
     }
 
 
+
         const clickHandler = (e) => {
             e.stopPropagation()
             if (!isNaN(e.target.id)) {
                 setCurrentDaily(e.target.id)
-
                 setShowEditDailyModal(true)
             }
             console.log(e.target.id)
             console.log(currentDaily, "the current daily is")
         }
+
 
         const swapModal = () => {
             if(showEditDailyModal === false){
