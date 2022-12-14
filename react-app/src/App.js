@@ -13,8 +13,6 @@ import Habit from './components/Routines/Habits/Habit'
 import Daily from './components/Routines/Dailies/Daily'
 import Routines from './components/Routines';
 import EditAvatar from './components/avatar/EditAvatar';
-import AddToDo from './components/Routines/ToDos/AddToDo';
-import AddHabit from './components/Routines/Habits/AddHabit';
 import EditDailyForm from './components/Routines/Dailies/EditDaily';
 import EditHabit from './components/Routines/Habits/EditHabit';
 import FourOFour from './components/404/404.js';
@@ -47,8 +45,6 @@ function App() {
         </Route>
         <Route path='/main' exact={true}>
           <Routines />
-          <AddToDo />
-          <AddHabit />
         </Route>
         <Route path='/todos' exact={true}>
           <ToDo />

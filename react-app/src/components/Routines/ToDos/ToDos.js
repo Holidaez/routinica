@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux'
-import { getToDos } from '../../../store/todos'
+import { getToDos, addToDos } from '../../../store/todos'
 import './todo.css'
 import '../routines.css'
 
@@ -19,10 +19,35 @@ function ToDo() {
         dispatch(getToDos())
     }, [dispatch])
 
+
+    const userId = useSelector(state => state.session.user.id)
+    const todosLength = useSelector(state => Object.values(state.todos).length)
+    const currentDate = new Date().toJSON().slice(0, 10)
+    const [title, setTitle] = useState('')
+
+    const handleSubmit = async (e) => {
+        console.log('here')
+        e.preventDefault()
+        const payload = {
+            userId,
+            title,
+            notes:'',
+            difficulty:1,
+            due_date:currentDate,
+            completed:false,
+            display_order: todosLength + 1
+        }
+        let createdToDo = await dispatch(addToDos(payload))
+        if (createdToDo) console.log("You created a Todo")
+        setTitle("")
+    }
+
     return (
         <div className='routines-container'>
             <link href='https://fonts.googleapis.com/css?family=Varela Round' rel='stylesheet'></link>
-            <input className='add-routine' placeholder='Add a ToDo' />
+            <form onSubmit={handleSubmit}>
+            <input className='add-routine' placeholder='Add a ToDo' value={title} onChange={(e) => setTitle(e.target.value)}/>
+            </form>
             {currentToDoList.map(todo => {
                 return (
                     <div key={`to-${todo.id}`} className='todo-card'>

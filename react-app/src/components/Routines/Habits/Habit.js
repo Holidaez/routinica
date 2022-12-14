@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux'
-import { getHabits } from '../../../store/habits'
+import { getHabits, addHabit } from '../../../store/habits'
 import './habits.css'
 import '../routines.css'
 import { NavLink } from 'react-router-dom';
@@ -20,11 +20,35 @@ function Habit() {
     useEffect(() => {
         dispatch(getHabits())
     }, [dispatch])
+    const [title, setTitle] = useState("")
+    const userId = useSelector(state => state.session.user.id)
+    const habitsLength = useSelector(state => Object.values(state.habits).length)
 
-
+        const handleSubmit = async (e) => {
+            e.preventDefault()
+            const payload = {
+                userId,
+                title,
+                notes: '',
+                difficulty: 0,
+                reset_counter: 'Daily',
+                positive_counter: 0,
+                negative_counter: 0,
+                positive_habit: false,
+                negative_habit: false,
+                strong_habit: false,
+                display_order: habitsLength + 1
+            }
+            let createdHabit = await dispatch(addHabit(payload))
+            if (createdHabit) console.log("You created a Habit")
+            setTitle("")
+        }
     return (
         <div className='routines-container'>
-            <input className='add-routine' placeholder='Add a Habit' />
+            <form onSubmit={handleSubmit}>
+            <input className='add-routine' placeholder='Add a Habit' value={title} onChange={(e) => setTitle(e.target.value)}/>
+
+            </form>
             {currentHabitList.map(habit => {
                 return (
                     <div key={`hab-${habit.id}`} className='habit-card'>

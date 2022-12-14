@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux'
 import { NavLink } from "react-router-dom"
-import { getDailies } from '../../../store/dailies'
+import { getDailies, addDaily } from '../../../store/dailies'
 import '../routines.css'
 import './daily.css'
 //TODO:
@@ -16,19 +16,43 @@ function Daily() {
     const currentDailiesList = useSelector(state => {
         return Object.values(state.dailies)
     })
-    const [currentDaily, setCurrentDaily] = useState(null)
     // console.log(currentHabitList)
     useEffect(() => {
         dispatch(getDailies())
     }, [dispatch])
 
+    const [title, setTitle] = useState("")
+    const userId = useSelector(state => state.session.user.id)
+    const dailiesLength = useSelector(state => Object.values(state.dailies).length)
+    const currentDate = new Date().toJSON().slice(0,10)
+    const [displayOrder, setDisplayOrder] = useState(dailiesLength)
+    const handleSubmit = async (e) => {
+        e.preventDefault()
+        const payload = {
+            userId,
+            startDate: currentDate,
+            repeats: 'weekly',
+            repeatsOn: 1,
+            title,
+            notes: '',
+            difficulty: 2,
+            streak: 1,
+            due: true,
+            displayOrder:dailiesLength + 1
+        }
+        let createdDaily = await dispatch(addDaily(payload))
+        if (createdDaily) console.log("You've created a Daily")
+        setTitle("")
 
+    }
 
 
     return (
         <div className='routines-container'>
             {/* <div className='dailies-title'>Dailies</div> */}
-            <input className='add-routine' placeholder='Add a Daily' />
+            <form onSubmit={handleSubmit}>
+                <input className='add-routine' placeholder='Add a Daily' value={title} onChange={(e) => setTitle(e.target.value)}/>
+            </form>
             {currentDailiesList.map( daily => {
                 return (
                     <div key={`day-${daily.id}`} className='daily-card'>
