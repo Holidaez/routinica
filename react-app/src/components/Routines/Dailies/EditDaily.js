@@ -50,14 +50,13 @@ export default function EditDailyForm({ onComplete, currentDailyId }) {
     }
 
     const handleCancel = (e) => {
-        e.preventDefault()
-        console.log("in cancel")
+        e.stopPropagation()
         history.push('/main')
         onComplete(false)
     }
 
     const handleDelete = (e) => {
-        e.preventDefault()
+        e.stopPropagation()
         dispatch(deleteDaily(currentDaily.id))
         history.push('/main')
         onComplete(false)
