@@ -19,6 +19,8 @@ function Daily() {
         return Object.values(state.dailies)
     })
     const [showEditDailyModal, setShowEditDailyModal] = useState(false)
+    const [currentDaily, setCurrentDaily] = useState(0)
+    const [stateDaily, setStateDaily] = useState(0)
     // console.log(currentHabitList)
     useEffect(() => {
         dispatch(getDailies())
@@ -50,12 +52,29 @@ function Daily() {
 
         const clickHandler = (e) => {
 
+            e.stopPropagation()
+            if (!isNaN(e.target.id)) {
+                setCurrentDaily(e.target.id)
 
-            console.log("the target is:",  e.target)
-            setShowEditDailyModal(true)
+                setShowEditDailyModal(true)
+            }
+            console.log(e.target.id)
+            console.log(currentDaily, "the current daily is")
         }
 
-    return (
+        const swapModal = () => {
+            if(showEditDailyModal === false){
+                setShowEditDailyModal(true)
+            }
+            if(showEditDailyModal === true){
+                setShowEditDailyModal(false)
+            }
+        }
+
+
+
+
+        return (
         <div className='routines-container'>
             {/* <div className='dailies-title'>Dailies</div> */}
             <form onSubmit={handleSubmit}>
@@ -68,9 +87,9 @@ function Daily() {
                             <button className='daily-checkbox' />
                         </div>
                         <div className='daily-info-container'>
-                            <div onClick={clickHandler} id={`d-${daily.id}`}>Edit Daily
-                                {showEditDailyModal && <Modal onClose={() => setShowEditDailyModal(false)}>
-                                    <EditDailyForm onComplete={setShowEditDailyModal} currentDailyId={daily.id} />
+                            <div onClick={clickHandler} value={daily.id} id={daily.id}>Edit Daily
+                                {showEditDailyModal && currentDaily == daily.id && <Modal onClose={swapModal}>
+                                    <EditDailyForm onComplete={swapModal} currentDailyId={daily.id} />
                                 </Modal>}
                                 <div className='daily-card-title'>{daily.title}</div>
                                 {daily.notes && (

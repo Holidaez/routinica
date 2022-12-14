@@ -4,8 +4,8 @@ import { useParams, useHistory } from "react-router-dom";
 import { editDaily, deleteDaily } from "../../../store/dailies";
 import './EditDaily.css'
 
-export default function EditDailyForm({ onComplete, currentDailyId }) {
-    console.log(currentDailyId, "survey says: the id is that")
+export default function EditDailyForm({onComplete, currentDailyId}) {
+    console.log("inside the edit form for daily number:", currentDailyId)
     const dispatch = useDispatch()
     const history = useHistory()
     // const { dailyId } = useParams()
@@ -45,22 +45,22 @@ export default function EditDailyForm({ onComplete, currentDailyId }) {
         let createdDaily = await dispatch(editDaily(payload))
         if (createdDaily) {
             history.push('/main')
-            onComplete(false)
+
         }
     }
 
     const handleCancel = (e) => {
-        e.preventDefault()
+        e.stopPropagation()
         console.log("in cancel")
         history.push('/main')
-        onComplete(false)
+         onComplete()
     }
 
     const handleDelete = (e) => {
-        e.preventDefault()
+        e.stopPropagation()
         dispatch(deleteDaily(currentDaily.id))
         history.push('/main')
-        onComplete(false)
+         onComplete(false)
     }
 
     return (
