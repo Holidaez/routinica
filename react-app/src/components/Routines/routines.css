@@ -43,3 +43,11 @@
     background-color: white;
     outline: 1px #915bf3 solid;
 }
+
+form {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    box-sizing: border-box;
+    
+}

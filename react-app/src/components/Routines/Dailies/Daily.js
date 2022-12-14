@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux'
 import { NavLink } from "react-router-dom"
 import { getDailies, addDaily } from '../../../store/dailies'
-import { Modal } from '../../../context/Modal';
 import EditDailyForm from './EditDaily';
 import '../routines.css'
 import './daily.css'
@@ -84,24 +83,23 @@ function Daily() {
             {currentDailiesList.map(daily => {
                 return (
                     <div key={`day-${daily.id}`} className='daily-card'>
+
                         <div className='dailies-checkbox-div'>
                             <button className='daily-checkbox' />
                         </div>
+                        <NavLink className='navlink' to={`/dailies/${daily.id}`}>
                         <div className='daily-info-container'>
-                            <div onClick={clickHandler} value={daily.id} id={daily.id}>Edit Daily
-                                {showEditDailyModal && currentDaily == daily.id && <Modal onClose={swapModal}>
-                                    <EditDailyForm onComplete={swapModal} currentDailyId={daily.id} />
-                                </Modal>}
                                 <div className='daily-card-title'>{daily.title}</div>
                                 {daily.notes && (
                                     <div className='daily-card-notes'>{daily.notes}</div>
                                 )}
                             </div>
+                            </NavLink>
                             {daily.checklist && (
                                 <div className='daily-card-checklist'>{daily.checklist}</div>
                             )}
                         </div>
-                    </div>
+
                 )
             })}
         </div>

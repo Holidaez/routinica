@@ -3,14 +3,15 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams, useHistory } from "react-router-dom";
 import { editDaily, deleteDaily } from "../../../store/dailies";
 import './EditDaily.css'
+import '../routines.css'
 
-export default function EditDailyForm({onComplete, currentDailyId}) {
-    console.log("inside the edit form for daily number:", currentDailyId)
+export default function EditDailyForm() {
+
     const dispatch = useDispatch()
     const history = useHistory()
-    // const { dailyId } = useParams()
+    const { dailyId } = useParams()
 
-    const currentDaily = useSelector(state => state.dailies[currentDailyId])
+    const currentDaily = useSelector(state => state.dailies[dailyId])
     const currentDate = new Date().toJSON().slice(0, 10)
 
 
@@ -51,21 +52,19 @@ export default function EditDailyForm({onComplete, currentDailyId}) {
 
     const handleCancel = (e) => {
         e.stopPropagation()
-        console.log("in cancel")
         history.push('/main')
-         onComplete()
     }
 
     const handleDelete = (e) => {
         e.stopPropagation()
         dispatch(deleteDaily(currentDaily.id))
         history.push('/main')
-         onComplete(false)
+
     }
 
     return (
 
-        <form className="edit-container" onSubmit={handleSubmit}>
+        <form className='edit-form' onSubmit={handleSubmit}>
 
             <input
                 type='text'

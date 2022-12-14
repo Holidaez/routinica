@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux'
 import { getToDos, addToDos } from '../../../store/todos'
 import { Modal } from '../../../context/Modal';
+import { NavLink } from 'react-router-dom';
 import EditToDoForm from './EditToDos';
 import './todo.css'
 import '../routines.css'
@@ -57,24 +58,22 @@ function ToDo() {
                             <button className='todo-checkbox' />
                             <button className='hidden' placeholder='✔' />
                         </div>
-                        <div onClick={() => setShowEditToDoModal(true)}> Edit ToDo
-                            {showEditToDoModal && <Modal onClose={() => setShowEditToDoModal(false)}>
-                                <EditToDoForm onComplete={() => setShowEditToDoModal(false)} currentToDoId={todo.id} />
-                            </Modal>}
+                        <NavLink className='todo-navlink' to={`/todos/${todo.id}`} >
                             <div className='todo-info-container'>
                                 <div className='todo-card-title'>{todo.title}</div>
                                 {todo.notes && (
                                     <div className='todo-card-notes'>{todo.notes}</div>
                                 )}
                             </div>
-                            {todo.checklist && (
-                                <div className='todo-card-checklist'>{todo.checklist}</div>
-                            )}
-                        </div>
+                        </NavLink>
+                        {todo.checklist && (
+                            <div className='todo-card-checklist'>{todo.checklist}</div>
+                        )}
                     </div>
-                )
-            })}
-        </div>
+
+    )
+})}
+        </div >
     )
 }
 

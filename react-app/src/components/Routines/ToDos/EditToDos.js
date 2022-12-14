@@ -2,14 +2,15 @@ import './edittodo.css'
 
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux'
-import {useHistory} from 'react-router-dom'
+import {useHistory, useParams} from 'react-router-dom'
 import { addToDos, editAToDo, deleteToDo } from '../../../store/todos';
 
-function EditToDoForm({onComplete, currentToDoId}) {
+function EditToDoForm() {
     const dispatch = useDispatch()
     const history = useHistory()
+    const {toDoId} = useParams()
     const userId = useSelector(state => state.session.user.id)
-    const currentToDo = useSelector(state => state.todos[currentToDoId])
+    const currentToDo = useSelector(state => state.todos[toDoId])
     const todosLength = useSelector(state => Object.values(state.todos).length)
     const currentDate = new Date().toJSON().slice(0, 10)
     const [title, setTitle] = useState(currentToDo.title)
@@ -36,21 +37,21 @@ function EditToDoForm({onComplete, currentToDoId}) {
         let createdToDo = await dispatch(editAToDo(payload))
         if (createdToDo) {
             history.push('/main')
-            onComplete()
+
             
         }
     }
     const handleDelete = async () => {
         dispatch(deleteToDo(currentToDo.id))
         history.push('/main')
-        onComplete()
+
     }
     const cancel = async () => {
-        onComplete()
+        history.push('/main')
     }
     return (
-        <section>
-            <form onSubmit={handleSubmit}>
+        <section className='big'>
+            <form onSubmit={handleSubmit} className='edit-form'>
                 <input
                     type='text'
                     value={title}

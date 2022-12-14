@@ -56,7 +56,7 @@ function Habit() {
                         <div className='habit-plus-minus'>
                             <button className='habit-plus-button'>+</button>
                         </div>
-                        <NavLink to={`/habits/${habit.id}`}>
+                        <NavLink className='navlink' to={`/habits/${habit.id}`}>
                         <div className='habit-info-container'><div className='habit-title'>{habit.title}</div>
                         {habit.notes && (
                             <div className='habit-notes'>{habit.notes}</div>
