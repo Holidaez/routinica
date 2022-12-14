@@ -132,3 +132,6 @@ from  '../store/avatar' import changeAvatar;
 const submitAvatar = () => {
     dispatch(changeAvatar(currentAvatar))
 }
+
+
+# pipenv install Flask python-dotenv Flask-WTF SQLAlchemy Flask-SQLAlchemy alembic Flask-Migrate WTForms Flask-Login
