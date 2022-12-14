@@ -2,6 +2,7 @@ import { skin, size, broadShirts, slimShirts, extraOptions, hairOptions, categor
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import avatarReducer, { getAvatar } from '../../store/avatar';
+import { useHistory, Redirect } from 'react-router-dom';
 import  { changeAvatar } from '../../store/avatar'
 import './EditAvatar.css'
 
@@ -10,6 +11,7 @@ const EditAvatar = () => {
   useEffect(() => {
     dispatch(getAvatar())
   }, [])
+  const history = useHistory()
   const avatar = useSelector(state => state.avatar)
   const [activeMainCategory, setActiveMainCategory] = useState('body');
   const [activeSubCategory, setActiveSubCategory] = useState('Size');
@@ -47,7 +49,8 @@ const EditAvatar = () => {
 
 
   const submitAvatar = () => {
-    dispatch(changeAvatar(currentAvatar))
+    const works = dispatch(changeAvatar(currentAvatar))
+      history.push('/main')
   }
 
   const setShirt = (e) => {
