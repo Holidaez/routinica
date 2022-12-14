@@ -3,14 +3,15 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams, useHistory } from "react-router-dom";
 import { editDaily, deleteDaily } from "../../../store/dailies";
 import './EditDaily.css'
+import '../routines.css'
 
-export default function EditDailyForm({onComplete, currentDailyId}) {
-    console.log("inside the edit form for daily number:", currentDailyId)
+export default function EditDailyForm() {
+
     const dispatch = useDispatch()
     const history = useHistory()
-    // const { dailyId } = useParams()
+    const { dailyId } = useParams()
 
-    const currentDaily = useSelector(state => state.dailies[currentDailyId])
+    const currentDaily = useSelector(state => state.dailies[dailyId])
     const currentDate = new Date().toJSON().slice(0, 10)
 
 
@@ -51,38 +52,42 @@ export default function EditDailyForm({onComplete, currentDailyId}) {
 
     const handleCancel = (e) => {
         e.stopPropagation()
-        console.log("in cancel")
         history.push('/main')
-         onComplete()
     }
 
     const handleDelete = (e) => {
         e.stopPropagation()
         dispatch(deleteDaily(currentDaily.id))
         history.push('/main')
-         onComplete(false)
+
     }
 
     return (
-
-        <form className="edit-container" onSubmit={handleSubmit}>
-
+        <section>
+        <form className='edit-form' onSubmit={handleSubmit}>
+        <div className='yellow'>
+        <div className='form-name'>Edit Daily</div>
+            <label>Title</label>
             <input
                 type='text'
                 placeholder='Add a title'
                 value={title}
                 onChange={e => setTitle(e.target.value)} />
+            <label>Notes</label>
             <input
                 type='text'
                 placeholder='Add notes'
                 value={notes}
                 onChange={e => setNotes(e.target.value)} />
-
+            </div>
+            <label>Start Date</label>
             <input
                 type='date'
                 min={currentDate}
                 value={startDate}
+                className='due_date'
                 onChange={e => setStartDate(e.target.value)} />
+            <label>Repeats</label>
             <select
                 id='repeats'
                 value={repeats}
@@ -91,7 +96,7 @@ export default function EditDailyForm({onComplete, currentDailyId}) {
                 <option value={'weekly'}>Weekly</option>
                 <option value={'monthly'}>Monthly</option>
                 <option value={'yearly'}>Yearly</option>
-
+            <label>Repeat Every</label>
             </select>
             {repeats === 'daily' && (
                 <div>
@@ -135,7 +140,7 @@ export default function EditDailyForm({onComplete, currentDailyId}) {
                 </div>
             )}
 
-
+            <label>Difficulty</label>
             <select
                 id='difficulty'
                 value={difficulty}
@@ -146,6 +151,7 @@ export default function EditDailyForm({onComplete, currentDailyId}) {
                 <option value={4}>Hard</option>
 
             </select>
+            <label> Adjust Streak</label>
             <input
                 type='text'
                 placeholder='Streak'
@@ -157,9 +163,10 @@ export default function EditDailyForm({onComplete, currentDailyId}) {
             <button type='submit'
                 onSubmit={handleSubmit}>Update Daily</button>
             <button type='button'
+                className='delete-button'
                 onClick={handleDelete}>Delete this Daily</button>
         </form>
-
+        </section>
 
     )
 }

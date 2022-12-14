@@ -18,6 +18,7 @@ import EditHabit from './components/Routines/Habits/EditHabit';
 import FourOFour from './components/404/404.js';
 import { authenticate } from './store/session';
 import logout from './store/session.js'
+import EditToDoForm from './components/Routines/ToDos/EditToDos';
 function App() {
   const [loaded, setLoaded] = useState(false);
   const dispatch = useDispatch();
@@ -57,6 +58,9 @@ function App() {
         </Route>
         <Route path='/dailies/:dailyId'>
           < EditDailyForm/>
+        </Route>
+        <Route path='/todos/:toDoId'>
+          <EditToDoForm />
         </Route>
         <Route path='/dailies' exact={true}>
           <Daily />
