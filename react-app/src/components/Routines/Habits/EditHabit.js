@@ -1,14 +1,13 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux"
-import { addHabit, editAHabit, deleteHabit } from "../../../store/habits";
+import { addHabit, editAHabit, deleteHabit, getHabits } from "../../../store/habits";
 import { useParams, useHistory } from 'react-router-dom'
-
-const EditHabit = ({onComplete}) => {
-
+import './EditHabit.css'
+const EditHabit = ({ onComplete }) => {
     // const habitsLength = useSelector(state => Object.values(state.habits).length)
     const history = useHistory()
     const dispatch = useDispatch()
-    const { habitId } = useParams() 
+    const { habitId } = useParams()
     console.log('habit id', habitId)
     const currentHabit = useSelector(state => state.habits[habitId])
     console.log(currentHabit)
@@ -39,27 +38,26 @@ const EditHabit = ({onComplete}) => {
             display_order
         }
         let createdHabit = await dispatch(editAHabit(payload))
-        if (createdHabit){
+        if (createdHabit) {
             history.push('/main')
-            onComplete(false)
+
         }
-        
+
     }
     const handleDelete = (e) => {
         e.stopPropagation()
         dispatch(deleteHabit(currentHabit.id))
         history.push('/main')
-        onComplete(false)
+
     }
     const cancel = (e) => {
         e.stopPropagation()
-        history.push('main')
-        onComplete(false)
+        history.push('/main')
+
     }
     return (
-        <section>
-            
-            <form onSubmit={handleSubmit}>
+        <div id='form-container'>
+            <form onSubmit={handleSubmit} id='edit-form'>
                 <button type='button'
                     className='positive-habit-button'
                     value={positive_habit}
@@ -70,43 +68,62 @@ const EditHabit = ({onComplete}) => {
                     value={negative_habit}
                     onChange={e => setNegative_habit(e.target.value)}
                 />
+                <div id="orange">
+                    <div id="form-nav">
+                        <h4 id='edit-habit'>Edit Habit</h4>
+                        <div>
+                            <button type='button'
+                                onClick={cancel} id="cancel-button">Cancel</button>
+                            <button type='submit'
+                                onSubmit={handleSubmit}id="edit-button">Save Habit</button>
 
-                <input
-                    type='text'
-                    placeholder='Add a title'
-                    value={title}
-                    onChange={e => setTitle(e.target.value)} />
-                <input
-                    type='text'
-                    placeholder='Add notes'
-                    value={notes}
-                    onChange={e => setNotes(e.target.value)} />
+                        </div>
+                    </div>
+                    <div id="title-label">Title</div>
+                    <input
+                        id="title"
+                        type='text'
+                        placeholder='Add a title'
+                        value={title}
+                        onChange={e => setTitle(e.target.value)} />
 
-                <select
-                    id='difficulty'
-                    value={difficulty}
-                    onChange={e => setDifficulty(e.target.value)}>
-                    <option value={1}>Trivial</option>
-                    <option value={2}>Easy</option>
-                    <option value={3}>Medium</option>
-                    <option value={4}>Hard</option>
-                </select>
-                <select
-                    id='reset_counter'
-                    value={reset_counter}
-                    onChange={e => setReset_counter(e.target.value)}>
-                    <option value={1}>Daily</option>
-                    <option value={2}>Weekly</option>
-                    <option value={3}>Monthly</option>
-                </select>
-                <button type='submit'
-                    onSubmit={handleSubmit}>Update new Habit</button>
-                <button type='button'
-                    onClick={cancel}>Cancel</button> 
-                <button type='button'
-                    onClick={handleDelete}>Delete this Habit</button>
+
+                    <div id="notes-title">Notes</div>
+                    <textarea
+                        id="notes"
+                        type='text'
+                        placeholder='Add notes'
+                        value={notes}
+                        onChange={e => setNotes(e.target.value)} />
+
+                </div>
+
+
+                <div id="form-bottom">
+                <div id="dailies-label">Difficulty</div>
+                    <select
+                        id='difficulty'
+                        value={difficulty}
+                        onChange={e => setDifficulty(e.target.value)}>
+                        <option value={1}>Trivial</option>
+                        <option value={2}>Easy</option>
+                        <option value={3}>Medium</option>
+                        <option value={4}>Hard</option>
+                    </select>
+                    <div id="dailies-label">Reset Counter</div>
+                    <select
+                        id='reset_counter'
+                        value={reset_counter}
+                        onChange={e => setReset_counter(e.target.value)}>
+                        <option value={1}>Daily</option>
+                        <option value={2}>Weekly</option>
+                        <option value={3}>Monthly</option>
+                    </select>
+                    <button id="delete-button" type='button'
+                        onClick={handleDelete}><img src='/svg/garbage.svg' id='garbage'></img>Delete this Habit</button>
+                </div>
             </form>
-        </section>
+        </div>
     )
 }
 

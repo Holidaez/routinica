@@ -1,0 +1,125 @@
+
+#edit-form {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    margin: auto;
+    align-items: center;
+    padding-top: 25px;
+}
+
+#orange {
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+    background-color:#ffbe5d;
+    padding: 50px;
+    border-top: 1px solid black;
+    border-top-right-radius:5px;
+    border-top-left-radius:5px;
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+}
+
+#title {
+    background-color: #ffffff80;
+    margin-bottom: 20px;
+    height: 32px;
+    border: 1px solid black;
+    padding-left:5px;
+    /* padding: 10px; */
+}
+
+#notes {
+    padding-left:5px;
+    padding-top: 5px;
+    background-color: #ffffff80;
+    width: 664.7;
+    height: 64px;
+    overflow: auto;
+    resize: vertical;
+}
+#form-bottom {
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+    padding: 50px;
+    /* background-color:rgb(238, 236, 236) */
+    background-color: lightgray;
+    border-bottom: 3px solid black;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+}
+#edit-habit {
+    font-weight: 400;
+    padding-bottom: 30px;
+    font-size: 22px;
+}
+#title-label {
+    display:block;
+}
+#form-nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+#edit-button {
+  background-color:#ffbe5d;
+  border: none;
+}
+#cancel-button {
+  background-color:#ffbe5d;
+  border: none;
+  padding-right: 10px;
+}
+
+#cancel-button:hover {
+  cursor: pointer;
+}
+#edit-button:hover {
+    cursor: pointer;
+}
+#difficulty {
+    padding: 5px;
+    height: 36px;
+    margin-bottom: 30px;
+}
+
+#difficulty:hover {
+    cursor: pointer;
+    box-shadow: 1px 1px 1px black;
+}
+
+#reset_counter {
+    height: 36px;
+    padding: 5px;
+    margin-bottom: 30px;
+}
+#reset_counter:hover {
+    cursor: pointer;
+    box-shadow: 1px 1px 1px black;
+}
+#garbage {
+    height: 15px;
+    width: 15px;
+    padding-right: 5px;
+}
+#delete-button {
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+    color: red;
+    background-color: lightgray;
+    width: 30%;
+    margin: auto;
+    border:none;
+}
+#delete-button:hover {
+    cursor: pointer;
+}
