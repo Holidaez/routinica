@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { getHabits } from '../../../store/habits'
 import './habits.css'
 import '../routines.css'
+import { NavLink } from 'react-router-dom';
 //TODO:
 //Conditionally render the optional elements. (completed - notes, checklist).
 //Give appropriate class names to each of the elements on the todo cards.
@@ -30,10 +31,12 @@ function Habit() {
                         <div className='habit-plus-minus'>
                             <button className='habit-plus-button'>+</button>
                         </div>
+                        <NavLink to={`/habits/${habit.id}`}>
                         <div className='habit-info-container'><div className='habit-title'>{habit.title}</div>
                         {habit.notes && (
                             <div className='habit-notes'>{habit.notes}</div>
                         )}</div>
+                        </NavLink>
                         {habit.positive_counter && (
                             <div className='positive-counter'>+{habit.positive_counter}</div>
                         )}

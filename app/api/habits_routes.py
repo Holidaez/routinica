@@ -1,4 +1,4 @@
-from flask import Blueprint, jsonify, session, request
+from flask import Blueprint, jsonify, json, session, request
 from ..models import Habits, db, User
 from ..forms import AddEditHabit
 from flask_login import login_required
@@ -39,3 +39,33 @@ def add_new_habit():
         db.session.commit()
         return new_habit.to_dict()
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+
+@habits_routes.route('/edit', methods=['PUT'])
+@login_required
+def edit_habit():
+    edited_habit = json.loads(request.data.decode('UTF-8'))
+    habit = Habits.query.get(edited_habit['id'])
+    habit.userId = edited_habit['userId']
+    habit.title = edited_habit['title']
+    habit.notes = edited_habit['notes']
+    habit.difficulty = edited_habit['difficulty']
+    habit.reset_counter = edited_habit['reset_counter']
+    habit.positive_counter = edited_habit['positive_counter']
+    habit.negative_counter = edited_habit['negative_counter']
+    habit.positive_habit = edited_habit['positive_habit']
+    habit.negative_habit = edited_habit['negative_habit']
+    habit.strong_habit = edited_habit['strong_habit']
+    habit.display_order = edited_habit['display_order']
+    db.session.commit()
+    savedhabit = habit.to_dict()
+    print('-------------backend----------------', savedhabit)
+    return {'habit': savedhabit}
+
+
+@habits_routes.route('/<id>', methods=['DELETE'])
+@login_required
+def delete_habit(id):
+    todelete = Habits.query.get(id)
+    db.session.delete(todelete)
+    db.session.commit()
+    return 'Successfully deleted'
