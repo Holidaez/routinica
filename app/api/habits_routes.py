@@ -59,7 +59,7 @@ def edit_habit():
     db.session.commit()
     savedhabit = habit.to_dict()
     print('-------------backend----------------', savedhabit)
-    return {'habit': savedhabit}
+    return savedhabit
 
 
 @habits_routes.route('/<id>', methods=['DELETE'])
