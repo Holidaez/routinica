@@ -108,4 +108,4 @@ def delete_daily(id):
     todelete = Dailies.query.get(id)
     db.session.delete(todelete)
     db.session.commit()
-    return 'Daily successfully deleted.'
+    return {"deleteMessage": 'Daily successfully deleted.'}
