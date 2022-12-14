@@ -3,7 +3,7 @@ import './edittodo.css'
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux'
 import {useHistory} from 'react-router-dom'
-import { addToDos } from '../../../store/todos';
+import { addToDos, editAToDo, deleteToDo } from '../../../store/todos';
 
 function EditToDoForm({onComplete, currentToDoId}) {
     const dispatch = useDispatch()
@@ -33,15 +33,20 @@ function EditToDoForm({onComplete, currentToDoId}) {
             display_order
         }
         console.log('payload', payload)
-        onComplete()
-        // let createdToDo = await dispatch(addToDos(payload))
-        // if (createdToDo) console.log(createdToDo)
+        let createdToDo = await dispatch(editAToDo(payload))
+        if (createdToDo) {
+            history.push('/main')
+            onComplete()
+            
+        }
     }
     const handleDelete = async () => {
-
+        dispatch(deleteToDo(currentToDo.id))
+        history.push('/main')
+        onComplete()
     }
     const cancel = async () => {
-
+        onComplete()
     }
     return (
         <section>

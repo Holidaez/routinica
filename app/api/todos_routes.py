@@ -1,4 +1,4 @@
-from flask import Blueprint, jsonify, session, request
+from flask import Blueprint, jsonify, json, session, request
 from ..models import ToDos, db, User
 from ..forms import AddEditToDo
 from flask_login import login_required
@@ -37,3 +37,36 @@ def add_a_todo():
         db.session.commit()
         return new_todo.to_dict()
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+
+@todos_routes.route('/edit', methods=['PUT'])
+@login_required
+def edit_todo():
+    edited_todo = json.loads(request.data.decode('UTF-8'))
+    todo = ToDos.query.get(edited_todo['id'])
+    todo.userId = edited_todo['userId']
+    todo.title = edited_todo['title']
+    todo.notes = edited_todo['notes']
+    todo.difficulty = edited_todo['difficulty']
+    todo.due_date = edited_todo['due_date']
+    todo.completed = edited_todo['completed']
+    todo.display_order = edited_todo['display_order']
+    db.session.commit()
+    todoDict = {
+        'id': todo.id,
+        'userId': todo.userId,
+        'title': todo.title,
+        'notes': todo.notes,
+        'difficulty': todo.difficulty,
+        'due_date': todo.due_date,
+        'completed': todo.completed,
+        'display_order': todo.display_order
+        }
+    return todoDict
+
+@todos_routes.route('/<id>', methods=['DELETE'])
+@login_required
+def delete_todo(id):
+    todelete = ToDos.query.get(id)
+    db.session.delete(todelete)
+    db.session.commit()
+    return 'Successfully deleted'
