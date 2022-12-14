@@ -48,12 +48,12 @@ function Daily() {
 
     }
 
-        const clickHandler = (e) => {
+    const clickHandler = (e) => {
 
 
-            console.log("the target is:",  e.target)
-            setShowEditDailyModal(true)
-        }
+        console.log("the target is:", e.target)
+        setShowEditDailyModal(true)
+    }
 
     return (
         <div className='routines-container'>

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux'
 import { getHabits, addHabit } from '../../../store/habits'
+import { Modal } from '../../../context/Modal'
 import './habits.css'
 import '../routines.css'
 import { NavLink } from 'react-router-dom';
@@ -23,7 +24,7 @@ function Habit() {
     const [title, setTitle] = useState("")
     const userId = useSelector(state => state.session.user.id)
     const habitsLength = useSelector(state => Object.values(state.habits).length)
-
+    const [showHabitModal, setShowHabitModal] = useState( )
         const handleSubmit = async (e) => {
             e.preventDefault()
             const payload = {

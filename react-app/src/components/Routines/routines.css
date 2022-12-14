@@ -20,10 +20,13 @@
     border-radius: 3px;
     /* border: 1px solid mediumpurple; */
 }
-
+.routines-container .add-routine {
+    width: unset;
+}
 .add-routine {
     background-color:#e1e0e3;
-    width: 95%;
+    display: block;
+    width: 100%;
     height: 40px;
     border: 0;
     color: #908f90;
@@ -33,7 +36,9 @@
     padding-left: 15px;
     margin: 5px;
     border-radius: 3px; 
+    /* border: 1px red solid; */
 }
+
 .add-routine:focus {
     background-color: white;
     outline: 1px #915bf3 solid;
