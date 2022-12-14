@@ -5,13 +5,18 @@ from flask_login import login_required, current_user
 
 avatar_routes = Blueprint('avatar', __name__)
 
-@avatar_routes.route('/')
-# @login_required
+@avatar_routes.route('/', methods=['POST'])
+@login_required
 def get_avatar():
     """
     Querry the avatar information for rendering
     """
-    avatar = Avatar.query.filter(Avatar.userId == User.id).first()
+    # print("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA", current_user)
+    user = json.loads(request.data.decode('UTF-8'))
+    print("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA", current_user.id)
+    avatar = Avatar.query.filter(Avatar.userId == user['id']).first()
+    # avatar = Avatar.query.filter(Avatar.userId == User.id).all()
+    print("BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB", type(avatar))
     avatarDict= {
       'id':avatar.id,
       'userId':avatar.userId,
@@ -31,13 +36,13 @@ def get_avatar():
     return {'avatar': avatarDict}
 
 @avatar_routes.route('/update', methods=["PUT"])
-# @login_required
+@login_required
 def update_avatar():
   print("AAAAAAAAAAAAAAAAAAAAAAAAAAAA", request.data.decode('UTF-8'))
-  avatar = Avatar.query.filter(Avatar.userId == User.id).first()
-  # new_avatar = dict(subString.split(':') for subString in request.data.decode('UTF-8').split(','))
   new_avatar = json.loads(request.data.decode('UTF-8'))
-  print("CCCCCCCCCCCCCCCCCCCCCCCCCCCCC", new_avatar['body'])
+  avatar = Avatar.query.filter(Avatar.userId == new_avatar['current_user_id'] ).first()
+  # new_avatar = dict(subString.split(':') for subString in request.data.decode('UTF-8').split(','))
+  print("CCCCCCCCCCCCCCCCCCCCCCCCCCCCC", avatar)
   avatar.body = new_avatar['body']
   avatar.skin = new_avatar['skin']
   avatar.bangs = new_avatar['bangs']

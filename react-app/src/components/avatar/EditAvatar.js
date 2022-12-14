@@ -8,11 +8,13 @@ import './EditAvatar.css'
 
 const EditAvatar = () => {
   const dispatch = useDispatch()
-  useEffect(() => {
-    dispatch(getAvatar())
-  }, [])
   const history = useHistory()
   const avatar = useSelector(state => state.avatar)
+  const user = useSelector(state => state.session.user)
+  useEffect(() => {
+    dispatch(getAvatar(user))
+  }, [])
+  console.log(user)
   const [activeMainCategory, setActiveMainCategory] = useState('body');
   const [activeSubCategory, setActiveSubCategory] = useState('Size');
   const [shirtSize, setShirtSize] = useState('broad');
@@ -44,7 +46,8 @@ const EditAvatar = () => {
     animal_ears: avatarAnimalEars || avatar.animal_ears,
     animal_tails: avatarAnimalTails || avatar.animal_tails,
     headband: avatarHeadband || avatar.headband,
-    background: avatarBackground || avatar.background
+    background: avatarBackground || avatar.background,
+    current_user_id: user.id
   }
 
 
