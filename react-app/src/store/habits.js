@@ -17,7 +17,7 @@ const deleteH = habitId => ({
 })
 //Thunks
 export const getHabits = () => async (dispatch) => {
-    const response = await fetch(`/api/habits`)
+    const response = await fetch(`/api/dailies/test`)
     if (response.ok){
         const habitList = await response.json()
         dispatch(load(habitList))
@@ -34,7 +34,7 @@ export const addHabit = (form) => async (dispatch) => {
             userId: form.userId,
             title: form.title,
             notes: form.notes,
-            difficulty: form.difficulty, 
+            difficulty: form.difficulty,
             reset_counter: form.reset_counter,
             positive_counter: form.positive_counter,
             negative_counter: form.negative_counter,
@@ -69,7 +69,7 @@ export const editAHabit = (form) => async(dispatch) => {
             userId: form.userId,
             title: form.title,
             notes: form.notes,
-            difficulty: form.difficulty, 
+            difficulty: form.difficulty,
             reset_counter: form.reset_counter,
             positive_counter: form.positive_counter,
             negative_counter: form.negative_counter,
@@ -108,11 +108,8 @@ let initialState = {}
 export default function habitsReducer(state = initialState, action) {
     switch(action.type){
         case LOAD: {
-        const allHabits = {}
-            action.habitList.habits.forEach(habit => {
-                allHabits[habit.id] = habit
-            })
-            return {...state, ...allHabits}
+
+            return {...state, ...action.habitList.habits}
         }
         case ADD: {
             const allHabits = {...state}
