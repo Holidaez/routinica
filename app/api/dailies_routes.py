@@ -100,7 +100,7 @@ def edit_daily():
         'due': daily.due,
         'display_order': daily.display_order
         }
-    return {'daily': dailyDict}
+    return dailyDict
 
 @dailies_routes.route('/<id>', methods=['DELETE'])
 @login_required

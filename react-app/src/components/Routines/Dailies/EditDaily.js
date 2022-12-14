@@ -5,6 +5,7 @@ import { editDaily, deleteDaily } from "../../../store/dailies";
 import './EditDaily.css'
 
 export default function EditDailyForm({ onComplete, currentDailyId }) {
+    console.log(currentDailyId, "survey says: the id is that")
     const dispatch = useDispatch()
     const history = useHistory()
     // const { dailyId } = useParams()
@@ -49,13 +50,15 @@ export default function EditDailyForm({ onComplete, currentDailyId }) {
     }
 
     const handleCancel = () => {
+        console.log("in cancel")
+        history.push('/main')
         onComplete()
     }
 
     const handleDelete = () => {
         dispatch(deleteDaily(currentDaily.id))
         history.push('/main')
-        onComplete()
+        // onComplete()
 
     }
     return (
