@@ -13,7 +13,7 @@ const add = todo => ({
 })
 //Thunks
 export const getToDos = () => async (dispatch) => {
-    const response = await fetch(`/api/todos`)
+    const response = await fetch(`/api/dailies/test`)
     if (response.ok){
         const todos = await response.json()
         dispatch(load(todos))
@@ -55,11 +55,8 @@ let initialState = {}
 export default function todosReducer(state = initialState, action) {
     switch(action.type){
         case LOAD: {
-            const allToDos = {}
-            action.todos.todos.forEach(todo => {
-                allToDos[todo.id] = todo
-            })
-            return {...state, ...allToDos}
+
+            return {...state, ...action.todos.todos}
         }
         case ADD: {
             const allToDos = {...state}

@@ -45,22 +45,24 @@ export default function EditDailyForm({ onComplete, currentDailyId }) {
         let createdDaily = await dispatch(editDaily(payload))
         if (createdDaily) {
             history.push('/main')
-            onComplete()
+            onComplete(false)
         }
     }
 
-    const handleCancel = () => {
+    const handleCancel = (e) => {
+        e.preventDefault()
         console.log("in cancel")
         history.push('/main')
-        onComplete()
+        onComplete(false)
     }
 
-    const handleDelete = () => {
+    const handleDelete = (e) => {
+        e.preventDefault()
         dispatch(deleteDaily(currentDaily.id))
         history.push('/main')
-        // onComplete()
-
+        onComplete(false)
     }
+
     return (
 
         <form className="edit-container" onSubmit={handleSubmit}>
@@ -150,10 +152,10 @@ export default function EditDailyForm({ onComplete, currentDailyId }) {
                 value={streak}
                 onChange={e => setStreak(e.target.value)} />
 
-            <button type='submit'
-                onSubmit={handleSubmit}>Update Daily</button>
             <button type='button'
                 onClick={handleCancel}>Cancel</button>
+            <button type='submit'
+                onSubmit={handleSubmit}>Update Daily</button>
             <button type='button'
                 onClick={handleDelete}>Delete this Daily</button>
         </form>

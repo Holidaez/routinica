@@ -48,6 +48,12 @@ function Daily() {
 
     }
 
+        const clickHandler = (e) => {
+
+
+            console.log("the target is:",  e.target)
+            setShowEditDailyModal(true)
+        }
 
     return (
         <div className='routines-container'>
@@ -62,9 +68,9 @@ function Daily() {
                             <button className='daily-checkbox' />
                         </div>
                         <div className='daily-info-container'>
-                            <div onClick={() => setShowEditDailyModal(true)} id={`d-${daily.id}`}>Edit Daily
+                            <div onClick={clickHandler} id={`d-${daily.id}`}>Edit Daily
                                 {showEditDailyModal && <Modal onClose={() => setShowEditDailyModal(false)}>
-                                    <EditDailyForm onComplete={() => setShowEditDailyModal(false)} currentDailyId={daily.id} />
+                                    <EditDailyForm onComplete={setShowEditDailyModal} currentDailyId={daily.id} />
                                 </Modal>}
                                 <div className='daily-card-title'>{daily.title}</div>
                                 {daily.notes && (

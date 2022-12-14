@@ -29,7 +29,7 @@ export const setCurrentDaily = id =>({
 
 //Thunks
 export const getDailies = () => async(dispatch) => {
-    const response = await fetch(`/api/dailies`)
+    const response = await fetch(`/api/dailies/test`)
     if (response.ok){
         const dailiesList = await response.json()
         dispatch(load(dailiesList))
@@ -123,11 +123,8 @@ let initialState = {}
 export default function dailiesReducer(state = initialState, action) {
     switch(action.type){
         case LOAD:{
-            const allDailies = {}
-            action.dailiesList.dailies.forEach(daily => {
-                allDailies[daily.id] = daily
-            })
-            return {...state, ...allDailies}
+
+            return {...state, ...action.dailiesList.dailies}
         }
         case ADD_DAILY: {
             const allDailies = {...state}
@@ -143,7 +140,7 @@ export default function dailiesReducer(state = initialState, action) {
             const allDailies = {...state, currentDaily: action.id}
             return allDailies
         }
-        
+
         default:return state
     }
 }
