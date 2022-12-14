@@ -1,13 +1,15 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
-
+import { useParams, useHistory } from "react-router-dom";
+import { editDaily, deleteDaily } from "../../../store/dailies";
 
 export default function EditDailyForm() {
     const dispatch = useDispatch()
+    const history = useHistory()
     const { dailyId } = useParams()
+
     const currentDaily = useSelector(state => state.dailies[dailyId])
-    const currentDate = new Date().toJSON().slice(0,10)
+    const currentDate = new Date().toJSON().slice(0, 10)
 
 
 
@@ -38,33 +40,35 @@ export default function EditDailyForm() {
             //TODO: remember to render CSRF token on backend!
         }
         console.log(payload)
-        // let createdDaily = await dispatch(addDaily(payload))
-        // if (createdDaily) console.log(createdDaily)
+        let createdDaily = await dispatch(editDaily(payload))
+        if (createdDaily) {
+            history.push('/main')
+        }
     }
     const cancel = () => {
 
     }
-    const handleDelete = async () => {
-        // const response = await dispatch(deleteDaily(7))
-        // console.log(response)
-        // return response
+    const handleDelete = () => {
+        dispatch(deleteDaily(currentDaily.id))
+        history.push('/main')
+
     }
     return (
         <section>
             <div className='add-daily-form-container'>
                 <form onSubmit={handleSubmit}>
                     <div className='color-container'>
-                    <input
-                        type='text'
-                        placeholder='Add a title'
-                        value={title}
-                        onChange={e => setTitle(e.target.value)} />
-                    <input
-                        type='text'
-                        placeholder='Add notes'
-                        value={notes}
-                        onChange={e => setNotes(e.target.value)} />
-                        </div>
+                        <input
+                            type='text'
+                            placeholder='Add a title'
+                            value={title}
+                            onChange={e => setTitle(e.target.value)} />
+                        <input
+                            type='text'
+                            placeholder='Add notes'
+                            value={notes}
+                            onChange={e => setNotes(e.target.value)} />
+                    </div>
                     <input
                         type='date'
                         min={currentDate}
@@ -74,50 +78,50 @@ export default function EditDailyForm() {
                         id='repeats'
                         value={repeats}
                         onChange={e => setRepeats(e.target.value)}>
-                            <option value={'daily'}>Daily</option>
-                            <option value={'weekly'}>Weekly</option>
-                            <option value={'monthly'}>Monthly</option>
-                            <option value={'yearly'}>Yearly</option>
+                        <option value={'daily'}>Daily</option>
+                        <option value={'weekly'}>Weekly</option>
+                        <option value={'monthly'}>Monthly</option>
+                        <option value={'yearly'}>Yearly</option>
 
                     </select>
                     {repeats === 'daily' && (
                         <div>
 
-                        <input
-                            placeholder="Choose how often this repeats"
-                            type='text'
-                            value={repeatsOn}
-                            onChange={e => setRepeatsOn(e.target.value)}/>
-                        <div className="repeats-label">Day</div>
+                            <input
+                                placeholder="Choose how often this repeats"
+                                type='text'
+                                value={repeatsOn}
+                                onChange={e => setRepeatsOn(e.target.value)} />
+                            <div className="repeats-label">Day</div>
                         </div>
                     )}
                     {repeats === 'weekly' && (
-                          <div>
+                        <div>
                             <input
-                            placeholder="Choose how often this repeats"
-                            type='text'
-                            value={repeatsOn}
-                            onChange={e => setRepeatsOn(e.target.value)}/>
+                                placeholder="Choose how often this repeats"
+                                type='text'
+                                value={repeatsOn}
+                                onChange={e => setRepeatsOn(e.target.value)} />
                             <div className="repeats-label">Week</div>
                         </div>
                     )}
                     {repeats === 'monthly' && (
-                          <div>
+                        <div>
                             <input
-                            placeholder="Choose how often this repeats"
-                            type='text'
-                            value={repeatsOn}
-                            onChange={e => setRepeatsOn(e.target.value)}/>
+                                placeholder="Choose how often this repeats"
+                                type='text'
+                                value={repeatsOn}
+                                onChange={e => setRepeatsOn(e.target.value)} />
                             <div className="repeats-label">Month</div>
                         </div>
                     )}
                     {repeats === 'yearly' && (
-                          <div>
+                        <div>
                             <input
-                            placeholder="Choose how often this repeats"
-                            type='text'
-                            value={repeatsOn}
-                            onChange={e => setRepeatsOn(e.target.value)}/>
+                                placeholder="Choose how often this repeats"
+                                type='text'
+                                value={repeatsOn}
+                                onChange={e => setRepeatsOn(e.target.value)} />
                             <div className="repeats-label">Year</div>
                         </div>
                     )}
@@ -127,10 +131,10 @@ export default function EditDailyForm() {
                         id='difficulty'
                         value={difficulty}
                         onChange={e => setDifficulty(e.target.value)}>
-                            <option value={1}>Trivial</option>
-                            <option value={2}>Easy</option>
-                            <option value={3}>Medium</option>
-                            <option value={4}>Hard</option>
+                        <option value={1}>Trivial</option>
+                        <option value={2}>Easy</option>
+                        <option value={3}>Medium</option>
+                        <option value={4}>Hard</option>
 
                     </select>
                     <input
@@ -144,7 +148,7 @@ export default function EditDailyForm() {
                     <button type='button'
                         onClick={cancel}>Cancel</button>
                     <button type='button'
-                    onClick={handleDelete}>Delete this Daily</button>
+                        onClick={handleDelete}>Delete this Daily</button>
                 </form>
             </div>
         </section>

@@ -78,6 +78,7 @@ export const editDaily = (form) => async(dispatch) => {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify({
+            id: form.id,
             userId: form.userId,
             start_date: form.startDate,
             repeats: form.repeats,
@@ -106,7 +107,7 @@ export const editDaily = (form) => async(dispatch) => {
 
 
 export const deleteDaily = (dailyId) => async (dispatch) => {
-    const response = await fetch(`api/dailies/${dailyId}`, {
+    const response = await fetch(`/api/dailies/${dailyId}`, {
         method: 'DELETE'
     })
     if (response.ok){
@@ -143,6 +144,7 @@ export default function dailiesReducer(state = initialState, action) {
             const allDailies = {...state, currentDaily: action.id}
             return allDailies
         }
+        
         default:return state
     }
 }
