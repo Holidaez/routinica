@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { Redirect } from 'react-router-dom';
+import { Redirect, useHistory } from 'react-router-dom';
 import { login } from '../../store/session';
 import './LoginForm.css'
 const LoginForm = () => {
+  const history = useHistory()
   const [errors, setErrors] = useState([]);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -27,7 +28,10 @@ const LoginForm = () => {
   const updateEmail = (e) => {
     setEmail(e.target.value);
   };
-
+  const redirectSignup = () => {
+    let path = ('/')
+    history.push(path)
+  }
   const updatePassword = (e) => {
     setPassword(e.target.value);
   };
@@ -75,6 +79,7 @@ const LoginForm = () => {
         </div>
         <div id='login-demo-login-button-container'>
         <button id="login-button" type='submit'>Login</button>
+        <button id='signup-button' onClick={redirectSignup}>Signup</button>
         <button id='demo-login' onClick={demoLogin}>Demo User</button>
         </div>
         {/* <div id="need-account"><p>Don't have a Routinica account?</p><button id="signup-from-login">Sign Up</button></div> */}

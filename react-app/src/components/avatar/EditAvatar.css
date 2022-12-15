@@ -1,7 +1,8 @@
 /* TODO Add site wide styles */
 * {
-  padding: 0px;
-  margin: 0px;
+  padding: 0;
+  margin: 0;
+  border: none;
 }
 
 svg {
@@ -191,7 +192,10 @@ svg {
 }
 
 #avatar-container {
-  margin: 10px auto;
+  padding-top: 10px;
+  margin-bottom: 10px auto;
+  margin-left: auto;
+  margin-right: auto;
   height: 147px;
   width: 141px;
   position: relative;
@@ -295,6 +299,7 @@ svg {
 #edit-avatar-page-container {
   background-color: #6133b4;
   height: 40%;
+  margin: 0;
 }
 
 #bottom-of-the-page {
