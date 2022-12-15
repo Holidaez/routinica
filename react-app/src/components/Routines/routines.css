@@ -153,6 +153,7 @@ label {
 }
 .user-buttons{
     border-radius: 5px;
+    margin-bottom: 5px;
     font-size: 15px;
     background-color: #6f42c1;
     color: white;

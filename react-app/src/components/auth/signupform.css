@@ -91,6 +91,7 @@ body {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    padding-top: 10px;
     width: 90%;
 }
 #logo {
