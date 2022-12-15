@@ -47,7 +47,12 @@ export const addToDos = (form) => async (dispatch) => {
         dispatch(add(newToDo))
         return newToDo
     } else {
-        return ['Something went wrong']
+        const data = await response.json()
+        if (data.errors){
+            return data;
+        } else {
+            return ["Something went wrong, can't edit that Todo"]
+        }
     }
 }
 

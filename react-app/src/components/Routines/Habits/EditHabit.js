@@ -76,7 +76,6 @@ const EditHabit = ({ onComplete }) => {
                                 onClick={cancel} id="cancel-button">Cancel</button>
                             <button type='submit'
                                 onSubmit={handleSubmit} id="edit-button">Save Habit</button>
-
                         </div>
                     </div>
                     <div id="title-label">Title</div>
@@ -86,8 +85,6 @@ const EditHabit = ({ onComplete }) => {
                         placeholder='Add a title'
                         value={title}
                         onChange={e => setTitle(e.target.value)} />
-
-
                     <div id="notes-title">Notes</div>
                     <textarea
                         id="notes"
