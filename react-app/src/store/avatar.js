@@ -1,12 +1,14 @@
 //Definitions
 const SET_AVATAR = 'avatar/SET_AVATAR'
-
+const REMOVE_AVATAR = 'avatar/REMOVE_AVATAR'
 //Actions
 const setAvatar = data => ({
     type: SET_AVATAR,
     payload: data
 })
-
+export const remove_avatar = () => ({
+    type:REMOVE_AVATAR
+})
 //Thunks
 export const getAvatar = (user) => async (dispatch) => {
     const response = await fetch('/api/avatar/', {
@@ -54,6 +56,9 @@ export default function avatarReducer(state = {}, action) {
         case SET_AVATAR: {
             const newState = { ...state, ...action.payload }
             return newState.avatar
+        }
+        case REMOVE_AVATAR: {
+            return {}
         }
         default:
             return state

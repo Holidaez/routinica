@@ -3,6 +3,7 @@ const LOAD = '/dailies/LOAD'
 const ADD_DAILY = '/dailies/ADD_DAILY'
 const DELETE_DAILY = '/dailies/DELETE_DAILY'
 const SET_CURRENT_DAILY = 'dailies/SET_CURRENT_DAILY'
+const REMOVE_DAILIES = 'dailies/REMOVE_DAILIES'
 //Actions
 const load = dailiesList => ({
     type: LOAD,
@@ -19,6 +20,9 @@ const deleteD = dailyId => ({
     dailyId
 })
 
+export const removeDailies = () => ({
+    type:REMOVE_DAILIES
+})
 //action to keep track of which daily is being interacted with
 export const setCurrentDaily = id =>({
     type: SET_CURRENT_DAILY,
@@ -137,6 +141,9 @@ export default function dailiesReducer(state = initialState, action) {
         case SET_CURRENT_DAILY:{
             const allDailies = {...state, currentDaily: action.id}
             return allDailies
+        }
+        case REMOVE_DAILIES:{
+            return initialState
         }
 
         default:return state
