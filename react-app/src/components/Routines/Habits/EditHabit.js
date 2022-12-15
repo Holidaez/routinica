@@ -75,6 +75,7 @@ const EditHabit = ({onComplete}) => {
                     type='text'
                     placeholder='Add a title'
                     value={title}
+                    required
                     onChange={e => setTitle(e.target.value)} />
                 <input
                     type='text'

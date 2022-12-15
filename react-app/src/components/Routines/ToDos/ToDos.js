@@ -40,8 +40,12 @@ function ToDo() {
             completed: false,
             display_order: todosLength + 1
         }
+        console.log('here')
         let createdToDo = await dispatch(addToDos(payload))
-        if (createdToDo) console.log("You created a Todo")
+        console.log(createdToDo)
+        if (createdToDo.errors){
+            alert('must include a title')
+        }
         setTitle("")
     }
 

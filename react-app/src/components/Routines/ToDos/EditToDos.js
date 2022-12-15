@@ -55,6 +55,7 @@ function EditToDoForm() {
                 <input
                     type='text'
                     value={title}
+                    required
                     onChange={e => setTitle(e.target.value)} />
                 <input
                     type='text'
