@@ -1,6 +1,8 @@
 # Routinica
 
-Routinica is a website clone inspired by Habitica. Users can use Routinica to organize their life and achieve milestones to become motivated and productive by creating lists of daily tasks, habits, and to-do's.
+Routinica is a website clone inspired by Habitica. Users can use Routinica to organize their life and achieve milestones to become motivated and productive by creating lists of daily tasks, habits, and to-do's. It was built by developers, Brian, Keagan, Erin, and Dave during their time at App Acadamy. The goal of the project was to build a clone after 1 week of learning Python. The developers loved the idea of a "game-ified" version of a self-improvement app. Working with new technologies was both challenging and rewarding and they love how their customizable avatar turned out (Go give it a try at https://routinica.onrender.com/).
+
+Brian, Keegan, Erin and Dave all finish their current responsibilities in January 2023 and are looking forward to working finding and working with great companies in the future. Be sure to contact them to find out their availability to work for you. About Us
 
 ## Wiki Link
 
