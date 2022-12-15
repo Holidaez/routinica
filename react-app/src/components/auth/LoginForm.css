@@ -130,3 +130,12 @@
   border: none;
   border-radius: 2px;
 }
+#signup-button{
+  display: block;
+  background-color: #4fb5e9;
+  color: white;
+  width: 80px;
+  height: 36px;
+  border: none;
+  border-radius: 2px;
+}
