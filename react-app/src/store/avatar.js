@@ -32,6 +32,19 @@ export const changeAvatar = (newAvatar) => async (dispatch) => {
     }
 }
 
+export const addAvatar = (form) => async (dispatch) => {
+    const response = await fetch('/api/avatar/add', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body:JSON.stringify({...form})
+    })
+    if (response.ok) {
+        const data = await response.json()
+        dispatch(setAvatar(data))
+    }
+}
 //Reducer
 //make sure to define initialState or remove the default variable
 

@@ -44,6 +44,7 @@ def add_new_habit():
 @login_required
 def edit_habit():
     form = AddEditHabit()
+    form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
         edited_habit = json.loads(request.data.decode('UTF-8'))
         habit = Habits.query.get(edited_habit['id'])

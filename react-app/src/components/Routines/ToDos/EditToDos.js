@@ -21,7 +21,6 @@ function EditToDoForm() {
     const [display_order, setDisplay_order] = useState(currentToDo.display_order)
 
     const handleSubmit = async (e) => {
-        console.log('here')
         e.preventDefault()
         const payload = {
             id: currentToDo.id,
@@ -33,14 +32,15 @@ function EditToDoForm() {
             completed,
             display_order
         }
-        console.log('payload', payload)
         let createdToDo = await dispatch(editAToDo(payload))
-        if (createdToDo) {
+        if (createdToDo.errors) {
+            return alert(createdToDo.errors.map(error => error))
+            }
+
             history.push('/main')
 
-
         }
-    }
+
     const handleDelete = async () => {
         dispatch(deleteToDo(currentToDo.id))
         history.push('/main')

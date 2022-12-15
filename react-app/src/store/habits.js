@@ -86,7 +86,7 @@ export const editAHabit = (form) => async(dispatch) => {
     } else {
         const data = await response.json();
         if (data.errors){
-            return data.errors;
+            return data;
         } else {
             return ["Something went wrong, can't edit that daily"]
         }

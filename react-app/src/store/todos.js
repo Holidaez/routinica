@@ -80,12 +80,12 @@ export const editAToDo = (form) => async(dispatch) => {
     } else {
         const data = await response.json()
         if (data.errors){
-            return data.errors;
+            return data;
         } else {
             return ["Something went wrong, can't edit that Todo"]
         }
     }
-} 
+}
 
 export const deleteToDo = (todoId) => async (dispatch) => {
     const response = await fetch(`/api/todos/${todoId}`, {
@@ -116,7 +116,7 @@ export default function todosReducer(state = initialState, action) {
         }
         case DELETE: {
             const allToDos = {...state}
-            delete allToDos[action.todoId] 
+            delete allToDos[action.todoId]
             return allToDos
         }
         default:

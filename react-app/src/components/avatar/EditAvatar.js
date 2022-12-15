@@ -14,7 +14,6 @@ const EditAvatar = () => {
   useEffect(() => {
     dispatch(getAvatar(user))
   }, [])
-  console.log(user)
   const [activeMainCategory, setActiveMainCategory] = useState('body');
   const [activeSubCategory, setActiveSubCategory] = useState('Size');
   const [shirtSize, setShirtSize] = useState('broad');
@@ -160,7 +159,6 @@ const EditAvatar = () => {
 
 
   function selectSub(e) {
-    console.log('SELECT SUB', e.target.id)
 
     switch (e.target.id) {
       case 'Size': {
@@ -168,7 +166,6 @@ const EditAvatar = () => {
       }
 
       case 'Shirt': {
-        console.log('WHAT WE ARE SETTING: ', e.target.id)
         setActiveSubCategory(e.target.id)
       }
 
