@@ -27,6 +27,7 @@
 }
 .habit-title {
     font-size: 16px;
+    overflow: hidden;
 }
 .habit-plus-minus {
     width: 35px;

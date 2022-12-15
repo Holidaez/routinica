@@ -44,7 +44,7 @@ function Daily() {
         }
         let createdDaily = await dispatch(addDaily(payload))
         if (createdDaily.errors){
-            alert('Must include a title with 4 or more characters')
+            alert(createdDaily.errors.map(error => error))
         }
         setTitle("")
 
