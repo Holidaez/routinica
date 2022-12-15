@@ -46,6 +46,7 @@
 .daily-card-title {
     font-size: 18px;
     text-decoration: none;
+    overflow: hidden;
 }
 .dailies-title {
     font-size: 24px;
