@@ -20,11 +20,13 @@
     border-radius: 3px;
     /* border: 1px solid mediumpurple; */
 }
+
 .routines-container .add-routine {
     width: unset;
 }
+
 .add-routine {
-    background-color:#e1e0e3;
+    background-color: #e1e0e3;
     display: block;
     width: 100%;
     height: 40px;
@@ -43,6 +45,7 @@
     background-color: white;
     outline: 1px #915bf3 solid;
 }
+
 section {
     display: flex;
     direction: column;
@@ -58,6 +61,7 @@ form {
     padding: 15px;
     margin: 5px;
 }
+
 label {
     /* padding: 6px; */
     font-size: 12px;
@@ -73,6 +77,7 @@ label {
     color: #784b01;
     height: 40%;
 }
+
 .yellow input {
     background-color: #ffdfb0;
     color: #784b01;
@@ -80,6 +85,7 @@ label {
     border: none;
     border-radius: 2px;
 }
+
 .form-name {
     font-size: 24px;
     color: #784b01;
@@ -93,13 +99,14 @@ label {
     border: none;
 }
 
-#header-container{
+#header-container {
     background-color: #36205d;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
 }
-#avatar-block-container{
+
+#avatar-block-container {
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -107,7 +114,8 @@ label {
     padding-bottom: 30px;
     padding-left: 20px;
 }
-#button-container{
+
+#button-container {
     display: flex;
     flex-direction: column;
     margin-right: 20px;
@@ -115,43 +123,51 @@ label {
 }
 
 #health-bar {
-  accent-color:#f64e51;
-  height:30px;
+    accent-color: #f64e51;
+    height: 30px;
 }
 
 #experience-bar {
     accent-color: #ffbe5c;
     height: 30px;
 }
+
 #health {
     color: white;
     display: flex;
 }
+
 #exp {
     color: white;
 }
+
 #health-heart {
     height: 30px;
     width: 30px;
     padding-right: 5px;
 }
+
 #jewel-star {
     height: 30px;
     width: 30px;
     padding-right: 5px;
 }
+
 #vitals {
     padding-left: 10px;
 }
+
 #user-info {
     color: white;
 }
+
 #sword-img {
     height: 30px;
     width: 30px;
     padding-right: 5px;
 }
-.user-buttons{
+
+.user-buttons {
     border-radius: 5px;
     margin-bottom: 5px;
     font-size: 15px;
@@ -159,6 +175,7 @@ label {
     color: white;
     padding: 5px;
 }
-.user-buttons:hover{
+
+.user-buttons:hover {
     cursor: pointer;
 }
