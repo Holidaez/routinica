@@ -20,7 +20,6 @@ function Daily() {
     const [showEditDailyModal, setShowEditDailyModal] = useState(false)
     const [currentDaily, setCurrentDaily] = useState(0)
     const [stateDaily, setStateDaily] = useState(0)
-    // console.log(currentHabitList)
     useEffect(() => {
         dispatch(getDailies())
     }, [dispatch])
@@ -45,7 +44,7 @@ function Daily() {
         }
         let createdDaily = await dispatch(addDaily(payload))
         if (createdDaily.errors){
-            alert('must include a title')
+            alert('Must include a title with 4 or more characters')
         }
         setTitle("")
 

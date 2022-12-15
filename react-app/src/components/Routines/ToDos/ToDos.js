@@ -30,7 +30,6 @@ function ToDo() {
     const [title, setTitle] = useState('')
 
     const handleSubmit = async (e) => {
-        console.log('here')
         e.preventDefault()
         const payload = {
             userId,
@@ -41,11 +40,9 @@ function ToDo() {
             completed: false,
             display_order: todosLength + 1
         }
-        console.log('here')
         let createdToDo = await dispatch(addToDos(payload))
-        console.log(createdToDo)
         if (createdToDo.errors){
-            alert('must include a title')
+            alert(createdToDo.errors.map(error => error))
         }
         setTitle("")
     }

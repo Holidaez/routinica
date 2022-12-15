@@ -42,6 +42,7 @@ def add_a_todo():
 @login_required
 def edit_todo():
     form = AddEditToDo()
+    form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
         edited_todo = json.loads(request.data.decode('UTF-8'))
         todo = ToDos.query.get(edited_todo['id'])
@@ -75,4 +76,3 @@ def delete_todo(id):
     db.session.commit()
 
     return {'message': 'Successfully deleted'}
-

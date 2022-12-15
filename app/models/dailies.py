@@ -11,7 +11,7 @@ class Dailies(db.Model):
   userId = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('users.id')), nullable=False)
   start_date = db.Column(db.String(64), nullable=False)
   repeats = db.Column(db.String(64), nullable=False)
-  repeats_on = db.Column(db.String(256), nullable=False)
+  repeats_on = db.Column(db.String(256))
   title = db.Column(db.String(64), nullable=False)
   notes = db.Column(db.String(250)) #can be empty
   difficulty = db.Column(db.Integer, nullable=False)

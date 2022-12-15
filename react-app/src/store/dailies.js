@@ -37,7 +37,6 @@ export const getDailies = () => async(dispatch) => {
 }
 
 export const addDaily = (form) => async(dispatch) => {
-    console.log("in the add daily thunk", form)
     const response = await fetch('/api/dailies/add', {
         method: 'POST',
         headers: {
@@ -71,7 +70,6 @@ export const addDaily = (form) => async(dispatch) => {
 }
 
 export const editDaily = (form) => async(dispatch) => {
-    console.log("in the add daily thunk", form)
     const response = await fetch('/api/dailies/edit', {
         method: 'PUT',
         headers: {
@@ -98,7 +96,7 @@ export const editDaily = (form) => async(dispatch) => {
     } else {
         const data = await response.json();
         if (data.errors){
-            return data.errors;
+            return data;
         } else {
             return ["Something went wrong, can't add that daily"]
         }

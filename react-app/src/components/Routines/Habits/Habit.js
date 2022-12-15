@@ -43,7 +43,7 @@ function Habit() {
             let createdHabit = await dispatch(addHabit(payload))
 
             if (createdHabit.errors){
-                alert('must include a title')
+                alert('Must include a title with 4 or more characters')
             }
             setTitle("")
         }

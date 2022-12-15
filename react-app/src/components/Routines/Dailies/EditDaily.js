@@ -23,7 +23,6 @@ export default function EditDailyForm() {
     const [streak, setStreak] = useState(currentDaily.streak)
     const [due, setDue] = useState(currentDaily.due)
     const [displayOrder, setDisplayOrder] = useState(currentDaily.display_order)
-
     const handleSubmit = async (e) => {
         e.preventDefault()
         const payload = {
@@ -42,11 +41,10 @@ export default function EditDailyForm() {
         }
 
         let createdDaily = await dispatch(editDaily(payload))
-        
-        if (createdDaily) {
-            history.push('/main')
-
+        if (createdDaily.errors) {
+            return alert(createdDaily.errors.map(error => error))
         }
+        history.push('/main')
     }
 
     const handleCancel = (e) => {
@@ -109,7 +107,7 @@ export default function EditDailyForm() {
                         <option value={'yearly'}>Yearly</option>
                         <label>Repeat Every</label>
                     </select>
-                    {repeats === 'daily' && (
+                    {/* {repeats === 'daily' && (
                         <div>
                             <input
                                 placeholder="Choose how often this repeats"
@@ -148,7 +146,7 @@ export default function EditDailyForm() {
                                 onChange={e => setRepeatsOn(e.target.value)} />
                             <div className="repeats-label">Year</div>
                         </div>
-                    )}
+                    )} */}
 
                     <label>Difficulty</label>
                     <select
@@ -165,7 +163,7 @@ export default function EditDailyForm() {
                     <input
                         id="adjust-streak"
                         type='number'
-                        min='0'
+                        min='1'
                         placeholder='Streak'
                         value={streak}
                         onChange={e => setStreak(e.target.value)} />

@@ -91,7 +91,6 @@ export const signUp = (username, email, password, gold, experience, level, healt
   });
   if(response.ok){
     const data = await response.json();
-    console.log(data)
     dispatch(addAvatar({
     body:"/avatar/body/blue/broad_shirt_blue.png",
     skin:"/avatar/skin/skin_98461a.png",

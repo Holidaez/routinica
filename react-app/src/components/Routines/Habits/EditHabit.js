@@ -8,9 +8,7 @@ const EditHabit = ({ onComplete }) => {
     const history = useHistory()
     const dispatch = useDispatch()
     const { habitId } = useParams()
-    console.log('habit id', habitId)
     const currentHabit = useSelector(state => state.habits[habitId])
-    console.log(currentHabit)
     const [title, setTitle] = useState(currentHabit.title)
     const [notes, setNotes] = useState(currentHabit.notes)
     const [difficulty, setDifficulty] = useState(currentHabit.difficulty)
@@ -38,12 +36,14 @@ const EditHabit = ({ onComplete }) => {
             display_order
         }
         let createdHabit = await dispatch(editAHabit(payload))
-        if (createdHabit) {
-            history.push('/main')
-
+        if (createdHabit.errors) {
+            return alert(createdHabit.errors.map(error => error))
         }
-
+        history.push('/main')
     }
+
+
+
     const handleDelete = (e) => {
         e.stopPropagation()
         dispatch(deleteHabit(currentHabit.id))

@@ -31,7 +31,6 @@ def get_user_test():
     dailies = {}
     habits = {}
     todos = {}
-    print("THIS IS THE CURRENT USER AVATAR",current_user.avatar)
     for daily in current_user.dailies:
         dailies[daily.id] = daily.to_dict()
 
@@ -49,7 +48,6 @@ def get_user_test():
 def add_edit_a_daily():
     form = AddEditDaily()
     form['csrf_token'].data = request.cookies['csrf_token']
-    print("ADD DAILY FORM !!!!!!!!!!!!!!!!", form.data)
     if form.validate_on_submit():
         new_daily = Dailies(
             userId = form.data['userId'],
@@ -77,6 +75,7 @@ def add_edit_a_daily():
 @login_required
 def edit_daily():
     form = AddEditDaily()
+    form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
         edited_daily = json.loads(request.data.decode('UTF-8'))
         daily = Dailies.query.get(edited_daily['id'])

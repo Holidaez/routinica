@@ -13,12 +13,8 @@ def get_avatar():
     """
     Querry the avatar information for rendering
     """
-    # print("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA", current_user)
     user = json.loads(request.data.decode('UTF-8'))
-    print("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA", current_user.id)
     avatar = Avatar.query.filter(Avatar.userId == user['id']).first()
-    # avatar = Avatar.query.filter(Avatar.userId == User.id).all()
-    print("BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB", type(avatar))
     avatarDict= {
       'id':avatar.id,
       'userId':avatar.userId,
@@ -40,11 +36,9 @@ def get_avatar():
 @avatar_routes.route('/update', methods=["PUT"])
 @login_required
 def update_avatar():
-  print("AAAAAAAAAAAAAAAAAAAAAAAAAAAA", request.data.decode('UTF-8'))
   new_avatar = json.loads(request.data.decode('UTF-8'))
   avatar = Avatar.query.filter(Avatar.userId == new_avatar['current_user_id'] ).first()
   # new_avatar = dict(subString.split(':') for subString in request.data.decode('UTF-8').split(','))
-  print("CCCCCCCCCCCCCCCCCCCCCCCCCCCCC", avatar)
   avatar.body = new_avatar['body']
   avatar.skin = new_avatar['skin']
   avatar.bangs = new_avatar['bangs']
@@ -80,10 +74,7 @@ def update_avatar():
 # @login_required
 def add_a_avatar():
   form = AddAvatar()
-  print("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",form.data)
-  # print("BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB", form.validate_on_submit())
   form['csrf_token'].data = request.cookies['csrf_token']
-  # if form.validate_on_submit():
   new_avatar = Avatar(
     body=form.data['body'],
     skin=form.data['skin'],
