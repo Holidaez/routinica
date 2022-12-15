@@ -1,5 +1,7 @@
 from flask import Blueprint, jsonify, session, request, json
 from ..models import Avatar, db, User
+from ..forms import AddAvatar
+from .auth_routes import validation_errors_to_error_messages
 from flask_login import login_required, current_user
 
 
@@ -73,3 +75,31 @@ def update_avatar():
       'background':avatar.background
     }
   return {'avatar': avatarDict}
+
+@avatar_routes.route('/add', methods=['POST'])
+# @login_required
+def add_a_avatar():
+  form = AddAvatar()
+  print("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",form.data)
+  # print("BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB", form.validate_on_submit())
+  form['csrf_token'].data = request.cookies['csrf_token']
+  # if form.validate_on_submit():
+  new_avatar = Avatar(
+    body=form.data['body'],
+    skin=form.data['skin'],
+    bangs=form.data['bangs'],
+    style= form.data['style'],
+    facial= form.data['facial'],
+    glasses= form.data['glasses'],
+    wheelchair= form.data['wheelchair'],
+    accent= form.data['accent'],
+    animal_ears= form.data['animal_ears'],
+    animal_tails= form.data['animal_tails'],
+    headband= form.data['headband'],
+    background= form.data['background'],
+    userId= form.data['userId']
+  )
+  db.session.add(new_avatar)
+  db.session.commit()
+  return new_avatar.to_dict()
+  # return {'errors':validation_errors_to_error_messages(form.errors)}, 401

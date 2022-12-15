@@ -21,17 +21,34 @@ export const getAvatar = (user) => async (dispatch) => {
 }
 
 export const changeAvatar = (newAvatar) => async (dispatch) => {
+    console.log("entered change avatar")
     const response = await fetch('/api/avatar/update', {
         method: 'PUT',
         body: JSON.stringify({ ...newAvatar })
     })
 
     if (response.ok) {
+        console.log(response.body)
+        console.log("entered setAvatar")
         const data = await response.json()
         dispatch(setAvatar(data))
     }
 }
 
+export const addAvatar = (form) => async (dispatch) => {
+    console.log('entered add avatar')
+    const response = await fetch('/api/avatar/add', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body:JSON.stringify({...form})
+    })
+    if (response.ok) {
+        const data = await response.json()
+        dispatch(setAvatar(data))
+    }
+}
 //Reducer
 //make sure to define initialState or remove the default variable
 

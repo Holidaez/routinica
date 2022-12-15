@@ -1,4 +1,5 @@
 // constants
+import { addAvatar, changeAvatar } from "./avatar";
 const SET_USER = 'session/SET_USER';
 const REMOVE_USER = 'session/REMOVE_USER';
 
@@ -88,10 +89,27 @@ export const signUp = (username, email, password, gold, experience, level, healt
       login_date
     }),
   });
-
-  if (response.ok) {
+  if(response.ok){
     const data = await response.json();
+    console.log(data)
+    dispatch(addAvatar({
+    body:"/avatar/body/blue/broad_shirt_blue.png",
+    skin:"/avatar/skin/skin_98461a.png",
+    bangs:"/avatar/hair/color/blond/hair_bangs_1_blond.png" ,
+    style: "/avatar/hair/color/blond/style/hair_base_1_blond.png",
+    facial:"/avatar/hair/color/blond/facial/buy_with_jewels/hair_mustache_1_blond.png",
+    glasses:"/avatar/extra/glasses/eyewear_special_blackTopFrame.png" ,
+    wheelchair: "/avatar/extra/wheelchair/button_chair_green.png",
+    accent: "/avatar/extra/accent/hair_flower_5.png",
+    animal_ears:"/avatar/extra/animal_ears/headAccessory_special_foxEars.png" ,
+    animal_tails:"/avatar/extra/animal_tails/icon_back_special_pigTail.png" ,
+    headband:"/avatar/extra/headband/headAccessory_special_blueHeadband.png",
+    background:"/avatar/backgrounds/background_purple.png" ,
+    userId: data.id
+    }))
     dispatch(setUser(data))
+  }
+  if (response.ok) {
     return null;
   } else if (response.status < 500) {
     const data = await response.json();

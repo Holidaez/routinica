@@ -83,6 +83,7 @@ const SignUpForm = () => {
             <div>
               {/* <label>User Name</label> */}
               <input
+                required
                 type='text'
                 name='username'
                 onChange={updateUsername}
@@ -93,7 +94,8 @@ const SignUpForm = () => {
             <div>
               {/* <label>Email</label> */}
               <input
-                type='text'
+                required
+                type='email'
                 name='email'
                 onChange={updateEmail}
                 value={email}
@@ -103,6 +105,7 @@ const SignUpForm = () => {
             <div>
               {/* <label>Password</label> */}
               <input
+                required
                 type='password'
                 name='password'
                 onChange={updatePassword}
