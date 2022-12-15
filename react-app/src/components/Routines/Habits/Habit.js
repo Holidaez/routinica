@@ -54,22 +54,22 @@ function Habit() {
                 return (
                     <div key={`hab-${habit.id}`} className='habit-card'>
                         <div className='habit-plus-minus'>
-                            <button className='habit-plus-button'>+</button>
+                            {/* <button className='habit-plus-button'>+</button> */}
                         </div>
-                        <NavLink className='navlink' to={`/habits/${habit.id}`}>
+                        <NavLink className='navlink' to={`/habits/${habit.id}`} id='navlink'>
                         <div className='habit-info-container'><div className='habit-title'>{habit.title}</div>
                         {habit.notes && (
                             <div className='habit-notes'>{habit.notes}</div>
                         )}</div>
                         </NavLink>
-                        {habit.positive_counter && (
-                            <div className='positive-counter'>+{habit.positive_counter}</div>
-                        )}
-                        {habit.negative_counter && (
-                            <div className='negative-counter'>-{habit.negative_counter}</div>
-                        )}
+                        {/* {habit.positive_counter && ( */}
+                            {/* // <div className='positive-counter'>+{habit.positive_counter}</div> */}
+                        {/* )} */}
+                        {/* {habit.negative_counter && ( */}
+                            {/* <div className='negative-counter'>-{habit.negative_counter}</div> */}
+                        {/* )} */}
                         <div className='habit-plus-minus'>
-                            <button className='habit-minus-button'>-</button>
+                            {/* <button className='habit-minus-button'>-</button> */}
                         </div>
                     </div>
                 )

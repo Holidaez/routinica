@@ -24,6 +24,7 @@ function ToDo() {
     }, [dispatch])
 
     const userId = useSelector(state => state.session.user.id)
+    const user = useSelector(state => state.session.user)
     const todosLength = useSelector(state => Object.values(state.todos).length)
     const currentDate = new Date().toJSON().slice(0, 10)
     const [title, setTitle] = useState('')
@@ -55,8 +56,10 @@ function ToDo() {
                 return (
                     <div key={`to-${todo.id}`} className='todo-card'>
                         <div className='todo-checkbox-container'>
-                            <button className='todo-checkbox' />
-                            <button className='hidden' placeholder='✔' />
+                            <input className='todo-checkbox'
+                            type='checkbox'
+                            />
+                            {/* <button className='hidden' placeholder='✔' /> */}
                         </div>
                         <NavLink className='todo-navlink' to={`/todos/${todo.id}`} >
                             <div className='todo-info-container'>

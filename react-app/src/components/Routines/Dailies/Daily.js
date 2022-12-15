@@ -86,7 +86,9 @@ function Daily() {
                     <div key={`day-${daily.id}`} className='daily-card'>
 
                         <div className='dailies-checkbox-div'>
-                            <button className='daily-checkbox' />
+                            <input className='daily-checkbox'
+                            type='checkbox'
+                             />
                         </div>
                         <NavLink className='navlink' to={`/dailies/${daily.id}`}>
                         <div className='daily-info-container'>
