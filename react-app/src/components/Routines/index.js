@@ -55,12 +55,12 @@ export default function Routines() {
 
             <div id="footer-information">
                 <div id="erin-links">
-                <a href={"https://github.com/eomcikus"}><img src="erin_avatar.png" id="dev-img"></img></a>
-                <a href={"https://www.linkedin.com/in/erin-duffy-omcikus-5641004a/"} id="dev-names">Erin</a>
+                <a href={"https://github.com/eomcikus"} target="_blank"><img src="erin_avatar.png" id="dev-img" ></img></a>
+                <a href={"https://www.linkedin.com/in/erin-duffy-omcikus-5641004a/"} target="_blank" id="dev-names">Erin</a>
                 </div>
                 <div id="dave-links">
-                    <a href="https://github.com/davesextonjr"><img src="/dave_avatar.png" id="dev-img"></img></a>
-                    <a href={"https://www.linkedin.com/in/dave-sexton-jr/"} id="dev-names">Dave</a>
+                    <a href="https://github.com/davesextonjr" target="_blank"><img src="/dave_avatar.png" id="dev-img"></img></a>
+                    <a href={"https://www.linkedin.com/in/dave-sexton-jr/"} target="_blank" id="dev-names">Dave</a>
                 </div>
                 <div id="dev-links-p-container">
                 <div id="dev-links-p">Dev Links</div>
@@ -68,12 +68,12 @@ export default function Routines() {
                 <div id="dev-links-p">Names are Linkedin Links</div>
                 </div>
                 <div id="keegan-links">
-                    <a href="https://github.com/Holidaez"><img src="keegan_avatar.png" id="dev-img"></img></a>
-                    <a href="https://www.linkedin.com/in/keegan-abley-a12099162/" id="dev-names">Keegan</a>
+                    <a href="https://github.com/Holidaez" target="_blank"><img src="keegan_avatar.png" id="dev-img"></img></a>
+                    <a href="https://www.linkedin.com/in/keegan-abley-a12099162/" target="_blank" id="dev-names">Keegan</a>
                 </div>
                 <div id="brian-links">
-                    <a href="https://github.com/AppBK"><img src="/brian_avatar.png" id="dev-img"></img></a>
-                    <a href="https://www.linkedin.com/in/brian-kiesel-94475696/" id="dev-names">Brian</a>
+                    <a href="https://github.com/AppBK" target="_blank"><img src="/brian_avatar.png" id="dev-img"></img></a>
+                    <a href="https://www.linkedin.com/in/brian-kiesel-94475696/" target="_blank" id="dev-names">Brian</a>
                 </div>
             </div>
             </div>
