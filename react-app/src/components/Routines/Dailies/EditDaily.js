@@ -69,7 +69,7 @@ export default function EditDailyForm() {
                             <button type='button' id="cancel-button"
                                 onClick={handleCancel}>Cancel</button>
                             <button type='submit' id="edit-button"
-                                onSubmit={handleSubmit}>Update Daily</button>
+                                onSubmit={handleSubmit}>Save Daily</button>
                         </div>
                     </div>
                     <div id="title-label">Title</div>

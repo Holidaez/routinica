@@ -4,7 +4,9 @@
     justify-content: space-between;
     background-color: #f9f9f9;
 }
-
+#root {
+    height: 100vh;
+}
 .routines-container {
     display: flex;
     flex-direction: column;
@@ -178,4 +180,44 @@ label {
 
 .user-buttons:hover {
     cursor: pointer;
+}
+#dev-img {
+    width: 141px;
+    height: 147px;
+}
+#brian-links, #dave-links, #keegan-links, #erin-links {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+#footer-information{
+    width: 100%;
+    background-color: #36205d;
+    display: flex;
+    padding-top: 25px;
+    margin-bottom: 0;
+    padding-bottom: 0;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+#dev-names {
+    color: white;
+}
+#footer-container{
+    width: 100%;
+    padding-top: 90px;
+    margin: 0;
+}
+#dev-links-p {
+    color: white;
+    padding-bottom: 10px;
+}
+#dev-links-p-container{
+    display: flex;
+    flex-direction: column;
+    width: 20%;
+    justify-content: center;
+    align-items: center;
+    /* padding-bottom: 10px; */
 }
