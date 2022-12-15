@@ -72,8 +72,8 @@ const Avatar = () => {
             ) || currentAvatar.headband != 'null' && (
                 <img src={currentAvatar.headband} id='headband'></img>
             )}
-
         </div>
+
     )
 }
 export default Avatar

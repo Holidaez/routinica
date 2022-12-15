@@ -62,111 +62,120 @@ export default function EditDailyForm() {
     }
 
     return (
-        <section>
-        <form className='edit-form' onSubmit={handleSubmit}>
-        <div className='yellow'>
-        <div className='form-name'>Edit Daily</div>
-            <label>Title</label>
-            <input
-                type='text'
-                placeholder='Add a title'
-                value={title}
-                required
-                onChange={e => setTitle(e.target.value)} />
-            <label>Notes</label>
-            <input
-                type='text'
-                placeholder='Add notes'
-                value={notes}
-                onChange={e => setNotes(e.target.value)} />
-            </div>
-            <label>Start Date</label>
-            <input
-                type='date'
-                min={currentDate}
-                value={startDate}
-                className='due_date'
-                onChange={e => setStartDate(e.target.value)} />
-            <label>Repeats</label>
-            <select
-                id='repeats'
-                value={repeats}
-                onChange={e => setRepeats(e.target.value)}>
-                <option value={'daily'}>Daily</option>
-                <option value={'weekly'}>Weekly</option>
-                <option value={'monthly'}>Monthly</option>
-                <option value={'yearly'}>Yearly</option>
-            <label>Repeat Every</label>
-            </select>
-            {repeats === 'daily' && (
-                <div>
+        <div id='form-container'>
+            <form id='edit-form' onSubmit={handleSubmit}>
+                <div id="orange">
+                    <div id="form-nav">
+                        <div id='form-name'>Edit Daily</div>
+                        <div>
+                            <button type='button' id="cancel-button"
+                                onClick={handleCancel}>Cancel</button>
+                            <button type='submit' id="edit-button"
+                                onSubmit={handleSubmit}>Update Daily</button>
+                        </div>
+                    </div>
+                    <div id="title-label">Title</div>
+                    <input id='title'
 
-                    <input
-                        placeholder="Choose how often this repeats"
                         type='text'
-                        value={repeatsOn}
-                        onChange={e => setRepeatsOn(e.target.value)} />
-                    <div className="repeats-label">Day</div>
-                </div>
-            )}
-            {repeats === 'weekly' && (
-                <div>
-                    <input
-                        placeholder="Choose how often this repeats"
+                        placeholder='Add a title'
+                        value={title}
+                        onChange={e => setTitle(e.target.value)} />
+                    <div id="notes-title">Notes</div>
+                    <textarea id="notes"
                         type='text'
-                        value={repeatsOn}
-                        onChange={e => setRepeatsOn(e.target.value)} />
-                    <div className="repeats-label">Week</div>
+                        placeholder='Add notes'
+                        value={notes}
+                        onChange={e => setNotes(e.target.value)} />
                 </div>
-            )}
-            {repeats === 'monthly' && (
-                <div>
-                    <input
-                        placeholder="Choose how often this repeats"
-                        type='text'
-                        value={repeatsOn}
-                        onChange={e => setRepeatsOn(e.target.value)} />
-                    <div className="repeats-label">Month</div>
-                </div>
-            )}
-            {repeats === 'yearly' && (
-                <div>
-                    <input
-                        placeholder="Choose how often this repeats"
-                        type='text'
-                        value={repeatsOn}
-                        onChange={e => setRepeatsOn(e.target.value)} />
-                    <div className="repeats-label">Year</div>
-                </div>
-            )}
+                <div id='form-bottom'>
 
-            <label>Difficulty</label>
-            <select
-                id='difficulty'
-                value={difficulty}
-                onChange={e => setDifficulty(e.target.value)}>
-                <option value={1}>Trivial</option>
-                <option value={2}>Easy</option>
-                <option value={3}>Medium</option>
-                <option value={4}>Hard</option>
+                    <label>Start Date</label>
+                    <input
+                        id="date"
+                        type='date'
+                        min={currentDate}
+                        value={startDate}
+                        className='due_date'
+                        onChange={e => setStartDate(e.target.value)} />
+                    <label>Repeats</label>
+                    <select
+                        id='repeats'
+                        value={repeats}
+                        onChange={e => setRepeats(e.target.value)}>
+                        <option value={'daily'}>Daily</option>
+                        <option value={'weekly'}>Weekly</option>
+                        <option value={'monthly'}>Monthly</option>
+                        <option value={'yearly'}>Yearly</option>
+                        <label>Repeat Every</label>
+                    </select>
+                    {repeats === 'daily' && (
+                        <div>
+                            <input
+                                placeholder="Choose how often this repeats"
+                                type='text'
+                                value={repeatsOn}
+                                onChange={e => setRepeatsOn(e.target.value)} />
+                            <div className="repeats-label">Day</div>
+                        </div>
+                    )}
+                    {repeats === 'weekly' && (
+                        <div>
+                            <input
+                                placeholder="Choose how often this repeats"
+                                type='text'
+                                value={repeatsOn}
+                                onChange={e => setRepeatsOn(e.target.value)} />
+                            <div className="repeats-label">Week</div>
+                        </div>
+                    )}
+                    {repeats === 'monthly' && (
+                        <div>
+                            <input
+                                placeholder="Choose how often this repeats"
+                                type='text'
+                                value={repeatsOn}
+                                onChange={e => setRepeatsOn(e.target.value)} />
+                            <div className="repeats-label">Month</div>
+                        </div>
+                    )}
+                    {repeats === 'yearly' && (
+                        <div>
+                            <input
+                                placeholder="Choose how often this repeats"
+                                type='text'
+                                value={repeatsOn}
+                                onChange={e => setRepeatsOn(e.target.value)} />
+                            <div className="repeats-label">Year</div>
+                        </div>
+                    )}
 
-            </select>
-            <label> Adjust Streak</label>
-            <input
-                type='text'
-                placeholder='Streak'
-                value={streak}
-                onChange={e => setStreak(e.target.value)} />
+                    <label>Difficulty</label>
+                    <select
+                        id='difficulty'
+                        value={difficulty}
+                        onChange={e => setDifficulty(e.target.value)}>
+                        <option value={1}>Trivial</option>
+                        <option value={2}>Easy</option>
+                        <option value={3}>Medium</option>
+                        <option value={4}>Hard</option>
 
-            <button type='button'
-                onClick={handleCancel}>Cancel</button>
-            <button type='submit'
-                onSubmit={handleSubmit}>Update Daily</button>
-            <button type='button'
-                className='delete-button'
-                onClick={handleDelete}>Delete this Daily</button>
-        </form>
-        </section>
+                    </select>
+                    <label> Adjust Streak</label>
+                    <input
+                        id="adjust-streak"
+                        type='number'
+                        min='0'
+                        placeholder='Streak'
+                        value={streak}
+                        onChange={e => setStreak(e.target.value)} />
+
+                    <button type='button'
+                        id='delete-button'
+                        onClick={handleDelete}><img src='/svg/garbage.svg' id='garbage'></img>Delete this Daily</button>
+                </div>
+            </form>
+        </div>
 
     )
 }

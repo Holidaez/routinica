@@ -2,13 +2,13 @@ import './edittodo.css'
 
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux'
-import {useHistory, useParams} from 'react-router-dom'
+import { useHistory, useParams } from 'react-router-dom'
 import { addToDos, editAToDo, deleteToDo } from '../../../store/todos';
 
 function EditToDoForm() {
     const dispatch = useDispatch()
     const history = useHistory()
-    const {toDoId} = useParams()
+    const { toDoId } = useParams()
     const userId = useSelector(state => state.session.user.id)
     const currentToDo = useSelector(state => state.todos[toDoId])
     const todosLength = useSelector(state => Object.values(state.todos).length)
@@ -38,7 +38,7 @@ function EditToDoForm() {
         if (createdToDo) {
             history.push('/main')
 
-            
+
         }
     }
     const handleDelete = async () => {
@@ -50,17 +50,35 @@ function EditToDoForm() {
         history.push('/main')
     }
     return (
-        <section>
-            <form onSubmit={handleSubmit} className='edit-form'>
-                <input
-                    type='text'
-                    value={title}
-                    required
-                    onChange={e => setTitle(e.target.value)} />
-                <input
-                    type='text'
-                    value={notes}
-                    onChange={e => setNotes(e.target.value)} />
+        <div>
+            <form onSubmit={handleSubmit} id='edit-form'>
+                <div id='orange'>
+                    <div id="form-nav">
+                        <h4 id='edit-habit'>Edit Todo</h4>
+                        <div>
+                            <button type='button'
+                                onClick={cancel} id="cancel-button">Cancel</button>
+                            <button type='submit'
+                                onSubmit={handleSubmit} id="edit-button">Save Todo</button>
+
+                        </div>
+                    </div>
+                    <div id="title-label">Title</div>
+                    <input
+                        id="title"
+                        type='text'
+                        value={title}
+                        onChange={e => setTitle(e.target.value)} />
+                    <div id="notes-title">Notes</div>
+                    <textarea
+                        id="notes"
+                        type='text'
+                        value={notes}
+                        onChange={e => setNotes(e.target.value)} />
+                </div>
+
+                <div id="form-bottom">
+                    <div>Difficulty</div>
                 <select
                     id='difficulty'
                     value={difficulty}
@@ -70,23 +88,25 @@ function EditToDoForm() {
                     <option value={3}>Medium</option>
                     <option value={4}>Hard</option>
                 </select>
+                <div>Date</div>
                 <input
+                id='date'
                     type='date'
                     min={currentDate}
                     value={due_date}
                     onChange={e => setDue_date(e.target.value)} />
-                <input
-                    type='text'
+                {/* <select
+                    id='completed'
                     value={completed}
-                    onChange={e => setCompleted(e.target.value)} />
-                <button type='submit'
-                    onSubmit={handleSubmit}>Edit new ToDo</button>
-                <button type='button'
-                    onClick={cancel}>Cancel</button>
-                <button type='button'
-                    onClick={handleDelete}>Delete this ToDo</button>
+                    onChange={e => setCompleted(e.target.value)}>
+                    <option value={true}>True</option>
+                    <option value={false}>False</option>
+                </select> */}
+                <button type='button' id='delete-button'
+                    onClick={handleDelete}><img src='/svg/garbage.svg' id='garbage'></img>Delete this Todo</button>
+                </div>
             </form>
-        </section>
+        </div>
     )
 
 }

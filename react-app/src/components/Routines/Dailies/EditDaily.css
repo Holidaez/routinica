@@ -1,13 +1,119 @@
-.edit-container{
-    display: flex;
-    flex-direction: column;
+#edit-form {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  margin: auto;
+  align-items: center;
+  padding-top: 25px;
+}
 
-    height: 90%;
-  }
+#orange {
+  display: flex;
+  flex-direction: column;
+  width: 70%;
+  background-color: #ffbe5d;
+  padding: 50px;
+  border-top: 1px solid black;
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
+  border-left: 1px solid black;
+  border-right: 1px solid black;
+}
 
-.edit-container input,
-.edit-container select,
-.edit-container button{
-    height: 30px;
-    margin: 10px 0px;
+#title {
+  background-color: #ffffff80;
+  margin-bottom: 20px;
+  height: 32px;
+  border: 1px solid black;
+  padding-left: 5px;
+  /* padding: 10px; */
+}
+
+#notes {
+  padding-left: 5px;
+  padding-top: 5px;
+  background-color: #ffffff80;
+  width: 664.7;
+  height: 64px;
+  overflow: auto;
+  resize: vertical;
+}
+
+#form-bottom {
+  display: flex;
+  flex-direction: column;
+  width: 70%;
+  padding: 50px;
+
+  background-color: lightgray;
+  border-bottom: 3px solid black;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  border-left: 1px solid black;
+  border-right: 1px solid black;
+}
+
+#date {
+  padding: 5px;
+  height: 20px;
+  margin-bottom: 15px;
+}
+
+#repeats {
+  padding: 5px;
+  height: 35px;
+  margin-bottom: 15px;
+}
+#repeats:hover {
+  cursor: pointer;
+  box-shadow: 1px 1px 1px black;
+}
+
+#difficulty {
+  padding: 5px;
+  height: 36px;
+  margin-bottom: 30px;
+}
+#difficulty:hover {
+  cursor: pointer;
+  box-shadow: 1px 1px 1px black;
+}
+#adjust-streak {
+  padding: 5px;
+  height: 36px;
+  margin-bottom: 30px;
+}
+#form-nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+#edit-button {
+  background-color:#ffbe5d;
+  border: none;
+}
+#cancel-button {
+  background-color:#ffbe5d;
+  border: none;
+  padding-right: 10px;
+}
+#garbage {
+  height: 15px;
+  width: 15px;
+  padding-right: 5px;
+}
+#delete-button {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-start;
+  color: red;
+  background-color: lightgray;
+  width: 30%;
+  margin: auto;
+  border:none;
+}
+#delete-button:hover {
+  cursor: pointer;
 }

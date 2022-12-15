@@ -132,3 +132,15 @@ from  '../store/avatar' import changeAvatar;
 const submitAvatar = () => {
     dispatch(changeAvatar(currentAvatar))
 }
+<div id="vitals">
+    <div>
+        <progress id="health-bar" max="100" value="100"> 70% </progress>
+    </div>
+    <div>
+        <progress id="experience-bar" max="100" value="0"> 70% </progress>
+    </div>
+</div>
+
+.user-buttons {
+    border: none;
+}

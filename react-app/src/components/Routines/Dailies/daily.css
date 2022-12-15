@@ -31,7 +31,7 @@
     background-color: #ffbe5c;
 }
 .daily-checkbox {
-    background-color: #ffdfb0;
+    accent-color: #ffdfb0;
     display: block;
     width: 70%;
     height: 30%;
@@ -39,11 +39,13 @@
     cursor: pointer;
     border-radius: 3px;
 }
-.daily-checkbox:checked {
-    background-color: #ffbe5c;
+.daily-checkbox:checked, .todo-checkbox{
+   accent-color: #ffdfb0;
+   /* #ffdfb0; */
 }
 .daily-card-title {
     font-size: 18px;
+    text-decoration: none;
 }
 .dailies-title {
     font-size: 24px;
@@ -56,4 +58,11 @@
 .daily-card-checklist {
     font-size: 14px;
     color: gray;
+}
+.navlink, .todo-navlink {
+    padding-top: 7px;
+    min-width: 80%;
+    padding-left: 4px;
+    text-decoration: none;
+    color:#494750;
 }
