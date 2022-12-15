@@ -60,7 +60,7 @@ const SignUpForm = () => {
         <div id="logo"><img src="/svg/habitica_logo.svg" alt="image Not Found"></img>
         <img src="routinica_true_purple.svg" alt="image Not Found"></img>
         </div>
-        <button id="login-button" onClick={redirectToLogin}>Login</button>
+        <button id="login-button-signup" onClick={redirectToLogin}>Login</button>
         <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Varela+Round" />
       </div>
       <div className="upper-form-text">

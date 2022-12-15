@@ -103,11 +103,11 @@ body {
 #sign-up-for-free{
     text-align: center;
 }
-#login-button {
+#login-button-signup {
  border: none;
- background-color: #5d3a9c;
+ background-color: #46a7d8;
  border-radius: 6px;
- margin: 0;
+ width: 70px;
 }
 #info-paragraph {
     padding-top: 20px;

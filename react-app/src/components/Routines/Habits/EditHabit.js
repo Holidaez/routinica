@@ -75,7 +75,7 @@ const EditHabit = ({ onComplete }) => {
                             <button type='button'
                                 onClick={cancel} id="cancel-button">Cancel</button>
                             <button type='submit'
-                                onSubmit={handleSubmit}id="edit-button">Save Habit</button>
+                                onSubmit={handleSubmit} id="edit-button">Save Habit</button>
 
                         </div>
                     </div>
@@ -100,7 +100,7 @@ const EditHabit = ({ onComplete }) => {
 
 
                 <div id="form-bottom">
-                <div id="dailies-label">Difficulty</div>
+                    <div id="dailies-label">Difficulty</div>
                     <select
                         id='difficulty'
                         value={difficulty}
