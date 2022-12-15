@@ -2,6 +2,7 @@
 const LOAD = '/todos/LOAD'
 const ADD = '/todos/ADD'
 const DELETE = '/todos/DELETE'
+const REMOVE_TODOS = 'todos/REMOVE_TODOS'
 //Actions
 const load = todos => ({
     type: LOAD,
@@ -16,6 +17,9 @@ const add = todo => ({
 const deleteT = todoId => ({
     type: DELETE,
     todoId
+})
+export const removeTodos = () => ({
+    type:REMOVE_TODOS
 })
 //Thunks
 export const getToDos = () => async (dispatch) => {
@@ -118,6 +122,9 @@ export default function todosReducer(state = initialState, action) {
             const allToDos = {...state}
             delete allToDos[action.todoId]
             return allToDos
+        }
+        case REMOVE_TODOS: {
+            return {}
         }
         default:
             return state;

@@ -1,16 +1,21 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Daily from "./Dailies/Daily";
 import ToDo from "./ToDos/ToDos";
 import Habit from "./Habits/Habit";
 import Avatar from "./Avatar/avatar";
 import { useHistory } from "react-router-dom";
+import { getDailies, addDaily } from '../../store/dailies'
+import { useDispatch, useSelector } from "react-redux";
 import './routines.css'
-import { useSelector } from "react-redux";
 
 //render here
 export default function Routines() {
     const history = useHistory()
+    const dispatch = useDispatch()
     const user = useSelector(state => state.session.user)
+    // useEffect(() => {
+    //     dispatch(getDailies())
+    // },[user])
     const redirectToEditAvatar = () => {
         let path = '/edit/avatar'
         history.push(path)

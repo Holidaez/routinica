@@ -6,8 +6,8 @@ import {logout} from '../../store/session'
 const LogOutPage = () => {
     const dispatch = useDispatch()
     const user = useSelector(state => state.session.user)
-    useEffect(() => {
-        dispatch(logout())
+    useEffect( async () => {
+        await dispatch(logout())
     },[])
     if(!user) {
         return <Redirect to='/'/>
