@@ -2,6 +2,7 @@
 const LOAD = '/habits/LOAD'
 const ADD = '/habits/ADD'
 const DELETE = '/habits/DELETE'
+const REMOVE_HABITS = 'habits/REMOVE_HABITS'
 //Actions
 const load = habitList => ({
     type: LOAD,
@@ -14,6 +15,9 @@ const add = habit => ({
 const deleteH = habitId => ({
     type: DELETE,
     habitId
+})
+export const removeHabits = () => ({
+    type:REMOVE_HABITS
 })
 //Thunks
 export const getHabits = () => async (dispatch) => {
@@ -120,6 +124,9 @@ export default function habitsReducer(state = initialState, action) {
             const allHabits = {...state}
             delete allHabits[action.habitId]
             return allHabits
+        }
+        case REMOVE_HABITS: {
+            return {}
         }
         default:
             return state;

@@ -1,5 +1,8 @@
 // constants
-import { addAvatar, changeAvatar } from "./avatar";
+import { addAvatar, changeAvatar, remove_avatar } from "./avatar";
+import { removeDailies } from "./dailies";
+import { removeHabits } from "./habits";
+import { removeTodos } from "./todos";
 const SET_USER = 'session/SET_USER';
 const REMOVE_USER = 'session/REMOVE_USER';
 
@@ -67,6 +70,10 @@ export const logout = () => async (dispatch) => {
 
   if (response.ok) {
     dispatch(removeUser());
+    dispatch(remove_avatar())
+    dispatch(removeDailies())
+    dispatch(removeTodos())
+    dispatch(removeHabits())
   }
 };
 
