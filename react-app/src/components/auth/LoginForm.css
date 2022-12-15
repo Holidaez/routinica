@@ -89,7 +89,6 @@
   height: 36px;
   border: none;
   border-radius: 2px;
-  /* margin: auto; */
 }
 
 #login-button:hover {
@@ -123,7 +122,6 @@
 }
 
 #demo-login {
-
   display: block;
   background-color: #4fb5e9;
   color: white;
@@ -131,7 +129,4 @@
   height: 36px;
   border: none;
   border-radius: 2px;
-  /* margin: auto; */
-
-
 }
