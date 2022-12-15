@@ -17,7 +17,13 @@ const LoginForm = () => {
       setErrors(data);
     }
   };
-
+  const demoLogin = async (e) => {
+    e.preventDefault();
+    const data = await dispatch(login('demo@aa.io','password'))
+    if(data) {
+      setErrors(data)
+    }
+  }
   const updateEmail = (e) => {
     setEmail(e.target.value);
   };
@@ -67,7 +73,10 @@ const LoginForm = () => {
             onChange={updatePassword}
           />
         </div>
+        <div id='login-demo-login-button-container'>
         <button id="login-button" type='submit'>Login</button>
+        <button id='demo-login' onClick={demoLogin}>Demo User</button>
+        </div>
         {/* <div id="need-account"><p>Don't have a Routinica account?</p><button id="signup-from-login">Sign Up</button></div> */}
       </form>
       <div className='mountain-background'></div>

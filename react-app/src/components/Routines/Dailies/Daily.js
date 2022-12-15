@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux'
-import { getDailies } from '../../../store/dailies'
+import { NavLink } from "react-router-dom"
+import { getDailies, addDaily } from '../../../store/dailies'
+import EditDailyForm from './EditDaily';
 import '../routines.css'
 import './daily.css'
 //TODO:
@@ -15,35 +17,97 @@ function Daily() {
     const currentDailiesList = useSelector(state => {
         return Object.values(state.dailies)
     })
-    // console.log(currentHabitList)
+    const [showEditDailyModal, setShowEditDailyModal] = useState(false)
+    const [currentDaily, setCurrentDaily] = useState(0)
+    const [stateDaily, setStateDaily] = useState(0)
     useEffect(() => {
         dispatch(getDailies())
     }, [dispatch])
+    const [title, setTitle] = useState("")
+    const userId = useSelector(state => state.session.user.id)
+    const dailiesLength = useSelector(state => Object.values(state.dailies).length)
+    const currentDate = new Date().toJSON().slice(0, 10)
+    const [displayOrder, setDisplayOrder] = useState(dailiesLength)
+    const handleSubmit = async (e) => {
+        e.preventDefault()
+        const payload = {
+            userId,
+            startDate: currentDate,
+            repeats: 'weekly',
+            repeatsOn: 1,
+            title,
+            notes: '',
+            difficulty: 2,
+            streak: 1,
+            due: true,
+            displayOrder: dailiesLength + 1
+        }
+        let createdDaily = await dispatch(addDaily(payload))
+        if (createdDaily.errors){
+            alert('Must include a title with 4 or more characters')
+        }
+        setTitle("")
+
+    }
 
 
-    return (
+
+        const clickHandler = (e) => {
+            e.stopPropagation()
+            if (!isNaN(e.target.id)) {
+                setCurrentDaily(e.target.id)
+                setShowEditDailyModal(true)
+            }
+            console.log(e.target.id)
+            console.log(currentDaily, "the current daily is")
+        }
+
+
+        const swapModal = () => {
+            if(showEditDailyModal === false){
+                setShowEditDailyModal(true)
+            }
+            if(showEditDailyModal === true){
+                setShowEditDailyModal(false)
+            }
+        }
+
+
+
+
+        return (
+
         <div className='routines-container'>
             {/* <div className='dailies-title'>Dailies</div> */}
-            <input className='add-routine' placeholder='Add a Daily' />
-            {currentDailiesList.map( daily => {
+            <form onSubmit={handleSubmit}>
+                <input className='add-routine' placeholder='Add a Daily' value={title} onChange={(e) => setTitle(e.target.value)} />
+            </form>
+            {currentDailiesList.map(daily => {
                 return (
                     <div key={`day-${daily.id}`} className='daily-card'>
+
                         <div className='dailies-checkbox-div'>
-                            <button className='daily-checkbox' />
+                            <input className='daily-checkbox'
+                            type='checkbox'
+                             />
                         </div>
+                        <NavLink className='navlink' to={`/dailies/${daily.id}`}>
                         <div className='daily-info-container'>
-                        <div className='daily-card-title'>{daily.title}</div>
-                        {daily.notes && (
-                            <div className='daily-card-notes'>{daily.notes}</div>
-                        )}
-                        {daily.checklist && (
-                            <div className='daily-card-checklist'>{daily.checklist}</div>
-                        )}
+                                <div className='daily-card-title'>{daily.title}</div>
+                                {daily.notes && (
+                                    <div className='daily-card-notes'>{daily.notes}</div>
+                                )}
+                            </div>
+                            </NavLink>
+                            {daily.checklist && (
+                                <div className='daily-card-checklist'>{daily.checklist}</div>
+                            )}
                         </div>
-                    </div>
+
                 )
             })}
         </div>
+
     )
 }
 

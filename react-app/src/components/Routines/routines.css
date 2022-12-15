@@ -20,10 +20,13 @@
     border-radius: 3px;
     /* border: 1px solid mediumpurple; */
 }
-
+.routines-container .add-routine {
+    width: unset;
+}
 .add-routine {
     background-color:#e1e0e3;
-    width: 95%;
+    display: block;
+    width: 100%;
     height: 40px;
     border: 0;
     color: #908f90;
@@ -32,9 +35,129 @@
     padding-top: 10px;
     padding-left: 15px;
     margin: 5px;
-    border-radius: 3px; 
+    border-radius: 3px;
+    /* border: 1px red solid; */
 }
+
 .add-routine:focus {
     background-color: white;
     outline: 1px #915bf3 solid;
+}
+section {
+    display: flex;
+    direction: column;
+    justify-content: center;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    box-sizing: border-box;
+    border-radius: 12%;
+    padding: 15px;
+    margin: 5px;
+}
+label {
+    /* padding: 6px; */
+    font-size: 12px;
+    font-weight: bold;
+    color: #4d4a57;
+
+}
+
+.yellow {
+    display: flex;
+    flex-direction: column;
+    background-color: #ffbe5c;
+    color: #784b01;
+    height: 40%;
+}
+.yellow input {
+    background-color: #ffdfb0;
+    color: #784b01;
+    outline: none;
+    border: none;
+    border-radius: 2px;
+}
+.form-name {
+    font-size: 24px;
+    color: #784b01;
+    font-weight: bold;
+    padding: 20px;
+}
+
+.delete-button {
+    background-color: white;
+    color: #c92a2a;
+    border: none;
+}
+
+#header-container{
+    background-color: #36205d;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+#avatar-block-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 30px;
+    padding-left: 20px;
+}
+#button-container{
+    display: flex;
+    flex-direction: column;
+    margin-right: 20px;
+    margin-top: 20px;
+}
+
+#health-bar {
+  accent-color:#f64e51;
+  height:30px;
+}
+
+#experience-bar {
+    accent-color: #ffbe5c;
+    height: 30px;
+}
+#health {
+    color: white;
+    display: flex;
+}
+#exp {
+    color: white;
+}
+#health-heart {
+    height: 30px;
+    width: 30px;
+    padding-right: 5px;
+}
+#jewel-star {
+    height: 30px;
+    width: 30px;
+    padding-right: 5px;
+}
+#vitals {
+    padding-left: 10px;
+}
+#user-info {
+    color: white;
+}
+#sword-img {
+    height: 30px;
+    width: 30px;
+    padding-right: 5px;
+}
+.user-buttons{
+    border-radius: 5px;
+    font-size: 15px;
+    background-color: #6f42c1;
+    color: white;
+    padding: 5px;
+}
+.user-buttons:hover{
+    cursor: pointer;
 }

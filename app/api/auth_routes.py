@@ -2,7 +2,7 @@ from flask import Blueprint, jsonify, session, request
 from app.models import User, db
 from app.forms import LoginForm
 from app.forms import SignUpForm
-from flask_login import current_user, login_user, logout_user, login_required
+from flask_login import current_user, login_user, logout_user, login_required, confirm_login
 
 auth_routes = Blueprint('auth', __name__)
 
@@ -40,8 +40,7 @@ def login():
     if form.validate_on_submit():
         # Add the user to the session, we are logged in!
         user = User.query.filter(User.email == form.data['email']).first()
-        login_user(user)
-        print('BACKEND USER: ', user)
+        login_user(user, force=True)
         return user.to_dict()
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
@@ -61,10 +60,8 @@ def sign_up():
     Creates a new user and logs them in
     """
     form = SignUpForm()
-    print("THIS PRINTS THE FORM", form)
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
-        print("THIS IS A PRINT STATEMENT" , form.data)
         user = User(
             username=form.data['username'],
             email=form.data['email'],

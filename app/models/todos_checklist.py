@@ -9,7 +9,7 @@ class ToDosChecklist(db.Model):
 
   id = db.Column(db.Integer, primary_key=True)
   title = db.Column(db.String(64), nullable=False)
-  checked = db.Column(db.Boolean, nullable=False)
+  checked = db.Column(db.Boolean)
   todosId = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('todos.id')))
 
   todos = db.relationship('ToDos', back_populates='todos_checklist')

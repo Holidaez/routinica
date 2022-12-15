@@ -15,7 +15,7 @@ def seed_dailies():
         difficulty = 2,
         streak = 0,
         due = True,
-        display_order = 0
+        display_order = 1
         )
 
     dailyTwo = Dailies(
@@ -28,7 +28,7 @@ def seed_dailies():
         difficulty = 2,
         streak = 0,
         due = True,
-        display_order = 1
+        display_order = 2
         )
 
     dailyThree = Dailies(
@@ -41,7 +41,7 @@ def seed_dailies():
         difficulty = 2,
         streak = 0,
         due = True,
-        display_order = 2
+        display_order = 3
         )
 
     dailyFour = Dailies(

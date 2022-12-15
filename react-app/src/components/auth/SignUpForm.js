@@ -25,9 +25,8 @@ const SignUpForm = () => {
       const data = await dispatch(signUp(username, email, password, gold, experience, level, health, created_at, login_date));
       if (data) {
         setErrors(data)
-        if (user) {
-          return <Redirect to='/users' />
-        }
+      }else {
+        return history.push('/main')
       }
     }
   };
@@ -57,20 +56,24 @@ const SignUpForm = () => {
 
   return (
     <div className='top-div'>
-      <div>
-        <img src="python_proj_logo.svg" alt="image Not Found"></img>
-        <button onClick={redirectToLogin}>Login</button>
+      <div id='top-nav-bar'>
+        <div id="logo"><img src="/svg/habitica_logo.svg" alt="image Not Found"></img>
+        <img src="routinica_true_purple.svg" alt="image Not Found"></img>
+        </div>
+        <button id="login-button-signup" onClick={redirectToLogin}>Login</button>
         <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Varela+Round" />
       </div>
       <div className="upper-form-text">
         <div className="column-left">
           <img id="wizards" src="/png/home-main@habitica.png"></img>
           <div className='big-quote'>Motivate yourself to achieve your goals</div>
-          <div>It's time to have fun when you get things done! Join over 4 million Habiticans and improve your life one task at a time</div>
+          <div id='paragraph-big-quote'>It's time to have fun when you get things done! Join over 4 million Habiticans and improve your life one task at a time</div>
         </div>
         <div className="column-right">
-          <div>Sign up for free</div>
-          <div>Username must be 1 to 20 characters, containing only letters a to z, numbers 0 to 9, hyphens, or underscores, and cannot include any inappropriate terms.</div>
+          <div id="sign-up-for-free">
+          <h2>Sign up for free</h2>
+          </div>
+          <div id="info-paragraph">Username must be 1 to 20 characters, containing only letters a to z, numbers 0 to 9, hyphens, or underscores, and cannot include any inappropriate terms.</div>
           <form onSubmit={onSignUp} className='sign-up-form'>
             <div>
               {errors.map((error, ind) => (
@@ -80,6 +83,7 @@ const SignUpForm = () => {
             <div>
               {/* <label>User Name</label> */}
               <input
+                required
                 type='text'
                 name='username'
                 onChange={updateUsername}
@@ -90,7 +94,8 @@ const SignUpForm = () => {
             <div>
               {/* <label>Email</label> */}
               <input
-                type='text'
+                required
+                type='email'
                 name='email'
                 onChange={updateEmail}
                 value={email}
@@ -100,6 +105,7 @@ const SignUpForm = () => {
             <div>
               {/* <label>Password</label> */}
               <input
+                required
                 type='password'
                 name='password'
                 onChange={updatePassword}
@@ -118,7 +124,7 @@ const SignUpForm = () => {
                 placeholder='Confirm Password'
               ></input>
             </div>
-            <p>By clicking the button below, you are indicating that you have read and agree to the Terms of Service and Privacy Policy.</p>
+            <div id="bottom-paragraph-info">By clicking the button below, you are indicating that you have read and agree to the Terms of Service and Privacy Policy.</div>
             <button type='submit' className='signup-button'>Sign Up</button>
           </form>
         </div>

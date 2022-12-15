@@ -11,13 +11,13 @@ class Dailies(db.Model):
   userId = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('users.id')), nullable=False)
   start_date = db.Column(db.String(64), nullable=False)
   repeats = db.Column(db.String(64), nullable=False)
-  repeats_on = db.Column(db.String(256), nullable=False)
+  repeats_on = db.Column(db.String(256))
   title = db.Column(db.String(64), nullable=False)
   notes = db.Column(db.String(250)) #can be empty
   difficulty = db.Column(db.Integer, nullable=False)
   streak = db.Column(db.Integer, nullable=False)
-  due = db.Column(db.Boolean, nullable=False)
-  display_order = db.Column(db.Integer, nullable=False, unique=True) #to store order
+  due = db.Column(db.Boolean)
+  display_order = db.Column(db.Integer) #to store order
 
   user = db.relationship('User', back_populates='dailies')
   dailies_checklist = db.relationship('DailiesChecklist', back_populates='dailies')

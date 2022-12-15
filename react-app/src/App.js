@@ -13,8 +13,12 @@ import Habit from './components/Routines/Habits/Habit'
 import Daily from './components/Routines/Dailies/Daily'
 import Routines from './components/Routines';
 import EditAvatar from './components/avatar/EditAvatar';
+import EditDailyForm from './components/Routines/Dailies/EditDaily';
+import EditHabit from './components/Routines/Habits/EditHabit';
+import FourOFour from './components/404/404.js';
 import { authenticate } from './store/session';
 import logout from './store/session.js'
+import EditToDoForm from './components/Routines/ToDos/EditToDos';
 function App() {
   const [loaded, setLoaded] = useState(false);
   const dispatch = useDispatch();
@@ -49,8 +53,18 @@ function App() {
         <Route path='/habits' exact={true}>
           <Habit />
         </Route>
+        <Route path='/habits/:habitId'>
+          <EditHabit />
+        </Route>
+        <Route path='/dailies/:dailyId'>
+          < EditDailyForm/>
+        </Route>
+        <Route path='/todos/:toDoId'>
+          <EditToDoForm />
+        </Route>
         <Route path='/dailies' exact={true}>
           <Daily />
+
         </Route>
         <ProtectedRoute path='/users' exact={true} >
           <UsersList />
@@ -73,6 +87,9 @@ function App() {
         {/* <Route path='/' exact={true} >
           <h1>My Home Page</h1>
         </Route> */}
+        <Route path='*'>
+          <FourOFour />
+        </Route>
       </Switch>
     </BrowserRouter>
   );
