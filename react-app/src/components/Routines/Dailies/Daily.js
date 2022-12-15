@@ -44,7 +44,9 @@ function Daily() {
             displayOrder: dailiesLength + 1
         }
         let createdDaily = await dispatch(addDaily(payload))
-        if (createdDaily) console.log("You've created a Daily")
+        if (createdDaily.errors){
+            alert('must include a title')
+        }
         setTitle("")
 
     }

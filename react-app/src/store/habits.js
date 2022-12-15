@@ -51,7 +51,7 @@ export const addHabit = (form) => async (dispatch) => {
     } else {
         const data = await response.json();
         if (data.errors){
-            return data.errors;
+            return data;
         } else {
             return ["Something went wrong, can't add that daily"]
         }

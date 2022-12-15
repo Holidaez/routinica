@@ -41,7 +41,10 @@ function Habit() {
                 display_order: habitsLength + 1
             }
             let createdHabit = await dispatch(addHabit(payload))
-            if (createdHabit) console.log("You created a Habit")
+
+            if (createdHabit.errors){
+                alert('must include a title')
+            }
             setTitle("")
         }
     return (

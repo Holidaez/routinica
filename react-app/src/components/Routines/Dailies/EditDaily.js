@@ -14,8 +14,6 @@ export default function EditDailyForm() {
     const currentDaily = useSelector(state => state.dailies[dailyId])
     const currentDate = new Date().toJSON().slice(0, 10)
 
-
-
     const [startDate, setStartDate] = useState(currentDaily.start_date)
     const [repeats, setRepeats] = useState(currentDaily.repeats)
     const [repeatsOn, setRepeatsOn] = useState(currentDaily.repeats_on) //is this correct???
@@ -44,6 +42,7 @@ export default function EditDailyForm() {
         }
 
         let createdDaily = await dispatch(editDaily(payload))
+        
         if (createdDaily) {
             history.push('/main')
 
@@ -72,6 +71,7 @@ export default function EditDailyForm() {
                 type='text'
                 placeholder='Add a title'
                 value={title}
+                required
                 onChange={e => setTitle(e.target.value)} />
             <label>Notes</label>
             <input

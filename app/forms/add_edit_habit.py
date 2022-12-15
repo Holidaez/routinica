@@ -4,8 +4,8 @@ from wtforms.validators import DataRequired, Length
 
 class AddEditHabit(FlaskForm):
     userId = IntegerField('userId', validators=[DataRequired()])
-    title = StringField('Title', validators=[DataRequired()])
-    notes = StringField('Notes')
+    title = StringField('Title', validators=[DataRequired(), Length(min=4, message='Minimum length of 4 characters required for a title.')])
+    notes = StringField('Notes', validators=[Length(max=3000, message='Notes must be less than 3000 characters.')])
     difficulty = IntegerField('Difficulty')
     reset_counter = StringField('Reset Counter')
     positive_counter = IntegerField('Positive Counter')

@@ -24,7 +24,9 @@ def get_user_test():
     """
     Testing Route for relationships
     """
+
     #TODO Refactor comprehensions
+
     return_user = current_user.to_dict()
     dailies = {}
     habits = {}
@@ -74,33 +76,36 @@ def add_edit_a_daily():
 @dailies_routes.route('/edit', methods=['PUT'])
 @login_required
 def edit_daily():
-    edited_daily = json.loads(request.data.decode('UTF-8'))
-    daily = Dailies.query.get(edited_daily['id'])
-    daily.userId = edited_daily['userId']
-    daily.start_date = edited_daily['start_date']
-    daily.repeats = edited_daily['repeats']
-    daily.repeats_on = edited_daily['repeats_on']
-    daily.title = edited_daily['title']
-    daily.notes = edited_daily['notes']
-    daily.difficulty = edited_daily['difficulty']
-    daily.streak = edited_daily['streak']
-    daily.due = edited_daily['due']
-    daily.display_order = edited_daily['display_order']
-    db.session.commit()
-    dailyDict = {
-        'id': daily.id,
-        'userId': daily.userId,
-        'start_date': daily.start_date,
-        'repeats': daily.repeats,
-        'repeats_on': daily.repeats_on,
-        'title': daily.title,
-        'notes': daily.notes,
-        'difficulty': daily.difficulty,
-        'streak': daily.streak,
-        'due': daily.due,
-        'display_order': daily.display_order
-        }
-    return dailyDict
+    form = AddEditDaily()
+    if form.validate_on_submit():
+        edited_daily = json.loads(request.data.decode('UTF-8'))
+        daily = Dailies.query.get(edited_daily['id'])
+        daily.userId = edited_daily['userId']
+        daily.start_date = edited_daily['start_date']
+        daily.repeats = edited_daily['repeats']
+        daily.repeats_on = edited_daily['repeats_on']
+        daily.title = edited_daily['title']
+        daily.notes = edited_daily['notes']
+        daily.difficulty = edited_daily['difficulty']
+        daily.streak = edited_daily['streak']
+        daily.due = edited_daily['due']
+        daily.display_order = edited_daily['display_order']
+        db.session.commit()
+        dailyDict = {
+            'id': daily.id,
+            'userId': daily.userId,
+            'start_date': daily.start_date,
+            'repeats': daily.repeats,
+            'repeats_on': daily.repeats_on,
+            'title': daily.title,
+            'notes': daily.notes,
+            'difficulty': daily.difficulty,
+            'streak': daily.streak,
+            'due': daily.due,
+            'display_order': daily.display_order
+            }
+        return dailyDict
+    return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
 @dailies_routes.route('/<id>', methods=['DELETE'])
 @login_required
