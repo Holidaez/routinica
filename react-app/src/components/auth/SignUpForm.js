@@ -28,6 +28,8 @@ const SignUpForm = () => {
       }else {
         return history.push('/main')
       }
+    }else {
+      alert("Passwords Do Not Match")
     }
   };
   const redirectToLogin = () => {

@@ -146,6 +146,7 @@ const EditAvatar = () => {
     if (hairImg.includes('blond')) {
       setSelectedHairColor('blond')
     }
+    setActiveSubCategory('Bangs')
   }
 
   function selectSize(e) {
@@ -155,6 +156,7 @@ const EditAvatar = () => {
     } else {
       setShirtSize('broad');
     }
+    setActiveSubCategory('Shirt')
   }
 
 
