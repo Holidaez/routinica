@@ -77,5 +77,5 @@ class Tags(db.Model):
     return {
       "id":self.id,
       "title":self.title,
-      "checked":self.checked,
+      "userId":self.userId,
     }

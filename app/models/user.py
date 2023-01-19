@@ -25,6 +25,7 @@ class User(db.Model, UserMixin):
     dailies = db.relationship('Dailies', back_populates='user')
     todos = db.relationship('ToDos', back_populates='user')
     tags = db.relationship('Tags', back_populates='user')
+    order = db.relationship('RoutinesOrder', back_populates='user')
 
 
     @property
