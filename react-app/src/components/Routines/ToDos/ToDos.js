@@ -50,7 +50,6 @@ function ToDo() {
     const updateCompleted = async (e, todo) => {
         e.preventDefault()
         setChecking(true)
-        console.log("this is the todo i clicked", todo)
         if(todo.completed === true){
             todo.completed = false
         }else {
