@@ -14,5 +14,5 @@ class AddEditDaily(FlaskForm):
     difficulty = IntegerField('Difficulty', validators=[DataRequired()])
     tags = StringField('Tags')
     streak = IntegerField('Streak', validators=[DataRequired()])
-    due = BooleanField('Due', validators=[DataRequired()])
+    due = BooleanField('Due')
     display_order = IntegerField('Display Order', validators=[DataRequired()])

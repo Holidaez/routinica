@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux'
-import { getToDos, addToDos } from '../../../store/todos'
+import { getToDos, editAToDo, addToDos } from '../../../store/todos'
 import { Modal } from '../../../context/Modal';
 import { NavLink } from 'react-router-dom';
 import EditToDoForm from './EditToDos';
@@ -28,6 +28,7 @@ function ToDo() {
     const todosLength = useSelector(state => Object.values(state.todos).length)
     const currentDate = new Date().toJSON().slice(0, 10)
     const [title, setTitle] = useState('')
+    const [checking, setChecking] = useState(false)
 
     const handleSubmit = async (e) => {
         e.preventDefault()
@@ -46,19 +47,47 @@ function ToDo() {
         }
         setTitle("")
     }
+    const updateCompleted = async (e, todo) => {
+        e.preventDefault()
+        setChecking(true)
+        console.log("this is the todo i clicked", todo)
+        if(todo.completed === true){
+            todo.completed = false
+        }else {
+            todo.completed = true
+        }
+        const payload = {
+            userId:todo.userId,
+            difficulty:todo.difficulty,
+            display_order:todo.display_order,
+            id:todo.id,
+            notes:todo.notes,
+            title:todo.title,
+            completed:todo.completed,
+            due_date:todo.due_date
 
+        }
+        let checkboxUpdate = await dispatch(editAToDo(payload))
+        if(checkboxUpdate.errors){
+            return alert(checkboxUpdate.errors.map(error=>error))
+        }
+        setChecking(false)
+    }
     return (
         <div className='routines-container'>
             <link href='https://fonts.googleapis.com/css?family=Varela Round' rel='stylesheet'></link>
             <form onSubmit={handleSubmit}>
                 <input className='add-routine' placeholder='Add a ToDo' value={title} onChange={(e) => setTitle(e.target.value)} />
             </form>
+            <div className='card-holder'>
             {currentToDoList.map(todo => {
                 return (
                     <div key={`to-${todo.id}`} className='todo-card'>
                         <div className='todo-checkbox-container'>
                             <input className='todo-checkbox'
                             type='checkbox'
+                            checked={todo.completed}
+                            onChange={(e) => updateCompleted(e,todo)}
                             />
                             {/* <button className='hidden' placeholder='✔' /> */}
                         </div>
@@ -73,10 +102,12 @@ function ToDo() {
                         {todo.checklist && (
                             <div className='todo-card-checklist'>{todo.checklist}</div>
                         )}
+
                     </div>
 
     )
 })}
+</div>
         </div >
     )
 }
