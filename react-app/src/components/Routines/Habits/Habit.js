@@ -53,7 +53,7 @@ function Habit() {
             <input className='add-routine' placeholder='Add a Habit' value={title} onChange={(e) => setTitle(e.target.value)}/>
 
             </form>
-            <div id='card-holder'>
+            <div className='card-holder'>
             {currentHabitList.map(habit => {
                 return (
                     <div key={`hab-${habit.id}`} className='habit-card'>

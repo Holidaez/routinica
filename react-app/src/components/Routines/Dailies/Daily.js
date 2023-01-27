@@ -82,6 +82,7 @@ function Daily() {
             <form onSubmit={handleSubmit}>
                 <input className='add-routine' placeholder='Add a Daily' value={title} onChange={(e) => setTitle(e.target.value)} />
             </form>
+            <div className='card-holder'>
             {currentDailiesList.map(daily => {
                 return (
                     <div key={`day-${daily.id}`} className='daily-card'>
@@ -106,6 +107,7 @@ function Daily() {
 
                 )
             })}
+            </div>
         </div>
 
     )

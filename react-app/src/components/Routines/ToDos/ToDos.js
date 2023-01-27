@@ -53,6 +53,7 @@ function ToDo() {
             <form onSubmit={handleSubmit}>
                 <input className='add-routine' placeholder='Add a ToDo' value={title} onChange={(e) => setTitle(e.target.value)} />
             </form>
+            <div className='card-holder'>
             {currentToDoList.map(todo => {
                 return (
                     <div key={`to-${todo.id}`} className='todo-card'>
@@ -73,10 +74,12 @@ function ToDo() {
                         {todo.checklist && (
                             <div className='todo-card-checklist'>{todo.checklist}</div>
                         )}
+
                     </div>
 
     )
 })}
+</div>
         </div >
     )
 }

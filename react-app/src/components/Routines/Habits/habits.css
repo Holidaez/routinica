@@ -70,13 +70,13 @@
     padding-left: 4px;
     text-decoration: none;
 }
-#card-holder {
+.card-holder {
     min-width: 100%;
     max-height: 70vh;
     overflow-y: scroll;
 }
 
-#card-holder::-webkit-scrollbar {
+.card-holder::-webkit-scrollbar {
     width: 1em;
 }
 
