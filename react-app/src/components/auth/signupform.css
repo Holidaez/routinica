@@ -109,6 +109,9 @@ body {
  background-color: #46a7d8;
  border-radius: 6px;
  width: 70px;
+ min-height: 100%;
+ padding: 10px;
+ margin-right: 5px;
 }
 #info-paragraph {
     padding-top: 20px;
@@ -120,4 +123,7 @@ body {
 }
 #paragraph-big-quote {
     text-align: center;
+}
+#login-demo-buttons{
+
 }
