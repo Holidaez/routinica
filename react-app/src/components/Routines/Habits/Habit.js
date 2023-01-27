@@ -17,7 +17,7 @@ function Habit() {
     const currentHabitList = useSelector(state => {
         return Object.values(state.habits)
     })
-    // console.log(currentHabitList)
+
     useEffect(() => {
         dispatch(getHabits())
     }, [dispatch])

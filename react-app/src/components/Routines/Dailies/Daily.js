@@ -59,8 +59,8 @@ function Daily() {
                 setCurrentDaily(e.target.id)
                 setShowEditDailyModal(true)
             }
-            console.log(e.target.id)
-            console.log(currentDaily, "the current daily is")
+
+
         }
 
 
@@ -76,7 +76,6 @@ function Daily() {
         const updateCompleted = async (e, daily) => {
             e.preventDefault()
             setChecking(true)
-            console.log("this is the daily i clicked", daily)
             if(daily.due === true){
                 daily.due = false
             }else {
