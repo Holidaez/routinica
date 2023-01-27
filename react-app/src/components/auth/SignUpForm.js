@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
 import { Redirect, useHistory } from 'react-router-dom';
 import { signUp } from '../../store/session';
+import { login } from '../../store/session';
 import './signupform.css'
 const SignUpForm = () => {
   const history = useHistory()
@@ -55,6 +56,14 @@ const SignUpForm = () => {
   // if (user) {
   //   return <Redirect to='/users' />;
   // }
+  const demoLogin = async (e) => {
+    e.preventDefault();
+    const data = await dispatch(login('demo@aa.io','password'))
+    if(data) {
+      setErrors(data)
+    }
+    history.push('/main')
+  }
 
   return (
     <div className='top-div'>
@@ -62,7 +71,10 @@ const SignUpForm = () => {
         <div id="logo"><img src="/svg/habitica_logo.svg" alt="image Not Found"></img>
         <img src="routinica_true_purple.svg" alt="image Not Found"></img>
         </div>
+        <div id='login-demo-buttons'>
         <button id="login-button-signup" onClick={redirectToLogin}>Login</button>
+        <button id="login-button-signup" onClick={demoLogin}>Demo</button>
+        </div>
         <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Varela+Round" />
       </div>
       <div className="upper-form-text">

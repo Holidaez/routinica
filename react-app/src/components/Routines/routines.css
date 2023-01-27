@@ -20,6 +20,9 @@
     padding: 10px;
     margin: 10px;
     border-radius: 3px;
+    /* max-height: 70vh; */
+    /* overflow-y: scroll; */
+    /* overflow-x: scroll; */
     /* border: 1px solid mediumpurple; */
 }
 
@@ -206,8 +209,10 @@ label {
 }
 #footer-container{
     width: 100%;
-    padding-top: 90px;
+    /* padding-top: 90px; */
     margin: 0;
+    position: fixed;
+    bottom: 0px;
 }
 #dev-links-p {
     color: white;
