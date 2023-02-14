@@ -17,7 +17,7 @@ class Dailies(db.Model):
   difficulty = db.Column(db.Integer, nullable=False)
   streak = db.Column(db.Integer, nullable=False)
   due = db.Column(db.Boolean)
-  display_order = db.Column(db.Integer) #to store order
+  display_order = db.Column(db.String)
 
   user = db.relationship('User', back_populates='dailies')
   dailies_checklist = db.relationship('DailiesChecklist', back_populates='dailies')
