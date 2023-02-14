@@ -79,7 +79,7 @@ function Daily() {
             </form>
             {currentDailiesList.map((daily, i) => {
                 return (
-                    <div key={`day-${daily.id}`} className='daily-card' >
+                    <div key={`day-${daily.id}`} className='daily-card'  >
                         <div className='dailies-checkbox-div' >
                             <input className='daily-checkbox'
                                 type='checkbox'
@@ -104,10 +104,10 @@ function Daily() {
                                 e.stopPropagation()
                                 console.log(e.target.id)
                             }}>
-                            <div className='daily-info-container'>
-                                <div className='daily-card-title'>{daily.title}</div>
+                            <div className='daily-info-container' id={i}>
+                                <div className='daily-card-title' id={i}>{daily.title}</div>
                                 {daily.notes && (
-                                    <div className='daily-card-notes'>{daily.notes}</div>
+                                    <div className='daily-card-notes' id={i}>{daily.notes}</div>
                                 )}
                             </div>
                         </NavLink>
