@@ -67,3 +67,12 @@
     text-decoration: none;
     color:#494750;
 }
+.card-holder {
+    min-width: 100%;
+    max-height: 90%;
+    overflow-y: scroll;
+}
+
+.card-holder::-webkit-scrollbar {
+    width: 1em;
+}
