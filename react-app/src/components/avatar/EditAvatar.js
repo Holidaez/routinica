@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import avatarReducer, { getAvatar } from '../../store/avatar';
 import { useHistory, Redirect } from 'react-router-dom';
-import  { changeAvatar } from '../../store/avatar'
+import { changeAvatar } from '../../store/avatar'
 import './EditAvatar.css'
 
 const EditAvatar = () => {
@@ -49,56 +49,67 @@ const EditAvatar = () => {
     current_user_id: user.id
   }
 
-
+  //! Setters
   const submitAvatar = () => {
     const works = dispatch(changeAvatar(currentAvatar))
-      history.push('/main')
+    history.push('/main')
   }
 
   const setShirt = (e) => {
     e.preventDefault()
     setAvatarBody(e.target.id)
   }
+
   const selectSkin = (e) => {
     e.preventDefault()
     setAvatarSkin(e.target.id)
   }
+
   const selectBangs = (e) => {
     e.preventDefault()
     setAvatarBangs(e.target.id)
   }
+
   const selectStyle = (e) => {
     e.preventDefault()
     setAvatarStyle(e.target.id)
   }
+
   const selectFacial = (e) => {
     e.preventDefault()
     setAvatarFacial(e.target.id)
   }
+
   const selectGlasses = (e) => {
     e.preventDefault()
     setAvatarGlasses(e.target.id)
   }
+
   const selectWheelchair = (e) => {
     e.preventDefault()
     setAvatarWheelchair(e.target.id)
   }
+
   const selectAccent = (e) => {
     e.preventDefault()
     setAvatarAccent(e.target.id)
   }
+
   const selectAnimalEars = (e) => {
     e.preventDefault()
     setAvatarAnimalEars(e.target.id)
   }
+
   const selectAnimalTails = (e) => {
     e.preventDefault()
     setAvatarAnimalTails(e.target.id)
   }
+
   const selectHeadband = (e) => {
     e.preventDefault()
     setAvatarHeadband(e.target.id)
   }
+
   const selectBackground = (e) => {
     e.preventDefault()
     setAvatarBackground(e.target.id)
@@ -128,24 +139,30 @@ const EditAvatar = () => {
     setActiveMainCategory("background")
     setActiveSubCategory("Background")
   }
+
   const selectHairColor = (e) => {
     e.preventDefault()
     const hairImg = e.target.id
     if (hairImg.includes('black')) {
       setSelectedHairColor('black')
     }
+
     if (hairImg.includes('red')) {
       setSelectedHairColor('red')
     }
+
     if (hairImg.includes('white')) {
       setSelectedHairColor('white')
     }
+
     if (hairImg.includes('brown')) {
       setSelectedHairColor('brown')
     }
+
     if (hairImg.includes('blond')) {
       setSelectedHairColor('blond')
     }
+
     setActiveSubCategory('Bangs')
   }
 
@@ -159,7 +176,7 @@ const EditAvatar = () => {
     setActiveSubCategory('Shirt')
   }
 
-
+//! SwitchBoard
   function selectSub(e) {
 
     switch (e.target.id) {
@@ -222,7 +239,7 @@ const EditAvatar = () => {
   }
 
   return (
-
+    //! Conditional Rendering
     <div>
       <div id="edit-avatar-page-container">
         {/* <div id="submit-avatar"><button>Save Changes</button></div> */}
@@ -233,6 +250,7 @@ const EditAvatar = () => {
           ) || currentAvatar.bangs != 'null' && (
             <img src={currentAvatar.bangs} id='bangs'></img>
           )}
+
           {currentAvatar.skin != 'null' && (
             <img src={currentAvatar.skin} id='skin'></img>
           )}
@@ -327,15 +345,15 @@ const EditAvatar = () => {
           </button>)}
 
 
-        <div>
-          {activeMainCategory === "extra" && (<button className="cat-div">
-            <img src="/avatar/extra/extra.svg"></img>
-            <p className="cat-names">Extra</p>
-          </button>) || (<button className="cat-div" onClick={setExtraCategory}>
-            <img src="/avatar/extra/extra.svg"></img>
-            <p className="cat-names">Extra</p>
-          </button>)}
-        </div>
+          <div>
+            {activeMainCategory === "extra" && (<button className="cat-div">
+              <img src="/avatar/extra/extra.svg"></img>
+              <p className="cat-names">Extra</p>
+            </button>) || (<button className="cat-div" onClick={setExtraCategory}>
+              <img src="/avatar/extra/extra.svg"></img>
+              <p className="cat-names">Extra</p>
+            </button>)}
+          </div>
 
 
 
@@ -346,7 +364,9 @@ const EditAvatar = () => {
             <img src="/avatar/backgrounds/backgrounds.svg"></img>
             <p className="cat-names-background">Backgrounds</p>
           </button>)}
+
         </div>
+        //! Image To Render Mapping
       </div>
       <div id="lower-portion">
         <div id="subcategory">
@@ -437,7 +457,7 @@ const EditAvatar = () => {
         </div>
       </div>
       <div id="submit-div">
-      <button id="submit-avatar" onClick={submitAvatar}>Save Changes</button>
+        <button id="submit-avatar" onClick={submitAvatar}>Save Changes</button>
       </div>
       <div id='bottom-of-the-page'></div>
     </div>

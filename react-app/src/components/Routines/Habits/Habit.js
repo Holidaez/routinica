@@ -17,7 +17,7 @@ function Habit() {
     const currentHabitList = useSelector(state => {
         return Object.values(state.habits)
     })
-    // console.log(currentHabitList)
+
     useEffect(() => {
         dispatch(getHabits())
     }, [dispatch])
@@ -53,6 +53,7 @@ function Habit() {
             <input className='add-routine' placeholder='Add a Habit' value={title} onChange={(e) => setTitle(e.target.value)}/>
 
             </form>
+            <div className='card-holder'>
             {currentHabitList.map(habit => {
                 return (
                     <div key={`hab-${habit.id}`} className='habit-card'>
@@ -77,6 +78,7 @@ function Habit() {
                     </div>
                 )
             })}
+            </div>
         </div>
     )
 }

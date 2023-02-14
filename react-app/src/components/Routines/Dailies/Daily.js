@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux'
 import { NavLink } from "react-router-dom"
-import { getDailies, addDaily } from '../../../store/dailies'
+import { getDailies, addDaily, editDaily } from '../../../store/dailies'
 import EditDailyForm from './EditDaily';
 import '../routines.css'
 import './daily.css'
@@ -20,6 +20,7 @@ function Daily() {
     const [showEditDailyModal, setShowEditDailyModal] = useState(false)
     const [currentDaily, setCurrentDaily] = useState(0)
     const [stateDaily, setStateDaily] = useState(0)
+    const [checking, setChecking] = useState(false)
     useEffect(() => {
         dispatch(getDailies())
     }, [dispatch])
@@ -52,6 +53,7 @@ function Daily() {
 
 
 
+
     const clickHandler = (e) => {
         e.stopPropagation()
         if (!isNaN(e.target.id)) {
@@ -62,12 +64,40 @@ function Daily() {
         console.log(currentDaily, "the current daily is")
     }
 
-
     const swapModal = () => {
         setShowEditDailyModal(showEditDailyModal ? false : true)
     }
 
+        const updateCompleted = async (e, daily) => {
+            e.preventDefault()
+            setChecking(true)
+            if(daily.due === true){
+                daily.due = false
+            }else {
+                daily.due = true
+            }
+            let streaker = daily.streak + 1
+            const payload = {
+                id:daily.id,
+                userId:daily.userId,
+                startDate:daily.start_date,
+                repeats:daily.repeats,
+                repeatsOn:daily.repeats_on,
+                difficulty:daily.difficulty,
+                streak:streaker,
+                notes:daily.notes,
+                title:daily.title,
+                due:daily.due,
+                displayOrder:daily.display_order,
 
+
+            }
+            let checkboxUpdate = await dispatch(editDaily(payload))
+            if(checkboxUpdate.errors){
+                return alert(checkboxUpdate.errors.map(error=>error))
+            }
+            setChecking(false)
+        }
 
 
     return (
@@ -77,13 +107,17 @@ function Daily() {
             <form onSubmit={handleSubmit}>
                 <input className='add-routine' placeholder='Add a Daily' value={title} onChange={(e) => setTitle(e.target.value)} />
             </form>
-            {currentDailiesList.map((daily, i) => {
+
+            <div className='card-holder'>
+            {currentDailiesList.map(daily => {
                 return (
                     <div key={`day-${daily.id}`} className='daily-card'  >
                         <div className='dailies-checkbox-div' >
                             <input className='daily-checkbox'
-                                type='checkbox'
-                            />
+                            type='checkbox'
+                            checked={!daily.due}
+                            onChange={(e) => updateCompleted(e,daily)}
+                             />
                         </div>
                         <NavLink
                             id={i}
@@ -118,6 +152,7 @@ function Daily() {
 
                 )
             })}
+            </div>
         </div>
 
     )
