@@ -1,8 +1,8 @@
 """empty message
 
-Revision ID: afc531545fcc
+Revision ID: a8eb66d383e1
 Revises:
-Create Date: 2023-01-19 14:31:33.901079
+Create Date: 2022-12-12 16:04:37.578658
 
 """
 from alembic import op
@@ -11,8 +11,9 @@ import os
 environment = os.getenv("FLASK_ENV")
 SCHEMA = os.environ.get("SCHEMA")
 
+
 # revision identifiers, used by Alembic.
-revision = 'afc531545fcc'
+revision = 'a8eb66d383e1'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -39,8 +40,6 @@ def upgrade():
     if environment == "production":
         op.execute(f"ALTER TABLE users SET SCHEMA {SCHEMA};")
 
-
-
     op.create_table('avatar',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('userId', sa.Integer(), nullable=False),
@@ -59,31 +58,27 @@ def upgrade():
     sa.ForeignKeyConstraint(['userId'], ['users.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
-
     if environment == "production":
         op.execute(f"ALTER TABLE avatar SET SCHEMA {SCHEMA};")
-
-
 
     op.create_table('dailies',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('userId', sa.Integer(), nullable=False),
     sa.Column('start_date', sa.String(length=64), nullable=False),
     sa.Column('repeats', sa.String(length=64), nullable=False),
-    sa.Column('repeats_on', sa.String(length=256), nullable=True),
+    sa.Column('repeats_on', sa.String(256)),
     sa.Column('title', sa.String(length=64), nullable=False),
     sa.Column('notes', sa.String(length=250), nullable=True),
     sa.Column('difficulty', sa.Integer(), nullable=False),
     sa.Column('streak', sa.Integer(), nullable=False),
-    sa.Column('due', sa.Boolean(), nullable=True),
-    sa.Column('display_order', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['userId'], ['users.id'], ),
-    sa.PrimaryKeyConstraint('id')
+    sa.Column('due', sa.Boolean()),
+    sa.Column('display_order', sa.Integer()),
+    sa.ForeignKeyConstraint(['userId'], ['users.id'] ),
+    sa.PrimaryKeyConstraint('id'),
     )
 
     if environment == "production":
         op.execute(f"ALTER TABLE dailies SET SCHEMA {SCHEMA};")
-
 
     op.create_table('habits',
     sa.Column('id', sa.Integer(), nullable=False),
@@ -94,31 +89,16 @@ def upgrade():
     sa.Column('reset_counter', sa.String(length=64), nullable=False),
     sa.Column('positive_counter', sa.Integer(), nullable=False),
     sa.Column('negative_counter', sa.Integer(), nullable=False),
-    sa.Column('positive_habit', sa.Boolean(), nullable=True),
-    sa.Column('negative_habit', sa.Boolean(), nullable=True),
-    sa.Column('strong_habit', sa.Boolean(), nullable=True),
-    sa.Column('display_order', sa.Integer(), nullable=False),
+    sa.Column('positive_habit', sa.Boolean()),
+    sa.Column('negative_habit', sa.Boolean()),
+    sa.Column('strong_habit', sa.Boolean()),
+    sa.Column('display_order', sa.Integer()),
     sa.ForeignKeyConstraint(['userId'], ['users.id'], ),
     sa.PrimaryKeyConstraint('id'),
-    sa.UniqueConstraint('display_order')
     )
 
     if environment == "production":
         op.execute(f"ALTER TABLE habits SET SCHEMA {SCHEMA};")
-
-
-    op.create_table('routines_order',
-    sa.Column('id', sa.Integer(), nullable=False),
-    sa.Column('userId', sa.Integer(), nullable=False),
-    sa.Column('daily_order', sa.String(), nullable=True),
-    sa.Column('todo_order', sa.String(), nullable=True),
-    sa.Column('habit_order', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['userId'], ['users.id'], ),
-    sa.PrimaryKeyConstraint('id')
-    )
-
-    if environment == "production":
-        op.execute(f"ALTER TABLE routines_order SET SCHEMA {SCHEMA};")
 
     op.create_table('tags',
     sa.Column('id', sa.Integer(), nullable=False),
@@ -131,7 +111,6 @@ def upgrade():
     if environment == "production":
         op.execute(f"ALTER TABLE tags SET SCHEMA {SCHEMA};")
 
-
     op.create_table('todos',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('userId', sa.Integer(), nullable=False),
@@ -139,21 +118,19 @@ def upgrade():
     sa.Column('notes', sa.String(length=2048), nullable=True),
     sa.Column('difficulty', sa.Integer(), nullable=False),
     sa.Column('due_date', sa.String(length=64), nullable=False),
-    sa.Column('completed', sa.Boolean(), nullable=True),
+    sa.Column('completed', sa.Boolean()),
     sa.Column('display_order', sa.Integer(), nullable=False),
     sa.ForeignKeyConstraint(['userId'], ['users.id'], ),
-    sa.PrimaryKeyConstraint('id'),
-    sa.UniqueConstraint('display_order')
+    sa.PrimaryKeyConstraint('id')
     )
 
     if environment == "production":
         op.execute(f"ALTER TABLE todos SET SCHEMA {SCHEMA};")
 
-
     op.create_table('dailies_checklist',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('title', sa.String(length=64), nullable=False),
-    sa.Column('checked', sa.Boolean(), nullable=True),
+    sa.Column('checked', sa.Boolean()),
     sa.Column('dailiesId', sa.Integer(), nullable=True),
     sa.ForeignKeyConstraint(['dailiesId'], ['dailies.id'], ),
     sa.PrimaryKeyConstraint('id')
@@ -161,8 +138,6 @@ def upgrade():
 
     if environment == "production":
         op.execute(f"ALTER TABLE dailies_checklist SET SCHEMA {SCHEMA};")
-
-
 
     op.create_table('daily_tags',
     sa.Column('daily_id', sa.Integer(), nullable=False),
@@ -175,7 +150,6 @@ def upgrade():
     if environment == "production":
         op.execute(f"ALTER TABLE daily_tags SET SCHEMA {SCHEMA};")
 
-
     op.create_table('habits_tags',
     sa.Column('habits_id', sa.Integer(), nullable=False),
     sa.Column('tags', sa.Integer(), nullable=False),
@@ -187,11 +161,10 @@ def upgrade():
     if environment == "production":
         op.execute(f"ALTER TABLE habits_tags SET SCHEMA {SCHEMA};")
 
-
     op.create_table('todos_checklist',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('title', sa.String(length=64), nullable=False),
-    sa.Column('checked', sa.Boolean(), nullable=True),
+    sa.Column('checked', sa.Boolean()),
     sa.Column('todosId', sa.Integer(), nullable=True),
     sa.ForeignKeyConstraint(['todosId'], ['todos.id'], ),
     sa.PrimaryKeyConstraint('id')
@@ -199,7 +172,6 @@ def upgrade():
 
     if environment == "production":
         op.execute(f"ALTER TABLE todos_checklist SET SCHEMA {SCHEMA};")
-
 
     op.create_table('todos_tags',
     sa.Column('todos_id', sa.Integer(), nullable=False),
@@ -223,7 +195,6 @@ def downgrade():
     op.drop_table('dailies_checklist')
     op.drop_table('todos')
     op.drop_table('tags')
-    op.drop_table('routines_order')
     op.drop_table('habits')
     op.drop_table('dailies')
     op.drop_table('avatar')

@@ -44,7 +44,7 @@ function Daily() {
             displayOrder: dailiesLength + 1
         }
         let createdDaily = await dispatch(addDaily(payload))
-        if (createdDaily.errors) {
+        if (createdDaily.errors){
             alert(createdDaily.errors.map(error => error))
         }
         setTitle("")
@@ -53,20 +53,25 @@ function Daily() {
 
 
 
+        const clickHandler = (e) => {
+            e.stopPropagation()
+            if (!isNaN(e.target.id)) {
+                setCurrentDaily(e.target.id)
+                setShowEditDailyModal(true)
+            }
 
-    const clickHandler = (e) => {
-        e.stopPropagation()
-        if (!isNaN(e.target.id)) {
-            setCurrentDaily(e.target.id)
-            setShowEditDailyModal(true)
+
         }
-        console.log(e.target.id)
-        console.log(currentDaily, "the current daily is")
-    }
 
-    const swapModal = () => {
-        setShowEditDailyModal(showEditDailyModal ? false : true)
-    }
+
+        const swapModal = () => {
+            if(showEditDailyModal === false){
+                setShowEditDailyModal(true)
+            }
+            if(showEditDailyModal === true){
+                setShowEditDailyModal(false)
+            }
+        }
 
         const updateCompleted = async (e, daily) => {
             e.preventDefault()
@@ -100,55 +105,37 @@ function Daily() {
         }
 
 
-    return (
+        return (
 
         <div className='routines-container'>
             {/* <div className='dailies-title'>Dailies</div> */}
             <form onSubmit={handleSubmit}>
                 <input className='add-routine' placeholder='Add a Daily' value={title} onChange={(e) => setTitle(e.target.value)} />
             </form>
-
             <div className='card-holder'>
             {currentDailiesList.map(daily => {
                 return (
-                    <div key={`day-${daily.id}`} className='daily-card'  >
-                        <div className='dailies-checkbox-div' >
+                    <div key={`day-${daily.id}`} className='daily-card'>
+
+                        <div className='dailies-checkbox-div'>
                             <input className='daily-checkbox'
                             type='checkbox'
                             checked={!daily.due}
                             onChange={(e) => updateCompleted(e,daily)}
                              />
                         </div>
-                        <NavLink
-                            id={i}
-                            className='navlink'
-                            to={`/dailies/${daily.id}`}
-                            draggable={true}
-                            onDragStart={(e) => {
-                                e.stopPropagation()
-                                console.log(e.target.id)
-                            }}
-                            onDragOver={(e) => {
-                                e.preventDefault()
-                                e.stopPropagation()
-                            }}
-
-                            onDrop={(e) => {
-                                e.preventDefault()
-                                e.stopPropagation()
-                                console.log(e.target.id)
-                            }}>
-                            <div className='daily-info-container' id={i}>
-                                <div className='daily-card-title' id={i}>{daily.title}</div>
+                        <NavLink className='navlink' to={`/dailies/${daily.id}`}>
+                        <div className='daily-info-container'>
+                                <div className='daily-card-title'>{daily.title}</div>
                                 {daily.notes && (
-                                    <div className='daily-card-notes' id={i}>{daily.notes}</div>
+                                    <div className='daily-card-notes'>{daily.notes}</div>
                                 )}
                             </div>
-                        </NavLink>
-                        {daily.checklist && (
-                            <div className='daily-card-checklist'>{daily.checklist}</div>
-                        )}
-                    </div>
+                            </NavLink>
+                            {daily.checklist && (
+                                <div className='daily-card-checklist'>{daily.checklist}</div>
+                            )}
+                        </div>
 
                 )
             })}
