@@ -1,0 +1,20 @@
+
+#background-404{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+#home-page-button{
+  background-color: #8c52ff;
+  color: white;
+  border-radius: 5px;
+  padding: 10px;
+  font-size: 13px;
+  border: none;
+  margin-top: 5px;
+}
+#home-page-button:hover{
+  cursor: pointer;
+}

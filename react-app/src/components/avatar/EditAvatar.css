@@ -1,0 +1,334 @@
+/* TODO Add site wide styles */
+* {
+  padding: 0;
+  margin: 0;
+}
+
+svg {
+  fill: currentColor;
+}
+
+.category {
+  height: 33px;
+  width: 33px;
+}
+
+.cat-names {
+  margin: 0px;
+  font-family: "Varela Round";
+}
+.cat-names-background {
+  display: block;
+  margin: 0px;
+  font-weight: bold;
+  font-family: "Varela Round";
+}
+
+.cat-button {
+  background-color: transparent;
+  border: none;
+  height: 33px;
+  width: 33px;
+  /* background-image: local('/avatar/body/body.svg'); */
+}
+
+#cat-body-button {
+  height: 33px;
+  width: 33px;
+}
+
+.cat-div {
+  width: fit-content;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: transparent;
+  border: none;
+}
+
+#body-button {
+  display: block;
+  background-image: '/avatar/body/body.png';
+}
+
+.cat-div-background {
+  height: 33px;
+  width: 33px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  background-color: transparent;
+  border: transparent solid;
+}
+.cat-div-background:hover * {
+  color: white;
+  cursor: pointer;
+}
+.cat-div:hover * {
+  color: white;
+  cursor: pointer;
+}
+
+.svg-hover:hover * {
+  cursor: pointer;
+  color: white;
+  /* fill: rgb(97, 51, 180); */
+}
+
+#category-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: baseline;
+  padding-bottom: 24px;
+}
+
+#subcategory {
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  background-color: lightgray;
+}
+
+.main-options {
+  box-sizing: border-box;
+  color: #878090;
+  margin: 0px;
+  font-family: "Varela Round";
+  font-size: 14px;
+  margin: 4px;
+  background-color: transparent;
+  border: none;
+  height: 16px;
+}
+
+.main-options:hover {
+  cursor: pointer;
+  color: #6133b4;
+  border-bottom: 1px solid #6133b4;
+  /* text-decoration: underline; */
+}
+
+.main-options:checked {
+  color: #6133b4;
+  border-bottom: 1px solid #6133b4;
+}
+
+#lower-portion {
+  background-color: #f9f9f9;
+}
+
+/* .cat-names:hover {
+    color:rgb(97, 51, 180);
+  } */
+
+.submenu-selected {
+  color: #6133b4;
+  border-bottom: 1px solid #6133b4;
+}
+
+#glasses-icon {
+  display: block;
+  padding-bottom: 7px;
+}
+
+.main-options-selected {
+  box-sizing: border-box;
+  color: #6133b4;
+  margin: 0px;
+  font-family: "Varela Round";
+  font-size: 14px;
+  margin: 4px;
+  background-color: transparent;
+  border: none;
+  height: 16px;
+  border-bottom: 1px solid #6133b4;
+}
+
+.main-options-selected:hover {
+  cursor: pointer;
+}
+
+#options-div {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  padding: 0 30%;
+  background-color: lightgray;
+  position: relative;
+  z-index: 1;
+}
+
+.thumbnails {
+  height: fit-content;
+  width: fit-content;
+
+}
+
+.thumbnails:hover {
+  cursor: pointer;
+  border-bottom: #6133b4 3px solid;
+  border-bottom-left-radius: 40px;
+}
+
+.thumbnails:checked {
+  border-bottom: #6133b4 1px solid;
+  border-bottom-left-radius: 40px;
+}
+
+.thumbnail-button {
+  display: block;
+  margin: auto;
+  background-color: transparent;
+  border: none;
+}
+
+.thumbnails:active {
+  border-bottom: 2px solid #6133b4;
+}
+
+#avatar-container {
+  padding-top: 10px;
+  margin-bottom: 10px auto;
+  margin-left: auto;
+  margin-right: auto;
+  height: 147px;
+  width: 141px;
+  position: relative;
+}
+
+#background {
+  position: absolute;
+  z-index: 1;
+}
+
+#wheelchair {
+  position: absolute;
+  top: 60px;
+  left: 53px;
+  z-index: 2;
+}
+
+#skin {
+  position: absolute;
+  left: 25px;
+  top: 30px;
+  z-index: 3;
+}
+
+#bangs {
+  position: absolute;
+  left: 25px;
+  top: 30px;
+  z-index: 4;
+}
+
+#style {
+  position: absolute;
+  left: 25px;
+  top: 30px;
+  z-index: 5;
+}
+
+#facial {
+  position: absolute;
+  left: 25px;
+  top: 30px;
+  z-index: 4;
+}
+
+#accent {
+  position: absolute;
+  left: 25px;
+  top: 30px;
+  z-index: 5;
+}
+
+#body {
+  position: absolute;
+  left: 25px;
+  top: 30px;
+  z-index: 3;
+}
+
+#glasses {
+  position: absolute;
+  left: 25px;
+  top: 30px;
+  z-index: 5;
+}
+
+#animal_ears {
+  position: absolute;
+  left: 25px;
+  top: 30px;
+  z-index: 5;
+}
+
+#animal_tails {
+  position: absolute;
+  top: 65px;
+  left: 73px;
+  z-index: 2;
+}
+
+#headband {
+  position: absolute;
+  left: 25px;
+  top: 30px;
+  z-index: 5;
+}
+
+#null {
+  position: absolute;
+  left: 25px;
+  top: 30px;
+  z-index: 0;
+  background-color: rgb(224, 18, 18);
+  color: white;
+  font-size: 15px;
+  padding: 5px;
+  margin: 5px;
+  border-radius: 5px;
+}
+
+#edit-avatar-page-container {
+  background-color: #6133b4;
+  height: 40%;
+  margin: 0;
+}
+
+#bottom-of-the-page {
+  position: absolute;
+  bottom: 0;
+  background-color: lightgray;
+  width: 100%;
+  height: 100vh;
+  z-index: -1;
+}
+#submit-avatar {
+  position: fixed;
+  text-align: center;
+  margin: auto;
+  bottom: 20px;
+  background-color: #6133b4;
+  color: white;
+  border-radius: 5px;
+  padding: 5px;
+  margin: 5px;
+  font-size: 15px;
+  z-index: 1;
+}
+#submit-div {
+  position: fixed;
+  bottom: 20px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-left: 6px;
+  z-index: 1;
+}

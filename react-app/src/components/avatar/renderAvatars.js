@@ -1,0 +1,452 @@
+// import fs
+
+// fs.readdirSync("/Users/satori/iCloud Drive (Archive)/Desktop/AppAcademy/My_Cohort/MOD6/Group/scratch/reaction/public").forEach(file => console.log(file))
+
+// GET avatar values from database/Redux and populate below
+
+const avatar = {
+    shirt: '',
+    skin: '',
+    bangs: '',
+    style: '',
+    facial: '',
+    glasses: '',
+    wheelchair: '',
+    accent: '',
+    animal_ears: '',
+    animal_tails: '',
+    headband: '',
+    background: ''
+  }
+
+export const hairOptions = [
+  'Color',
+  'Bangs',
+  'Style',
+  'Facial'
+]
+
+export const extraOptions = [
+'Glasses',
+'Wheelchair',
+'Accent',
+'Animal_Ears',
+'Animal_Tails',
+'Headband'
+]
+
+  export const categoryIcons = [
+    '/avatar/body/body.svg',
+    '/avatar/skin/skin.svg',
+    '/avatar/hair/hair.svg',
+    '/avatar/extra/extra.svg',
+    '/avatar/backgrounds/backgrounds.svg',
+  ]
+
+  export const skin = [
+    '/avatar/skin/skin_6bd049.png',
+    '/avatar/skin/skin_98461a.png',
+    '/avatar/skin/skin_915533.png',
+    '/avatar/skin/skin_c3e1dc.png',
+    '/avatar/skin/skin_c06534.png',
+    '/avatar/skin/skin_ddc994.png',
+    '/avatar/skin/skin_ea8349.png',
+    '/avatar/skin/skin_f5a76e.png',
+    '/avatar/skin/zany_skin/skin_0ff591.png',
+    '/avatar/skin/zany_skin/skin_2b43f6.png',
+    '/avatar/skin/zany_skin/skin_800ed0.png',
+    '/avatar/skin/zany_skin/skin_d7a9f7.png',
+    '/avatar/skin/zany_skin/skin_eb052b.png',
+    '/avatar/skin/zany_skin/skin_f5d70f.png',
+    '/avatar/skin/zany_skin/skin_f69922.png',
+    '/avatar/skin/zany_skin/skin_rainbow.png',
+    '/avatar/skin/zany_skin/animals/skin_bear.png',
+    '/avatar/skin/zany_skin/animals/skin_cactus.png',
+    '/avatar/skin/zany_skin/animals/skin_fox.png',
+    '/avatar/skin/zany_skin/animals/skin_lion.png',
+    '/avatar/skin/zany_skin/animals/skin_panda.png',
+    '/avatar/skin/zany_skin/animals/skin_pig.png',
+    '/avatar/skin/zany_skin/animals/skin_tiger.png',
+    '/avatar/skin/zany_skin/animals/skin_wolf.png',
+  ]
+
+  export const size = [
+    '/avatar/body/black/slim_shirt_black.png',
+    '/avatar/body/black/broad_shirt_black.png',
+  ]
+
+  export const broadShirts = [
+    '/avatar/body/black/broad_shirt_black.png',
+    '/avatar/body/blue/broad_shirt_blue.png',
+    '/avatar/body/green/broad_shirt_green.png',
+    '/avatar/body/pink/broad_shirt_pink.png',
+    '/avatar/body/white/broad_shirt_white.png',
+    '/avatar/body/yellow/broad_shirt_yellow.png',
+    '/avatar/body/zany_shirts/broad/broad_shirt_convict.png',
+    '/avatar/body/zany_shirts/broad/broad_shirt_cross.png',
+    '/avatar/body/zany_shirts/broad/broad_shirt_fire.png',
+    '/avatar/body/zany_shirts/broad/broad_shirt_horizon.png',
+    '/avatar/body/zany_shirts/broad/broad_shirt_ocean.png',
+    '/avatar/body/zany_shirts/broad/broad_shirt_purple.png',
+    '/avatar/body/zany_shirts/broad/broad_shirt_rainbow.png',
+    '/avatar/body/zany_shirts/broad/broad_shirt_redblue.png',
+    '/avatar/body/zany_shirts/broad/broad_shirt_thunder.png',
+    '/avatar/body/zany_shirts/broad/broad_shirt_tropical.png',
+    '/avatar/body/zany_shirts/broad/broad_shirt_zombie.png',
+  ]
+
+  export const slimShirts = [
+    '/avatar/body/black/slim_shirt_black.png',
+    '/avatar/body/blue/slim_shirt_blue.png',
+    '/avatar/body/green/slim_shirt_green.png',
+    '/avatar/body/pink/slim_shirt_pink.png',
+    '/avatar/body/white/slim_shirt_white.png',
+    '/avatar/body/yellow/slim_shirt_yellow.png',
+    '/avatar/body/zany_shirts/slim/slim_shirt_convict.png',
+    '/avatar/body/zany_shirts/slim/slim_shirt_cross.png',
+    '/avatar/body/zany_shirts/slim/slim_shirt_fire.png',
+    '/avatar/body/zany_shirts/slim/slim_shirt_horizon.png',
+    '/avatar/body/zany_shirts/slim/slim_shirt_ocean.png',
+    '/avatar/body/zany_shirts/slim/slim_shirt_purple.png',
+    '/avatar/body/zany_shirts/slim/slim_shirt_rainbow.png',
+    '/avatar/body/zany_shirts/slim/slim_shirt_redblue.png',
+    '/avatar/body/zany_shirts/slim/slim_shirt_thunder.png',
+    '/avatar/body/zany_shirts/slim/slim_shirt_tropical.png',
+    '/avatar/body/zany_shirts/slim/slim_shirt_zombie.png',
+  ]
+
+  export const hairColor = [
+    '/avatar/hair/color/black/hair_bangs_1_black.png',
+    '/avatar/hair/color/blond/hair_bangs_1_blond.png',
+    '/avatar/hair/color/brown/hair_bangs_1_brown.png',
+    '/avatar/hair/color/red/hair_bangs_1_red.png',
+    '/avatar/hair/color/white/hair_bangs_1_white.png',
+    // '/avatar/hair/color/purchase_with_jewels/blue/hair_bangs_1_blue.png',
+    // '/avatar/hair/color/purchase_with_jewels/green/hair_bangs_1_green.png',
+    // '/avatar/hair/color/purchase_with_jewels/purple/hair_bangs_1_purple.png',
+    // '/avatar/hair/color/purchase_with_jewels/rainbow/hair_bangs_1_rainbow.png',
+    // '/avatar/hair/color/purchase_with_jewels/red/hair_bangs_1_TRUred.png',
+    // '/avatar/hair/color/purchase_with_jewels/yellow/hair_bangs_1_yellow.png',
+  ]
+
+  export const hairColors = {
+    black: {
+      bangs: [
+        '/avatar/hair/color/black/hair_bangs_1_black.png',
+        '/avatar/hair/color/black/hair_bangs_2_black.png',
+        '/avatar/hair/color/black/hair_bangs_3_black.png',
+        '/avatar/hair/color/black/hair_bangs_4_black.png',
+      ],
+      style: [
+        '/avatar/hair/color/black/style/hair_base_1_black.png',
+        '/avatar/hair/color/black/style/hair_base_2_black.png',
+        '/avatar/hair/color/black/style/hair_base_3_black.png',
+        '/avatar/hair/color/black/style/hair_base_4_black.png',
+        '/avatar/hair/color/black/style/hair_base_5_black.png',
+        '/avatar/hair/color/black/style/hair_base_6_black.png',
+        '/avatar/hair/color/black/style/hair_base_7_black.png',
+        '/avatar/hair/color/black/style/hair_base_8_black.png',
+        '/avatar/hair/color/black/style/hair_base_9_black.png',
+        '/avatar/hair/color/black/style/hair_base_10_black.png',
+        '/avatar/hair/color/black/style/hair_base_11_black.png',
+        '/avatar/hair/color/black/style/hair_base_13_black.png',
+        '/avatar/hair/color/black/style/hair_base_14_black.png',
+        '/avatar/hair/color/black/style/hair_base_15_black.png',
+        '/avatar/hair/color/black/style/hair_base_16_black.png',
+        '/avatar/hair/color/black/style/hair_base_17_black.png',
+        '/avatar/hair/color/black/style/hair_base_18_black.png',
+        '/avatar/hair/color/black/style/hair_base_19_black.png',
+        '/avatar/hair/color/black/style/hair_base_20_black.png',
+      ],
+      facial: [
+        '/avatar/hair/color/black/facial/hair_beard_1_black.png',
+        '/avatar/hair/color/black/facial/hair_beard_2_black.png',
+        '/avatar/hair/color/black/facial/hair_beard_3_black.png',
+        '/avatar/hair/color/black/facial/hair_mustache_1_black.png',
+        '/avatar/hair/color/black/facial/hair_mustache_2_black.png',
+      ]
+    },
+    blond: {
+      bangs: [
+        '/avatar/hair/color/blond/hair_bangs_1_blond.png',
+        '/avatar/hair/color/blond/hair_bangs_2_blond.png',
+        '/avatar/hair/color/blond/hair_bangs_3_blond.png',
+        '/avatar/hair/color/blond/hair_bangs_4_blond.png',
+      ],
+      style: [
+        '/avatar/hair/color/blond/style/hair_base_1_blond.png',
+        '/avatar/hair/color/blond/style/buy_with_jewels/set3/hair_base_2_blond.png',
+        '/avatar/hair/color/blond/style/hair_base_3_blond.png',
+        '/avatar/hair/color/blond/style/buy_with_jewels/set3/hair_base_4_blond.png',
+        '/avatar/hair/color/blond/style/buy_with_jewels/set3/hair_base_5_blond.png',
+        '/avatar/hair/color/blond/style/buy_with_jewels/set3/hair_base_6_blond.png',
+        '/avatar/hair/color/blond/style/buy_with_jewels/set3/hair_base_7_blond.png',
+        '/avatar/hair/color/blond/style/buy_with_jewels/set3/hair_base_8_blond.png',
+        '/avatar/hair/color/blond/style/buy_with_jewels/set1/hair_base_9_blond.png',
+        '/avatar/hair/color/blond/style/buy_with_jewels/set1/hair_base_10_blond.png',
+        '/avatar/hair/color/blond/style/buy_with_jewels/set1/hair_base_11_blond.png',
+        '/avatar/hair/color/blond/style/buy_with_jewels/set1/hair_base_13_blond.png',
+        '/avatar/hair/color/blond/style/buy_with_jewels/set1/hair_base_14_blond.png',
+        '/avatar/hair/color/blond/style/buy_with_jewels/set2/hair_base_15_blond.png',
+        '/avatar/hair/color/blond/style/buy_with_jewels/set2/hair_base_16_blond.png',
+        '/avatar/hair/color/blond/style/buy_with_jewels/set2/hair_base_17_blond.png',
+        '/avatar/hair/color/blond/style/buy_with_jewels/set2/hair_base_18_blond.png',
+        '/avatar/hair/color/blond/style/buy_with_jewels/set2/hair_base_19_blond.png',
+        '/avatar/hair/color/blond/style/buy_with_jewels/set2/hair_base_20_blond.png',
+      ],
+      facial: [
+        '/avatar/hair/color/blond/facial/buy_with_jewels/hair_beard_1_blond.png',
+        '/avatar/hair/color/blond/facial/buy_with_jewels/hair_beard_2_blond.png',
+        '/avatar/hair/color/blond/facial/buy_with_jewels/hair_beard_3_blond.png',
+        '/avatar/hair/color/blond/facial/buy_with_jewels/hair_mustache_1_blond.png',
+        '/avatar/hair/color/blond/facial/buy_with_jewels/hair_mustache_2_blond.png',
+        // '/avatar/hair/color/blond/facial/buy_with_jewels/png-clipart-no-symbol-sign-no-smoking-miscellaneous-angle-thumbnail.png'
+      ]
+    },
+    brown: {
+      bangs: [
+        '/avatar/hair/color/brown/hair_bangs_1_brown.png',
+        '/avatar/hair/color/brown/hair_bangs_2_brown.png',
+        '/avatar/hair/color/brown/hair_bangs_3_brown.png',
+        '/avatar/hair/color/brown/hair_bangs_4_brown.png',
+      ],
+      style: [
+        '/avatar/hair/color/brown/style/hair_base_1_brown.png',
+        '/avatar/hair/color/brown/style/hair_base_2_brown.png',
+        '/avatar/hair/color/brown/style/hair_base_3_brown.png',
+        '/avatar/hair/color/brown/style/hair_base_4_brown.png',
+        '/avatar/hair/color/brown/style/hair_base_5_brown.png',
+        '/avatar/hair/color/brown/style/hair_base_6_brown.png',
+        '/avatar/hair/color/brown/style/hair_base_7_brown.png',
+        '/avatar/hair/color/brown/style/hair_base_8_brown.png',
+        '/avatar/hair/color/brown/style/hair_base_9_brown.png',
+        '/avatar/hair/color/brown/style/hair_base_10_brown.png',
+        '/avatar/hair/color/brown/style/hair_base_11_brown.png',
+        '/avatar/hair/color/brown/style/hair_base_13_brown.png',
+        '/avatar/hair/color/brown/style/hair_base_14_brown.png',
+        '/avatar/hair/color/brown/style/hair_base_15_brown.png',
+        '/avatar/hair/color/brown/style/hair_base_16_brown.png',
+        '/avatar/hair/color/brown/style/hair_base_17_brown.png',
+        '/avatar/hair/color/brown/style/hair_base_18_brown.png',
+        '/avatar/hair/color/brown/style/hair_base_19_brown.png',
+        '/avatar/hair/color/brown/style/hair_base_20_brown.png',
+      ],
+      facial: [
+        '/avatar/hair/color/brown/facial/buy_with_jewels/hair_beard_1_brown.png',
+        '/avatar/hair/color/brown/facial/buy_with_jewels/hair_beard_2_brown.png',
+        '/avatar/hair/color/brown/facial/buy_with_jewels/hair_beard_3_brown.png',
+        '/avatar/hair/color/brown/facial/buy_with_jewels/hair_mustache_1_brown.png',
+        '/avatar/hair/color/brown/facial/buy_with_jewels/hair_mustache_2_brown.png',
+      ]
+    },
+    red: {
+      bangs: [
+        '/avatar/hair/color/red/hair_bangs_1_red.png',
+        '/avatar/hair/color/red/hair_bangs_2_red.png',
+        '/avatar/hair/color/red/hair_bangs_3_red.png',
+        '/avatar/hair/color/red/hair_bangs_4_red.png',
+      ],
+      style: [
+        '/avatar/hair/color/red/style/hair_base_1_red.png',
+        '/avatar/hair/color/red/style/buy_with_jewels/set3/hair_base_2_red.png',
+        '/avatar/hair/color/red/style/hair_base_3_red.png',
+        '/avatar/hair/color/red/style/buy_with_jewels/set3/hair_base_4_red.png',
+        '/avatar/hair/color/red/style/buy_with_jewels/set3/hair_base_5_red.png',
+        '/avatar/hair/color/red/style/buy_with_jewels/set3/hair_base_6_red.png',
+        '/avatar/hair/color/red/style/buy_with_jewels/set3/hair_base_7_red.png',
+        '/avatar/hair/color/red/style/buy_with_jewels/set3//hair_base_8_red.png',
+        '/avatar/hair/color/red/style/buy_with_jewels/set1/hair_base_9_red.png',
+        '/avatar/hair/color/red/style/buy_with_jewels/set1/hair_base_10_red.png',
+        '/avatar/hair/color/red/style/buy_with_jewels/set1/hair_base_11_red.png',
+        '/avatar/hair/color/red/style/buy_with_jewels/set1/hair_base_12_red.png',
+        '/avatar/hair/color/red/style/buy_with_jewels/set1/hair_base_13_red.png',
+        '/avatar/hair/color/red/style/buy_with_jewels/set1/hair_base_14_red.png',
+        '/avatar/hair/color/red/style/buy_with_jewels/set2/hair_base_15_red.png',
+        '/avatar/hair/color/red/style/buy_with_jewels/set2/hair_base_16_red.png',
+        '/avatar/hair/color/red/style/buy_with_jewels/set2/hair_base_17_red.png',
+        '/avatar/hair/color/red/style/buy_with_jewels/set2/hair_base_18_red.png',
+        '/avatar/hair/color/red/style/buy_with_jewels/set2/hair_base_19_red.png',
+        '/avatar/hair/color/red/style/buy_with_jewels/set2/hair_base_20_red.png',
+      ],
+      facial: [
+        '/avatar/hair/color/red/facial/buy_with_jewels/hair_beard_1_red.png',
+        '/avatar/hair/color/red/facial/buy_with_jewels/hair_beard_2_red.png',
+        '/avatar/hair/color/red/facial/buy_with_jewels/hair_beard_3_red.png',
+        '/avatar/hair/color/red/facial/buy_with_jewels/hair_mustache_1_red.png',
+        '/avatar/hair/color/red/facial/buy_with_jewels/hair_mustache_2_red.png',
+      ]
+    },
+    white: {
+      bangs: [
+        '/avatar/hair/color/white/hair_bangs_1_white.png',
+        '/avatar/hair/color/white/hair_bangs_2_white.png',
+        '/avatar/hair/color/white/hair_bangs_3_white.png',
+        '/avatar/hair/color/white/hair_bangs_4_white.png',
+      ],
+      style: [
+        '/avatar/hair/color/white/style/hair_base_1_white.png',
+        '/avatar/hair/color/white/style/buy_with_jewels/set3/hair_base_2_white.png',
+        '/avatar/hair/color/white/style/hair_base_3_white.png',
+        '/avatar/hair/color/white/style/buy_with_jewels/set3/hair_base_4_white.png',
+        '/avatar/hair/color/white/style/buy_with_jewels/set3/hair_base_5_white.png',
+        '/avatar/hair/color/white/style/buy_with_jewels/set3/hair_base_6_white.png',
+        '/avatar/hair/color/white/style/buy_with_jewels/set3/hair_base_7_white.png',
+        '/avatar/hair/color/white/style/buy_with_jewels/set3/hair_base_8_white.png',
+        '/avatar/hair/color/white/style/buy_with_jewels/set1/hair_base_9_white.png',
+        '/avatar/hair/color/white/style/buy_with_jewels/set1/hair_base_10_white.png',
+        '/avatar/hair/color/white/style/buy_with_jewels/set1/hair_base_11_white.png',
+        '/avatar/hair/color/white/style/buy_with_jewels/set1/hair_base_12_white.png',
+        '/avatar/hair/color/white/style/buy_with_jewels/set1/hair_base_13_white.png',
+        '/avatar/hair/color/white/style/buy_with_jewels/set1/hair_base_14_white.png',
+        '/avatar/hair/color/white/style/buy_with_jewels/set2/hair_base_15_white.png',
+        '/avatar/hair/color/white/style/buy_with_jewels/set2/hair_base_16_white.png',
+        '/avatar/hair/color/white/style/buy_with_jewels/set2/hair_base_17_white.png',
+        '/avatar/hair/color/white/style/buy_with_jewels/set2/hair_base_18_white.png',
+        '/avatar/hair/color/white/style/buy_with_jewels/set2/hair_base_19_white.png',
+        '/avatar/hair/color/white/style/buy_with_jewels/set2/hair_base_20_white.png',
+      ],
+      facial: [
+        '/avatar/hair/color/white/facial/buy_with_jewels/hair_beard_1_white.png',
+        '/avatar/hair/color/white/facial/buy_with_jewels/hair_beard_2_white.png',
+        '/avatar/hair/color/white/facial/buy_with_jewels/hair_beard_3_white.png',
+        '/avatar/hair/color/white/facial/buy_with_jewels/hair_mustache_1_white.png',
+        '/avatar/hair/color/white/facial/buy_with_jewels/hair_mustache_2_white.png',
+      ]
+    },
+  }
+
+  export const wheelchairs = [
+    '/avatar/extra/wheelchair/button_chair_black.png',
+    '/avatar/extra/wheelchair/button_chair_blue.png',
+    '/avatar/extra/wheelchair/button_chair_green.png',
+    '/avatar/extra/wheelchair/button_chair_pink.png',
+    '/avatar/extra/wheelchair/button_chair_handleless_black.png',
+    '/avatar/extra/wheelchair/button_chair_handleless_blue.png',
+    '/avatar/extra/wheelchair/button_chair_handleless_green.png',
+    '/avatar/extra/wheelchair/button_chair_handleless_pink.png',
+    '/avatar/extra/wheelchair/button_chair_handleless_red.png',
+    '/avatar/extra/wheelchair/button_chair_handleless_yellow.png',
+    '/avatar/extra/wheelchair/button_chair_red.png',
+    '/avatar/extra/wheelchair/button_chair_yellow.png',
+  ]
+
+  export const glasses = [
+    '/avatar/extra/glasses/eyewear_special_blackHalfMoon.png',
+    '/avatar/extra/glasses/eyewear_special_blackTopFrame.png',
+    '/avatar/extra/glasses/eyewear_special_blueHalfMoon.png',
+    '/avatar/extra/glasses/eyewear_special_blueTopFrame.png',
+    '/avatar/extra/glasses/eyewear_special_greenHalfMoon.png',
+    '/avatar/extra/glasses/eyewear_special_greenTopFrame.png',
+    '/avatar/extra/glasses/eyewear_special_pinkHalfMoon.png',
+    '/avatar/extra/glasses/eyewear_special_pinkTopFrame.png',
+    '/avatar/extra/glasses/eyewear_special_redHalfMoon.png',
+    '/avatar/extra/glasses/eyewear_special_redTopFrame.png',
+    '/avatar/extra/glasses/eyewear_special_whiteHalfMoon.png',
+    '/avatar/extra/glasses/eyewear_special_whiteTopFrame.png',
+    '/avatar/extra/glasses/eyewear_special_yellowHalfMoon.png',
+    '/avatar/extra/glasses/eyewear_special_yellowTopFrame.png',
+  ]
+
+  export const accent = [
+    '/avatar/extra/accent/hair_flower_1.png',
+    '/avatar/extra/accent/hair_flower_2.png',
+    '/avatar/extra/accent/hair_flower_3.png',
+    '/avatar/extra/accent/hair_flower_4.png',
+    '/avatar/extra/accent/hair_flower_5.png',
+    '/avatar/extra/accent/hair_flower_6.png',
+    '/avatar/extra/accent/hair_flower_7.png',
+    '/avatar/extra/accent/hair_flower_8.png',
+    '/avatar/extra/accent/hair_flower_9.png',
+    '/avatar/extra/accent/hair_flower_10.png',
+    '/avatar/extra/accent/hair_flower_11.png',
+    '/avatar/extra/accent/hair_flower_12.png',
+    '/avatar/extra/accent/hair_flower_13.png',
+    '/avatar/extra/accent/hair_flower_14.png',
+    '/avatar/extra/accent/hair_flower_15.png',
+    '/avatar/extra/accent/hair_flower_16.png',
+  ]
+
+  export const animalEars = [
+    '/avatar/extra/animal_ears/headAccessory_special_cactusEars.png',
+    '/avatar/extra/animal_ears/headAccessory_special_bearEars.png',
+    '/avatar/extra/animal_ears/headAccessory_special_foxEars.png',
+    '/avatar/extra/animal_ears/headAccessory_special_lionEars.png',
+    '/avatar/extra/animal_ears/headAccessory_special_pandaEars.png',
+    '/avatar/extra/animal_ears/headAccessory_special_pigEars.png',
+    '/avatar/extra/animal_ears/headAccessory_special_tigerEars.png',
+    '/avatar/extra/animal_ears/headAccessory_special_wolfEars.png',
+  ]
+
+  export const animalTails = [
+    '/avatar/extra/animal_tails/icon_back_special_bearTail.png',
+    '/avatar/extra/animal_tails/icon_back_special_cactusTail.png',
+    '/avatar/extra/animal_tails/icon_back_special_foxTail.png',
+    '/avatar/extra/animal_tails/icon_back_special_lionTail.png',
+    '/avatar/extra/animal_tails/icon_back_special_pandaTail.png',
+    '/avatar/extra/animal_tails/icon_back_special_pigTail.png',
+    '/avatar/extra/animal_tails/icon_back_special_tigerTail.png',
+    '/avatar/extra/animal_tails/icon_back_special_wolfTail.png',
+  ]
+
+  export const backgrounds = [
+    '/avatar/backgrounds/background_blue.png',
+    '/avatar/backgrounds/background_green.png',
+    '/avatar/backgrounds/background_purple.png',
+    '/avatar/backgrounds/background_red.png',
+    '/avatar/backgrounds/background_violet.png',
+    '/avatar/backgrounds/background_yellow.png',
+    '/avatar/backgrounds/gifs/background_airship.gif',
+    '/avatar/backgrounds/gifs/background_among_giant_mushrooms.png',
+    '/avatar/backgrounds/gifs/background_animals_den.png',
+    '/avatar/backgrounds/gifs/background_autumn_bridge.png',
+    '/avatar/backgrounds/gifs/background_autumn_picnic.png',
+    '/avatar/backgrounds/gifs/background_beach_with_dunes.png',
+    '/avatar/backgrounds/gifs/background_bioluminescent_waves.png',
+    '/avatar/backgrounds/gifs/background_blossoming_trees.png',
+    '/avatar/backgrounds/gifs/background_branches_of_a_holiday_tree.png',
+    '/avatar/backgrounds/gifs/background_brick_wall_with_ivy.png',
+    '/avatar/backgrounds/gifs/background_by_a_campfire.png',
+    '/avatar/backgrounds/gifs/background_castle_gate.png',
+    '/avatar/backgrounds/gifs/background_cemetery_gate.png',
+    '/avatar/backgrounds/gifs/background_clocktower.gif',
+    '/avatar/backgrounds/gifs/background_enchanted_music_room.png',
+    '/avatar/backgrounds/gifs/background_flower_shop.png',
+    '/avatar/backgrounds/gifs/background_flowering_prairie.png',
+    '/avatar/backgrounds/gifs/background_inside_a_crystal.png',
+    '/avatar/backgrounds/gifs/background_iridescent_clouds.png',
+    '/avatar/backgrounds/gifs/background_mask_makers_workshop.png',
+    '/avatar/backgrounds/gifs/background_messy_room.png',
+    '/avatar/backgrounds/gifs/background_meteor_shower.png',
+    '/avatar/backgrounds/gifs/background_misty_autumn_forest.png',
+    '/avatar/backgrounds/gifs/background_mountain_waterfall.png',
+    '/avatar/backgrounds/gifs/background_old_photo.png',
+    '/avatar/backgrounds/gifs/background_on_a_castle_wall.png',
+    '/avatar/backgrounds/gifs/background_orange_grove.png',
+    '/avatar/backgrounds/gifs/background_palm_tree_with_fairy_lights.png',
+    '/avatar/backgrounds/gifs/background_rainbow_eucalyptus.png',
+    '/avatar/backgrounds/gifs/background_sailboat_at_sunset.png',
+    '/avatar/backgrounds/gifs/background_snowy_farm.png',
+    '/avatar/backgrounds/gifs/background_snowy_village.png',
+    '/avatar/backgrounds/gifs/background_spooky_ruins.png',
+    '/avatar/backgrounds/gifs/background_springtime_lake.png',
+    '/avatar/backgrounds/gifs/background_steamworks.gif',
+    '/avatar/backgrounds/gifs/background_theatre_stage.png',
+    '/avatar/backgrounds/gifs/background_underwater_cave.png',
+    '/avatar/backgrounds/gifs/background_underwater_statues.png',
+    '/avatar/backgrounds/gifs/background_winter_waterfall.png',
+  ]
+
+  export const bodySubs = [
+    'Size',
+    'Shirt'
+  ]
+
+  export const headbands = [
+    '/avatar/extra/headband/headAccessory_special_blackHeadband.png',
+    '/avatar/extra/headband/headAccessory_special_blueHeadband.png',
+    '/avatar/extra/headband/headAccessory_special_greenHeadband.png',
+    '/avatar/extra/headband/headAccessory_special_pinkHeadband.png',
+    '/avatar/extra/headband/headAccessory_special_redHeadband.png',
+    '/avatar/extra/headband/headAccessory_special_whiteHeadband.png',
+    '/avatar/extra/headband/headAccessory_special_yellowHeadband.png',
+  ]
