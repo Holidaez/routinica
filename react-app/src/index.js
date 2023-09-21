@@ -5,16 +5,29 @@ import { ModalProvider } from './context/Modal';
 import './index.css';
 import App from './App';
 import configureStore from './store';
+import ThemeProvider from './context/Theme';
+import { BrowserRouter } from 'react-router-dom/cjs/react-router-dom.min';
 
 const store = configureStore();
 <link href='https://fonts.googleapis.com/css?family=Varela Round' rel='stylesheet'></link>
-ReactDOM.render(
-  <React.StrictMode>
+
+function Root() {
+  return (
     <Provider store={store}>
-      <ModalProvider>
-        <App />
-      </ModalProvider>
+      <BrowserRouter>
+        <ModalProvider>
+          <ThemeProvider>
+            <App />
+          </ThemeProvider>
+        </ModalProvider>
+      </BrowserRouter>
     </Provider>
-  </React.StrictMode>,
+  )
+}
+
+ReactDOM.render(
+  // <React.StrictMode>
+    <Root />,
+  // </React.StrictMode>,
   document.getElementById('root')
 );

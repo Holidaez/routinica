@@ -1,9 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useContext,useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux'
 import { getToDos, editAToDo, addToDos } from '../../../store/todos'
 import { Modal } from '../../../context/Modal';
 import { NavLink } from 'react-router-dom';
 import EditToDoForm from './EditToDos';
+import { ThemeContext } from '../../../context/Theme'
+
 import './todo.css'
 import '../routines.css'
 
@@ -13,6 +15,13 @@ import '../routines.css'
 //Complete logic and functionality for the cards and buttons.
 
 function ToDo() {
+    const darkMode = useContext(ThemeContext)
+    const themeStyles = {
+        backgroundColor: darkMode ? '#333' : '#edecee',
+        color: darkMode ? 'white' : '#333'
+    }
+
+
     const dispatch = useDispatch()
     const currentToDoList = useSelector(state => {
         return Object.values(state.todos)
@@ -73,7 +82,7 @@ function ToDo() {
         setChecking(false)
     }
     return (
-        <div className='routines-container'>
+        <div className='routines-container' style={themeStyles}>
             <link href='https://fonts.googleapis.com/css?family=Varela Round' rel='stylesheet'></link>
             <form onSubmit={handleSubmit}>
                 <input className='add-routine' placeholder='Add a ToDo' value={title} onChange={(e) => setTitle(e.target.value)} />
@@ -81,7 +90,7 @@ function ToDo() {
             <div className='card-holder'>
             {currentToDoList.map(todo => {
                 return (
-                    <div key={`to-${todo.id}`} className='todo-card'>
+                    <div key={`to-${todo.id}`} className='todo-card' style={themeStyles}>
                         <div className='todo-checkbox-container'>
                             <input className='todo-checkbox'
                             type='checkbox'
@@ -90,7 +99,7 @@ function ToDo() {
                             />
                             {/* <button className='hidden' placeholder='✔' /> */}
                         </div>
-                        <NavLink className='todo-navlink' to={`/todos/${todo.id}`} >
+                        <NavLink className='todo-navlink' to={`/todos/${todo.id}`} style={themeStyles}>
                             <div className='todo-info-container'>
                                 <div className='todo-card-title'>{todo.title}</div>
                                 {todo.notes && (

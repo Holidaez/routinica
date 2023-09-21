@@ -1,19 +1,20 @@
 .habit-card {
-    /* border: 1px red solid; */
+    border-bottom: 1px #915bf3 solid;
     background-color: white;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: flex-start;
     height: 75px;
-    margin: 2px;
+    /* margin: 2px; */
     border-radius: 3px;
-    width: 99%;
+    /* width: 99%; */
     box-shadow: lightgray 2px 2px 3px;
+    /* border: 2px, #915bf3, solid; */
 }
 
 .habit-card:hover {
-    outline: 1px #915bf3 solid;
+    outline: solid #915bf3 1px;
 }
 
 .habit-info-container {
@@ -39,7 +40,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    border-radius: 5px;
+    /* border-radius: 5px; */
 }
 
 .habit-plus-button {

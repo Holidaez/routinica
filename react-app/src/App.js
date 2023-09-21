@@ -19,6 +19,7 @@ import FourOFour from './components/404/404.js';
 import { authenticate } from './store/session';
 import logout from './store/session.js'
 import EditToDoForm from './components/Routines/ToDos/EditToDos';
+import ThemeProvider, { ThemeContext } from './context/Theme';
 function App() {
   const [loaded, setLoaded] = useState(false);
   const dispatch = useDispatch();
@@ -35,7 +36,8 @@ function App() {
   }
 
   return (
-    <BrowserRouter>
+    <>
+
       {/* <NavBar /> */}
       <Switch>
         <Route path='/login' exact={true}>
@@ -57,14 +59,13 @@ function App() {
           <EditHabit />
         </Route>
         <Route path='/dailies/:dailyId'>
-          < EditDailyForm/>
+          < EditDailyForm />
         </Route>
         <Route path='/todos/:toDoId'>
           <EditToDoForm />
         </Route>
         <Route path='/dailies' exact={true}>
           <Daily />
-
         </Route>
         <ProtectedRoute path='/users' exact={true} >
           <UsersList />
@@ -76,7 +77,7 @@ function App() {
           <h1>My Home Page</h1>
         </Route>
         <Route path='/edit/avatar' exact={true}>
-          <EditAvatar/>
+          <EditAvatar />
         </Route>
         <Route path='/logout' exact={true}>
           <LogOutPage />
@@ -91,7 +92,7 @@ function App() {
           <FourOFour />
         </Route>
       </Switch>
-    </BrowserRouter>
+    </>
   );
 }
 

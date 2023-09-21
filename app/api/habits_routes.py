@@ -63,7 +63,12 @@ def edit_habit():
         savedhabit = habit.to_dict()
         return savedhabit
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
-
+@habits_routes.route('/<id>', methods=['GET'])
+@login_required
+def get_single_habit(id):
+    single_habit = Habits.query.get(id)
+    return single_habit.to_dict()
+    
 @habits_routes.route('/<id>', methods=['DELETE'])
 @login_required
 def delete_habit(id):

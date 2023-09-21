@@ -1,11 +1,16 @@
 //Definitions
 const LOAD = '/habits/LOAD'
+const LOAD_SINGLE = '/habits/LOAD_SINGLE'
 const ADD = '/habits/ADD'
 const DELETE = '/habits/DELETE'
 const REMOVE_HABITS = 'habits/REMOVE_HABITS'
 //Actions
-const load = habitList => ({
+export const load = habitList => ({
     type: LOAD,
+    habitList
+})
+export const loadSingle = habitList => ({
+    type: LOAD_SINGLE,
     habitList
 })
 const add = habit => ({
@@ -112,8 +117,10 @@ let initialState = {}
 export default function habitsReducer(state = initialState, action) {
     switch(action.type){
         case LOAD: {
-
             return {...state, ...action.habitList.habits}
+        }
+        case LOAD_SINGLE: {
+            return {...state, [action.habitList.id]:action.habitList}
         }
         case ADD: {
             const allHabits = {...state}

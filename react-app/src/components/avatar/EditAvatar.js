@@ -1,12 +1,21 @@
 import { skin, size, broadShirts, slimShirts, extraOptions, hairOptions, categoryIcons, hairColor, hairColors, bodySubs, glasses, wheelchairs, accent, backgrounds, animalEars, animalTails, headbands } from './renderAvatars'
-import { useState, useEffect } from 'react';
+import { useContext,useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import avatarReducer, { getAvatar } from '../../store/avatar';
 import { useHistory, Redirect } from 'react-router-dom';
 import { changeAvatar } from '../../store/avatar'
+import { ThemeContext } from '../../context/Theme';
+
 import './EditAvatar.css'
 
 const EditAvatar = () => {
+  
+  const darkMode = useContext(ThemeContext)
+  const themeStyles = {
+    backgroundColor: darkMode ? '#333' : '#edecee',
+    color: darkMode ? 'white' : '#333'
+  }
+
   const dispatch = useDispatch()
   const history = useHistory()
   const avatar = useSelector(state => state.avatar)
@@ -176,7 +185,7 @@ const EditAvatar = () => {
     setActiveSubCategory('Shirt')
   }
 
-//! SwitchBoard
+  //! SwitchBoard
   function selectSub(e) {
 
     switch (e.target.id) {
@@ -240,7 +249,7 @@ const EditAvatar = () => {
 
   return (
     //! Conditional Rendering
-    <div>
+    <div style={themeStyles}>
       <div id="edit-avatar-page-container">
         {/* <div id="submit-avatar"><button>Save Changes</button></div> */}
         <div id='avatar-container'>
@@ -366,10 +375,10 @@ const EditAvatar = () => {
           </button>)}
 
         </div>
-        //! Image To Render Mapping
+        {/* ! Image To Render Mapping */}
       </div>
-      <div id="lower-portion">
-        <div id="subcategory">
+      <div id="lower-portion" style={themeStyles}>
+        <div id="subcategory" style={themeStyles}>
           {activeMainCategory === 'body' && bodySubs.map(cat => (
             activeSubCategory === cat && <button key={cat} id={cat} className="main-options-selected">{cat}</button> || <button key={cat} id={cat} className="main-options" onClick={(e) => selectSub(e)}>{cat}</button>
           ))}
@@ -383,7 +392,7 @@ const EditAvatar = () => {
 
           {activeMainCategory === 'background' && (<button key='Background' id='Background' className="main-options-selected">Plain Background Set</button> || <button key='Background' id='Background' className="main-options" onClick={(e) => selectSub(e)}>Color</button>)}
         </div>
-        <div id="options-div">
+        <div id="options-div" style={themeStyles}>
           {activeSubCategory === 'Skin' && (
             skin.map(image => (<button className="thumbnail-button" id={image} onClick={(e) => selectSkin(e)}><img className="thumbnails" src={image} id={image}></img></button>)))
           }
@@ -459,7 +468,7 @@ const EditAvatar = () => {
       <div id="submit-div">
         <button id="submit-avatar" onClick={submitAvatar}>Save Changes</button>
       </div>
-      <div id='bottom-of-the-page'></div>
+      <div id='bottom-of-the-page' style={themeStyles}></div>
     </div>
 
   );

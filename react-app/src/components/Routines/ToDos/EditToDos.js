@@ -1,11 +1,16 @@
-import './edittodo.css'
 
-import { useState, useEffect } from 'react';
+import { useContext, useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux'
 import { useHistory, useParams } from 'react-router-dom'
 import { addToDos, editAToDo, deleteToDo } from '../../../store/todos';
-
+import { ThemeContext } from "../../../context/Theme";
+import './edittodo.css'
 function EditToDoForm() {
+    const darkMode = useContext(ThemeContext)
+    const themeStyles = {
+        backgroundColor: darkMode ? '#333' : '#edecee',
+        color: darkMode ? 'white' : '#333'
+    }
     const dispatch = useDispatch()
     const history = useHistory()
     const { toDoId } = useParams()
@@ -35,11 +40,11 @@ function EditToDoForm() {
         let createdToDo = await dispatch(editAToDo(payload))
         if (createdToDo.errors) {
             return alert(createdToDo.errors.map(error => error))
-            }
-
-            history.push('/main')
-
         }
+
+        history.push('/main')
+
+    }
 
     const handleDelete = async () => {
         dispatch(deleteToDo(currentToDo.id))
@@ -50,7 +55,7 @@ function EditToDoForm() {
         history.push('/main')
     }
     return (
-        <div>
+        <div id='root' style={themeStyles}>
             <form onSubmit={handleSubmit} id='edit-form'>
                 <div id='orange'>
                     <div id="form-nav">
@@ -79,31 +84,31 @@ function EditToDoForm() {
 
                 <div id="form-bottom">
                     <div>Difficulty</div>
-                <select
-                    id='difficulty'
-                    value={difficulty}
-                    onChange={e => setDifficulty(e.target.value)}>
-                    <option value={1}>Trivial</option>
-                    <option value={2}>Easy</option>
-                    <option value={3}>Medium</option>
-                    <option value={4}>Hard</option>
-                </select>
-                <div>Date</div>
-                <input
-                id='date'
-                    type='date'
-                    min={currentDate}
-                    value={due_date}
-                    onChange={e => setDue_date(e.target.value)} />
-                {/* <select
+                    <select
+                        id='difficulty'
+                        value={difficulty}
+                        onChange={e => setDifficulty(e.target.value)}>
+                        <option value={1}>Trivial</option>
+                        <option value={2}>Easy</option>
+                        <option value={3}>Medium</option>
+                        <option value={4}>Hard</option>
+                    </select>
+                    <div>Date</div>
+                    <input
+                        id='date'
+                        type='date'
+                        min={currentDate}
+                        value={due_date}
+                        onChange={e => setDue_date(e.target.value)} />
+                    {/* <select
                     id='completed'
                     value={completed}
                     onChange={e => setCompleted(e.target.value)}>
                     <option value={true}>True</option>
                     <option value={false}>False</option>
                 </select> */}
-                <button type='button' id='delete-button'
-                    onClick={handleDelete}><img src='/svg/garbage.svg' id='garbage'></img>Delete this Todo</button>
+                    <button type='button' id='delete-button'
+                        onClick={handleDelete}><img src='/svg/garbage.svg' id='garbage'></img>Delete this Todo</button>
                 </div>
             </form>
         </div>

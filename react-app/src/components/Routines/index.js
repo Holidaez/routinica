@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useContext, useEffect } from "react";
 import Daily from "./Dailies/Daily";
 import ToDo from "./ToDos/ToDos";
 import Habit from "./Habits/Habit";
@@ -6,10 +6,16 @@ import Avatar from "./Avatar/avatar";
 import { useHistory } from "react-router-dom";
 import { getDailies, addDaily } from '../../store/dailies'
 import { useDispatch, useSelector } from "react-redux";
-import './routines.css'
+import { ThemeContext } from "../../context/Theme";
 
+import './routines.css'
 //render here
 export default function Routines() {
+    const darkMode = useContext(ThemeContext)
+    const themeStyles = {
+        backgroundColor: darkMode ? '#333' : '#edecee',
+        color: darkMode ? 'white' : '#333'
+    }
     const history = useHistory()
     const dispatch = useDispatch()
     const user = useSelector(state => state.session.user)
@@ -25,7 +31,7 @@ export default function Routines() {
         history.push(path)
     }
     return (
-        <div>
+        <div style={themeStyles}>
             <div id="header-container">
 
                 <div id="avatar-block-container">
@@ -46,7 +52,7 @@ export default function Routines() {
                     <button className="user-buttons" onClick={redirectToLogout}>Logout</button>
                 </div>
             </div>
-            <div className="body-container">
+            <div className="body-container" style={themeStyles}>
                 <Habit />
                 <Daily />
                 <ToDo />
