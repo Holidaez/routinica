@@ -17,12 +17,16 @@ import { ThemeContext } from '../../../context/Theme';
 function Habit() {
     const dispatch = useDispatch()
     const [errors, setErrors] = useState([])
-    console.log("🚀 ~ file: Habit.js:20 ~ Habit ~ errors:", errors)
+
     const currentHabitList = useSelector(state => {
         return Object.values(state.habits)
     })
+
     const darkMode = useContext(ThemeContext)
+
     console.log("darkmode", darkMode)
+
+
     const themeStyles = {
         backgroundColor: darkMode ? '#333' : '#edecee',
         color: darkMode ? 'white' : '#333'

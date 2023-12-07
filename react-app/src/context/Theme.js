@@ -1,18 +1,11 @@
-import React from "react"
+import React, { createContext } from "react"
 import { useState } from "react"
 
-
-export const ThemeContext = React.createContext('light')
-
-
+export const ThemeContext = createContext()
 
 function ThemeProvider({ children }) {
 
-    const [darkMode, setDarkMode] = useState(true)
-
-    function toggleTheme() {
-        setDarkMode(prevDarkMode => !prevDarkMode)
-    }
+    const [darkMode, setDarkMode] = useState(false)
     const styleObj = {
         'zIndex': '10',
         'right':'18px',
@@ -24,13 +17,14 @@ function ThemeProvider({ children }) {
         'padding':'5px',
         'position':'absolute'
     }
-    const buttonText = darkMode ? 'Light Mode' : 'Dark Mode'
+    let buttonText;
+    darkMode ? buttonText = 'Light Mode' : buttonText = 'Dark Mode'
     return (
         <>
-            <ThemeContext.Provider value={darkMode}>
-                <button onClick={toggleTheme} style={styleObj}>{buttonText}</button>
-                {children}
-            </ThemeContext.Provider>
+        <button style={styleObj} onClick={() => setDarkMode(!darkMode)}>{buttonText}</button>
+        <ThemeContext.Provider value={darkMode}>
+            {children}
+        </ThemeContext.Provider>
         </>
     )
 
